@@ -1,0 +1,116 @@
+.customize-control-simple-color {
+	position: relative;
+    margin-bottom: 12px;
+    margin-top: 0;
+    line-height: 27px;
+}
+
+.customize-control-simple-color .customize-control-title {
+    margin-bottom: 0;
+}
+
+.ksc-adv-toggle-icon {
+    right: 2px;
+    top: -2px;
+    /*position: absolute;*/
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 4px;
+    color: #0073aa;
+    background: #fff;
+}
+
+.open.ksc-adv-toggle-icon:before {
+    content: "\f158";
+}
+
+.ksc-adv-toggle-icon:before {
+    content: "\f464";
+}
+
+.ksc-field-settings-wrap {
+    -webkit-box-shadow: 0 2px 15px rgb(0 0 0 / 30%);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 30%);
+    -webkit-border-radius: 3px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.ksc-field-settings-modal {
+    position: absolute;
+    -webkit-box-shadow: 0 2px 15px rgb(0 0 0 / 30%);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 30%);
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background-color: #fff;
+    margin-top: 15px;
+}
+
+.ksc-field-settings-modal.has_description{
+    margin-top: 5px;
+}
+
+.ksc-field-settings-wrap .ksg-field-settings-modal {
+    border-radius: 3px;
+    margin-top: 9px;
+    margin-bottom: 20px;
+}
+
+.ksc-field-settings-modal::before {
+    content: '';
+    position: absolute;
+    top: -17px;
+    right: 8px;
+    border: 9px solid transparent;
+    border-bottom-color: #fff;
+    pointer-events: none;
+}
+
+.ksc-fields-wrap {
+    overflow: hidden;
+    padding: 10px 10px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.ksc-adv-toggle-icon:hover{
+    color: #099fd6;
+}
+
+.ksc-toggle-desc-wrap label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.ksc-toggle-desc-wrap label .titledesc_wrapper{
+    padding-right: 10px;
+}
+
+.ksc-fields-wrap li{
+    margin-bottom: 5px;
+}
+
+.ksc-fields-wrap .wp-picker-container .wp-color-result.button{
+    margin: 0;
+}
+
+.customize-control-simple-color .customize-control-notifications-container{
+    display: none;
+}
+
+.customize-control-simple-color .wp-picker-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

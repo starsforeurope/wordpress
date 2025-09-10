@@ -1,0 +1,27 @@
+# Local by Flywheel infrastructure
+conf/
+logs/
+
+# Local development files
+.DS_Store
+Thumbs.db
+*.log
+
+# Node modules if you have any build processes
+node_modules/
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp

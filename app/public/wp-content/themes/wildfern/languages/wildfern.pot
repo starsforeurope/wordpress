@@ -1,0 +1,449 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wildfern\n"
+"POT-Creation-Date: 2025-07-10 16:29+0530\n"
+"PO-Revision-Date: 2025-07-10 16:29+0530\n"
+"Last-Translator: \n"
+"Language-Team: Flythemes Team <support@flythemes.net>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;esc_attr_e;esc_html_e;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: block-patterns.php:17
+msgid "Wildfern"
+msgstr ""
+
+#: inc/about.php:48
+msgid "Free Full Site Editing WordPress Theme"
+msgstr ""
+
+#: inc/about.php:59
+msgid "Getting Started with Wildfern!"
+msgstr ""
+
+#: inc/about.php:60
+msgid ""
+"Awesome! Wildfern has been installed and activated successfully. Now, you "
+"can start building your dream website with a wide range of highly-"
+"customizable block patterns, templates, and template parts available in this "
+"astounding theme."
+msgstr ""
+
+#: inc/about.php:66
+msgid "More Features with Wildfern Pro Theme"
+msgstr ""
+
+#: inc/about.php:67
+msgid ""
+"To get more features and unique home page sections, we recommend you "
+"activate the Wildfern Pro. With the pro theme installed, get more options "
+"like google fonts, colors, sliders, page template, shortcodes and more."
+msgstr ""
+
+#: inc/about.php:68
+msgid "Buy Wildfern Pro"
+msgstr ""
+
+#: inc/about.php:77
+msgid "Important Links"
+msgstr ""
+
+#: inc/about.php:78
+msgid "Theme Info"
+msgstr ""
+
+#: inc/about.php:79
+msgid "View Demo"
+msgstr ""
+
+#: inc/about.php:80
+msgid "Support"
+msgstr ""
+
+#: inc/about.php:87
+msgid "Leave us a review"
+msgstr ""
+
+#: inc/about.php:88
+msgid ""
+"Loved Wildfern? Feel free to leave your feedback. Your opinion helps us "
+"reach more audiences!"
+msgstr ""
+
+#: inc/about.php:89
+msgid "Review"
+msgstr ""
+
+#: patterns/404.php:12
+msgid "404"
+msgstr ""
+
+#: patterns/404.php:16
+msgid "Page not found!"
+msgstr ""
+
+#: patterns/404.php:20
+msgid "Sorry, the page you are looking for does not exist or has been moved."
+msgstr ""
+
+#: patterns/404.php:25
+msgid "Return Home"
+msgstr ""
+
+#: patterns/archive.php:54
+msgid "Sorry, No posts exists..."
+msgstr ""
+
+#: patterns/archive.php:65
+#: patterns/single.php:63
+msgid "Search"
+msgstr ""
+
+#: patterns/archive.php:75
+#: patterns/single.php:73
+msgid "Popular Posts"
+msgstr ""
+
+#: patterns/archive.php:99
+#: patterns/single.php:97
+msgid "Categories"
+msgstr ""
+
+#: patterns/archive.php:109
+#: patterns/single.php:107
+msgid "Archives"
+msgstr ""
+
+#: patterns/archive.php:119
+#: patterns/single.php:117
+msgid "Tags"
+msgstr ""
+
+#: patterns/banner.php:15
+msgid "Book tour with wildfern"
+msgstr ""
+
+#: patterns/banner.php:20
+msgid "Discover the"
+msgstr ""
+
+#: patterns/banner.php:20
+msgid "unseen beauty"
+msgstr ""
+
+#: patterns/banner.php:24
+msgid ""
+"Vestibulum rhoncus lacus vitae risus finibus laoreet. Praesent id ultrices "
+"ipsum. Fusce sed ligula neque."
+msgstr ""
+
+#: patterns/banner.php:24
+msgid "Aenean at lacus eget massa faucibus fermentum sed id quam."
+msgstr ""
+
+#: patterns/banner.php:29
+msgid "Discover More"
+msgstr ""
+
+#: patterns/causes.php:15
+msgid "Need Your Help"
+msgstr ""
+
+#: patterns/causes.php:21
+msgid "Get Involved"
+msgstr ""
+
+#: patterns/causes.php:25
+#: patterns/latest-news.php:25
+msgid ""
+"Suspendisse ut interdum libero. Aenean convallis blandit ante, a consectetur "
+"tortor hendrerit ac. Interdum et"
+msgstr ""
+
+#: patterns/causes.php:25
+#: patterns/latest-news.php:25
+msgid ""
+"malesuada fames ac ante ipsum primis in faucibus. Curabitur ut laoreet odio, "
+"eget ornare tellus."
+msgstr ""
+
+#: patterns/causes.php:44
+msgid "Wild World Health Warning"
+msgstr ""
+
+#: patterns/causes.php:48
+#: patterns/causes.php:96
+#: patterns/causes.php:144
+msgid ""
+"Mauris volutpat vulputate eros, eget interdum mi accumsan ac. Etiam mattis "
+"ultrices sapien ut imperdiet.…"
+msgstr ""
+
+#: patterns/causes.php:54
+#: patterns/causes.php:102
+#: patterns/causes.php:150
+msgid "Raised"
+msgstr ""
+
+#: patterns/causes.php:58
+msgid "$ 31523"
+msgstr ""
+
+#: patterns/causes.php:64
+#: patterns/causes.php:112
+#: patterns/causes.php:160
+msgid "Goal"
+msgstr ""
+
+#: patterns/causes.php:68
+msgid "$ 45000"
+msgstr ""
+
+#: patterns/causes.php:75
+#: patterns/causes.php:123
+#: patterns/causes.php:171
+msgid "Donate Now"
+msgstr ""
+
+#: patterns/causes.php:92
+msgid "Free Volunteering"
+msgstr ""
+
+#: patterns/causes.php:106
+msgid "$ 5561"
+msgstr ""
+
+#: patterns/causes.php:116
+msgid "$ 15415"
+msgstr ""
+
+#: patterns/causes.php:140
+msgid "Injured/sick Adult Deer"
+msgstr ""
+
+#: patterns/causes.php:154
+msgid "$ 28000"
+msgstr ""
+
+#: patterns/causes.php:164
+msgid "$ 65000"
+msgstr ""
+
+#: patterns/counter.php:14
+msgid "240"
+msgstr ""
+
+#: patterns/counter.php:18
+msgid "Saved Species"
+msgstr ""
+
+#: patterns/counter.php:26
+msgid "400+"
+msgstr ""
+
+#: patterns/counter.php:30
+msgid "Daily Donations"
+msgstr ""
+
+#: patterns/counter.php:38
+msgid "40"
+msgstr ""
+
+#: patterns/counter.php:42
+msgid "Partners"
+msgstr ""
+
+#: patterns/counter.php:50
+msgid "1000+"
+msgstr ""
+
+#: patterns/counter.php:54
+msgid "Team members"
+msgstr ""
+
+#: patterns/counter.php:62
+msgid "700"
+msgstr ""
+
+#: patterns/counter.php:66
+msgid "Project Done"
+msgstr ""
+
+#: patterns/features.php:23
+msgid "Natural Environment"
+msgstr ""
+
+#: patterns/features.php:27
+#: patterns/features.php:53
+#: patterns/features.php:79
+#: patterns/features.php:105
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis "
+"fermentum lectus. Morbi quis lacinia…"
+msgstr ""
+
+#: patterns/features.php:32
+#: patterns/features.php:58
+#: patterns/features.php:84
+#: patterns/features.php:110
+#: patterns/latest-news.php:61
+msgid "Read More"
+msgstr ""
+
+#: patterns/features.php:49
+msgid "Awesome Animals"
+msgstr ""
+
+#: patterns/features.php:75
+msgid "Friendly Guide"
+msgstr ""
+
+#: patterns/features.php:101
+msgid "Free Car Parking"
+msgstr ""
+
+#: patterns/footer.php:15
+msgid "About Wildfern"
+msgstr ""
+
+#: patterns/footer.php:33
+msgid ""
+"Sed ullamcorper sagittis nisl, id vulputate ligula dapibus a. Quisque "
+"commodo malesuada purus. Lorem ipsum dolor sit amet, consectetur adipiscing "
+"elit."
+msgstr ""
+
+#: patterns/footer.php:51
+msgid "Explore"
+msgstr ""
+
+#: patterns/footer.php:72
+#: patterns/footer.php:146
+msgid "Home"
+msgstr ""
+
+#: patterns/footer.php:78
+#: patterns/footer.php:152
+msgid "Page"
+msgstr ""
+
+#: patterns/footer.php:86
+#: patterns/footer.php:160
+msgid "Our Animals"
+msgstr ""
+
+#: patterns/footer.php:92
+#: patterns/footer.php:166
+msgid "Gallery"
+msgstr ""
+
+#: patterns/footer.php:100
+#: patterns/footer.php:174
+msgid "Shortcode"
+msgstr ""
+
+#: patterns/footer.php:106
+#: patterns/footer.php:180
+msgid "Blog"
+msgstr ""
+
+#: patterns/footer.php:114
+#: patterns/footer.php:188
+msgid "Contact Us"
+msgstr ""
+
+#: patterns/footer.php:125
+msgid "Useful Links"
+msgstr ""
+
+#: patterns/footer.php:199
+msgid "Recent Work"
+msgstr ""
+
+#: patterns/footer.php:251
+msgid "© Copyright 2025. All Rights Reserved."
+msgstr ""
+
+#: patterns/footer.php:255
+msgid "Fly Themes"
+msgstr ""
+
+#: patterns/footer.php:255
+msgid "and"
+msgstr ""
+
+#: patterns/footer.php:255
+msgid "https://wordpress.org"
+msgstr ""
+
+#: patterns/footer.php:255
+msgid "WordPress"
+msgstr ""
+
+#: patterns/header.php:24
+msgid "667 Madisyn Way, Kossfurt, Hawaii"
+msgstr ""
+
+#: patterns/header.php:40
+msgid "demo@example.com"
+msgstr ""
+
+#: patterns/header.php:56
+msgid "+3-(642)-222-0089"
+msgstr ""
+
+#: patterns/header.php:76
+msgid "Mon - Sat 9:00 am to 5:00 pm"
+msgstr ""
+
+#: patterns/header.php:120
+msgid "Donate"
+msgstr ""
+
+#: patterns/introduction.php:23
+msgid "Welcome To Wildfern"
+msgstr ""
+
+#: patterns/introduction.php:29
+msgid "Words About Best Animal Worlds."
+msgstr ""
+
+#: patterns/introduction.php:33
+msgid ""
+"Praesent tellus augue, placerat quis iaculis in, rhoncus eu diam. Vestibulum "
+"nulla ante, viverra ut ipsum vel, vehicula tempor urna. Praesent est metus, "
+"accumsan luctus mi eget, viverra tempor est. Nullam auctor mauris sed nunc "
+"molestie venenatis."
+msgstr ""
+
+#: patterns/introduction.php:47
+msgid "Get Closer Experience"
+msgstr ""
+
+#: patterns/introduction.php:51
+#: patterns/introduction.php:75
+msgid ""
+"Aenean ut lectus quis est tincidunt faucibus. Mauris eros neque, rutrum sed "
+"tincidunt in, commodo nec leo."
+msgstr ""
+
+#: patterns/introduction.php:71
+msgid "Brew At The Wildfern"
+msgstr ""
+
+#: patterns/introduction.php:82
+msgid "More About Us"
+msgstr ""
+
+#: patterns/latest-news.php:15
+msgid "Latest Blog!"
+msgstr ""
+
+#: patterns/latest-news.php:21
+msgid "Latest News & Articles"
+msgstr ""

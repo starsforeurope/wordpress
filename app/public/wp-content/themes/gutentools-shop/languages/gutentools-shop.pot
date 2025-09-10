@@ -1,0 +1,71 @@
+# Copyright (C) 2025 gutentools-shop
+# This file is distributed under the same license as the gutentools-shop package.
+msgid ""
+msgstr ""
+"Project-Id-Version: gutentools-shop\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-05-10 15:50+0000\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../functions.php:28
+msgid "Gutentools Shop"
+msgstr ""
+
+#: ../patterns/404.php:14
+msgid "404: Page Not Disco-vered"
+msgstr ""
+
+#: ../patterns/404.php:18
+msgid "Looks like the dance floor is empty here! This page has done a disappearing act. Head back to the main stage by clicking the navigation links, and let's keep the party going!"
+msgstr ""
+
+#: ../patterns/404.php:25
+msgid "Go to home page"
+msgstr ""
+
+#: ../patterns/archive-product.php:55
+msgid "No products were found matching your selection."
+msgstr ""
+
+#: ../patterns/archive.php:43, ../patterns/blog-left.php:47, ../patterns/blog-right.php:44, ../patterns/post.php:46, ../patterns/search.php:44
+msgid "No posts found"
+msgstr ""
+
+#: ../patterns/cart.php:18
+msgid "You may be interested in…"
+msgstr ""
+
+#: ../patterns/cart.php:76
+msgid "Your cart is currently empty!"
+msgstr ""
+
+#: ../patterns/cart.php:84
+msgid "New in store"
+msgstr ""
+
+#: ../patterns/post.php:10
+msgid "Blog"
+msgstr ""
+
+#: ../patterns/sidebar.php:15
+msgid "Latest Posts"
+msgstr ""
+
+#: ../patterns/sidebar.php:23
+msgid "Categories"
+msgstr ""
+
+#: ../patterns/sidebar.php:31
+msgid "Tags"
+msgstr ""
+
+#: ../patterns/single-product.php:57
+msgid "Related Products"
+msgstr ""
