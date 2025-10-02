@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="max-image-preview:large">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
-	<title>Il nostro Statuto &ndash; Stars for Europe</title>
+	<title>Contatti &ndash; Stars for Europe</title>
 <link rel="alternate" type="application/rss+xml" title="Stars for Europe &raquo; Feed" href="https://starsforeurope.github.io/wordpress/feed/">
 <link rel="alternate" type="application/rss+xml" title="Stars for Europe &raquo; Feed dei commenti" href="https://starsforeurope.github.io/wordpress/comments/feed/">
 <script>
@@ -38,20 +38,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <style id="wp-block-spacer-inline-css">
 .wp-block-spacer{clear:both}
 </style>
-<style id="wp-block-heading-inline-css">
-h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-background,h6.has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
-</style>
 <style id="wp-block-paragraph-inline-css">
 .is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
-</style>
-<style id="wp-block-list-inline-css">
-ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
-</style>
-<style id="wp-block-file-inline-css">
-.wp-block-file{box-sizing:border-box}.wp-block-file:not(.wp-element-button){font-size:.8em}.wp-block-file.aligncenter{text-align:center}.wp-block-file.alignright{text-align:right}.wp-block-file *+.wp-block-file__button{margin-left:.75em}:where(.wp-block-file){margin-bottom:1.5em}.wp-block-file__embed{margin-bottom:1em}:where(.wp-block-file__button){border-radius:2em;display:inline-block;padding:.5em 1em}:where(.wp-block-file__button):is(a):active,:where(.wp-block-file__button):is(a):focus,:where(.wp-block-file__button):is(a):hover,:where(.wp-block-file__button):is(a):visited{box-shadow:none;color:#fff;opacity:.85;text-decoration:none}
-</style>
-<style id="wp-block-details-inline-css">
-.wp-block-details{box-sizing:border-box}.wp-block-details summary{cursor:pointer}
 </style>
 <style id="wp-block-post-content-inline-css">
 .wp-block-post-content{display:flow-root}
@@ -127,8 +115,62 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
   }
 }
 
+/* HEADER PAGINE INTERNE */
+.header-interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Logo */
+.header-interno .wp-block-site-logo img {
+  max-height: 120px;
+  height: auto;
+  width: auto;
+}
+
+/* Nav + pulsante */
+.header-interno .header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto; /* spinge a destra */
+}
+
+/* Forza layout pagine interne */
+.header-interno {
+  display: flex !important;
+  justify-content: space-between !important; /* logo a sinistra, nav+pulsante a destra */
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Logo: resta a sinistra */
+.header-interno .header-logo {
+  margin-right: auto !important;
+}
+
+/* Gruppo nav+pulsante: resta a destra */
+.header-interno .header-nav {
+  margin-left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  justify-content: flex-end !important;
+  flex: 0 0 auto !important;
+}
+
+/* Override classi WP che centrano il menu */
+.header-interno nav.wp-block-navigation,
+.header-interno .wp-block-navigation__container {
+  justify-content: flex-end !important;
+}
+
+
 :root :where(.wp-block-button .wp-block-button__link){background-color: #2f67b3;border-radius: 24px;border-top-width: 0px;border-top-style: none;border-right-width: 0px;border-right-style: none;border-bottom-width: 0px;border-bottom-style: none;border-left-width: 0px;border-left-style: none;font-family: var(--wp--preset--font-family--plus-jakarta-sans);font-size: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.051), 0.9rem);font-style: normal;font-weight: 600;letter-spacing: 0.05em;line-height: 3.5;padding-top: 0px;padding-right: 23px;padding-bottom: 0px;padding-left: 23px;text-transform: uppercase;}
-:root :where(.wp-block-list){font-size: var(--wp--preset--font-size--medium);padding-left: var(--wp--preset--spacing--70);}
 :root :where(.wp-block-navigation){font-family: var(--wp--preset--font-family--plus-jakarta-sans);font-size: var(--wp--preset--font-size--small);}
 :root :where(.wp-block-navigation a:where(:not(.wp-element-button))){text-decoration: none;}
 :root :where(.wp-block-navigation a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
@@ -141,10 +183,9 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 :root :where(.wp-block-site-title a:where(:not(.wp-element-button)):hover){text-decoration: underline;}
 :root :where(.wp-block-group){line-height: 1.4;min-height: 0px;}:root :where(.wp-block-group-is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.wp-block-group-is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.wp-block-group-is-layout-flow) > *{margin-block-start: 0.6rem;margin-block-end: 0;}:root :where(.wp-block-group-is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.wp-block-group-is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.wp-block-group-is-layout-constrained) > *{margin-block-start: 0.6rem;margin-block-end: 0;}:root :where(.wp-block-group-is-layout-flex){gap: 0.6rem;}:root :where(.wp-block-group-is-layout-grid){gap: 0.6rem;}
 :root :where(.wp-block-group .wp-element-button,.wp-block-group  .wp-block-button__link){background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple);}
-:root :where(.wp-block-file a:where(:not(.wp-element-button))){color: var(--wp--preset--color--secondary);}
 </style>
 <style id="core-block-supports-inline-css">
-.wp-container-core-group-is-layout-64a649f9{flex-wrap:nowrap;gap:12px;align-items:center;}.wp-elements-0e778aa82aa6ada4f767782e4d94e00e a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-container-core-navigation-is-layout-8a360608{gap:1.8rem;justify-content:center;}.wp-container-core-group-is-layout-17124a9a{flex-wrap:nowrap;justify-content:flex-end;}.wp-container-core-group-is-layout-abb13630{justify-content:space-between;}.wp-container-core-group-is-layout-35f41833 > .alignfull{margin-right:calc(4vw * -1);margin-left:calc(4vw * -1);}.wp-elements-99708886d8a0f38dc494a0179be09e27 a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-elements-cb48918f23757de67ea51cd3c27e59f7 a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-elements-0248bf26cd4ce484d7e9e83363bfb8d5 a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-elements-968283926f4ffd694c0ab38008eeb495 a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-elements-4d72b8cf0631b08a189cea5b68a7c1d6 a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-elements-b6df5216824dcaf9624a220d959ad45f a:where(:not(.wp-element-button)){color:var(--wp--preset--color--contrast);}.wp-elements-ea4905813cc4f26e662097d71d1c5a1c a:where(:not(.wp-element-button)){color:var(--wp--preset--color--contrast);}.wp-container-core-social-links-is-layout-90a58438{gap:1.8rem 1.8rem;}.wp-container-core-group-is-layout-a08a916b > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-a08a916b > * + *{margin-block-start:1rem;margin-block-end:0;}.wp-container-core-group-is-layout-8f7640b6{gap:0px;flex-direction:column;align-items:flex-start;}.wp-container-core-buttons-is-layout-aff0af56{gap:0px 0.5em;align-items:flex-end;}.wp-container-core-columns-is-layout-28f84493{flex-wrap:nowrap;}.wp-container-core-group-is-layout-f2ccfad9 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-f2ccfad9 > * + *{margin-block-start:1.2rem;margin-block-end:0;}.wp-container-core-group-is-layout-94590051 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-94590051 > * + *{margin-block-start:1.2rem;margin-block-end:0;}
+.wp-container-core-group-is-layout-64a649f9{flex-wrap:nowrap;gap:12px;align-items:center;}.wp-elements-77de65c0a803649de646e1dd4caed538 a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-container-core-navigation-is-layout-8a360608{gap:1.8rem;justify-content:center;}.wp-container-core-group-is-layout-17124a9a{flex-wrap:nowrap;justify-content:flex-end;}.wp-container-core-group-is-layout-abb13630{justify-content:space-between;}.wp-container-core-group-is-layout-35f41833 > .alignfull{margin-right:calc(4vw * -1);margin-left:calc(4vw * -1);}.wp-elements-99708886d8a0f38dc494a0179be09e27 a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-elements-cb48918f23757de67ea51cd3c27e59f7 a:where(:not(.wp-element-button)){color:#2f67b3;}.wp-elements-b6df5216824dcaf9624a220d959ad45f a:where(:not(.wp-element-button)){color:var(--wp--preset--color--contrast);}.wp-elements-ea4905813cc4f26e662097d71d1c5a1c a:where(:not(.wp-element-button)){color:var(--wp--preset--color--contrast);}.wp-container-core-social-links-is-layout-90a58438{gap:1.8rem 1.8rem;}.wp-container-core-group-is-layout-a08a916b > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-a08a916b > * + *{margin-block-start:1rem;margin-block-end:0;}.wp-container-core-group-is-layout-8f7640b6{gap:0px;flex-direction:column;align-items:flex-start;}.wp-container-core-buttons-is-layout-aff0af56{gap:0px 0.5em;align-items:flex-end;}.wp-container-core-columns-is-layout-28f84493{flex-wrap:nowrap;}.wp-container-core-group-is-layout-f2ccfad9 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-f2ccfad9 > * + *{margin-block-start:1.2rem;margin-block-end:0;}.wp-container-core-group-is-layout-94590051 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-is-layout-94590051 > * + *{margin-block-start:1.2rem;margin-block-end:0;}
 </style>
 <style id="wp-block-template-skip-link-inline-css">
 
@@ -177,16 +218,15 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 		}
 </style>
 <link rel="stylesheet" id="startorg-style-css" href="https://starsforeurope.github.io/wordpress/wp-content/themes/startorg/style.css?ver=1.0.2" media="all">
-<link rel="https://api.w.org/" href="https://starsforeurope.github.io/wordpress/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://starsforeurope.github.io/wordpress/wp-json/wp/v2/pages/219"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://starsforeurope.github.io/wordpress/xmlrpc.php?rsd">
+<link rel="https://api.w.org/" href="https://starsforeurope.github.io/wordpress/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://starsforeurope.github.io/wordpress/wp-json/wp/v2/pages/322"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://starsforeurope.github.io/wordpress/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 6.8.2">
-<link rel="canonical" href="https://starsforeurope.github.io/wordpress/chi-siamo/statuto/">
-<link rel="shortlink" href="https://starsforeurope.github.io/wordpress/?p=219">
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://starsforeurope.github.io/wordpress/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Fstarsforeurope.github.io%2Fwordpress%2Fchi-siamo%2Fstatuto%2F">
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://starsforeurope.github.io/wordpress/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Fstarsforeurope.github.io%2Fwordpress%2Fchi-siamo%2Fstatuto%2F&amp;format=xml">
+<link rel="canonical" href="https://starsforeurope.github.io/wordpress/contatti/">
+<link rel="shortlink" href="https://starsforeurope.github.io/wordpress/?p=322">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://starsforeurope.github.io/wordpress/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Fstarsforeurope.github.io%2Fwordpress%2Fcontatti%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://starsforeurope.github.io/wordpress/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhttps%3A%2F%2Fstarsforeurope.github.io%2Fwordpress%2Fcontatti%2F&amp;format=xml">
 <script type="importmap" id="wp-importmap">
 {"imports":{"@wordpress\/interactivity":"https:\/\/starsforeurope.github.io\/wordpress\/wp-includes\/js\/dist\/script-modules\/interactivity\/index.min.js?ver=55aebb6e0a16726baffb"}}
 </script>
-<script type="module" src="https://starsforeurope.github.io/wordpress/wp-includes/js/dist/script-modules/block-library/file/view.min.js?ver=fdc2f6842e015af83140" id="@wordpress/block-library/file/view-js-module"></script>
 <script type="module" src="https://starsforeurope.github.io/wordpress/wp-includes/js/dist/script-modules/block-library/navigation/view.min.js?ver=61572d447d60c0aa5240" id="@wordpress/block-library/navigation/view-js-module"></script>
 <link rel="modulepreload" href="https://starsforeurope.github.io/wordpress/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=55aebb6e0a16726baffb" id="@wordpress/interactivity-js-modulepreload"><style class="wp-fonts-local">
 @font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:300;font-display:fallback;src:url('https://starsforeurope.github.io/wordpress/wp-content/themes/startorg/assets/fonts/plus-jakarta-sans_normal_300.ttf') format('truetype');}
@@ -206,7 +246,7 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 <meta name="msapplication-TileImage" content="https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-300x300.png">
 </head>
 
-<body class="wp-singular page-template page-template-pagina2 page page-id-219 page-child parent-pageid-251 wp-custom-logo wp-embed-responsive wp-theme-startorg">
+<body class="wp-singular page-template page-template-pagina2 page page-id-322 wp-custom-logo wp-embed-responsive wp-theme-startorg">
 
 <div class="wp-site-blocks">
 <hr class="wp-block-separator has-alpha-channel-opacity">
@@ -214,19 +254,19 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 
 <main class="wp-block-group is-layout-flow wp-block-group-is-layout-flow"><header class="header-interno wp-block-template-part">
-<div class="wp-block-group alignfull header-s4e has-global-padding is-layout-constrained wp-container-core-group-is-layout-35f41833 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-top:3.4rem;padding-right:4vw;padding-bottom:2rem;padding-left:4vw">
-<div class="wp-block-group alignwide is-content-justification-space-between is-layout-flex wp-container-core-group-is-layout-abb13630 wp-block-group-is-layout-flex" style="margin-top:0px;margin-bottom:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
-<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-64a649f9 wp-block-group-is-layout-flex"><div class="wp-block-site-logo"><a aria-label="(link a Home, si apre in una nuova scheda)" target="_blank" href="https://starsforeurope.github.io/wordpress/" class="custom-logo-link" rel="home"><img width="136" height="136" src="https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-scaled.png" class="custom-logo" alt="Stars for Europe" decoding="async" srcset="https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-scaled.png 2560w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-300x300.png 300w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-1024x1024.png 1024w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-150x150.png 150w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-768x768.png 768w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-1536x1536.png 1536w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-2048x2048.png 2048w" sizes="(max-width: 136px) 100vw, 136px"></a></div></div>
+<div class="wp-block-group alignfull header-interno has-global-padding is-layout-constrained wp-container-core-group-is-layout-35f41833 wp-block-group-is-layout-constrained" style="margin-top:0px;margin-bottom:0px;padding-top:3.4rem;padding-right:4vw;padding-bottom:2rem;padding-left:4vw">
+<div class="wp-block-group alignwide header-interno is-content-justification-space-between is-layout-flex wp-container-core-group-is-layout-abb13630 wp-block-group-is-layout-flex" style="margin-top:0px;margin-bottom:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-64a649f9 wp-block-group-is-layout-flex"><div class="header-logo wp-block-site-logo"><a aria-label="(link a Home, si apre in una nuova scheda)" target="_blank" href="https://starsforeurope.github.io/wordpress/" class="custom-logo-link" rel="home"><img width="136" height="136" src="https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-scaled.png" class="custom-logo" alt="Stars for Europe" decoding="async" srcset="https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-scaled.png 2560w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-300x300.png 300w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-1024x1024.png 1024w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-150x150.png 150w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-768x768.png 768w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-1536x1536.png 1536w, https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/logo-s4e-2048x2048.png 2048w" sizes="(max-width: 136px) 100vw, 136px"></a></div></div>
 
 
 
-<div class="wp-block-group has-text-color has-link-color wp-elements-0e778aa82aa6ada4f767782e4d94e00e is-content-justification-right is-nowrap is-layout-flex wp-container-core-group-is-layout-17124a9a wp-block-group-is-layout-flex" style="color:#2f67b3"><nav class="is-responsive items-justified-center wp-block-navigation is-horizontal is-content-justification-center is-layout-flex wp-container-core-navigation-is-layout-8a360608 wp-block-navigation-is-layout-flex" aria-label="Navigation" data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Apri menu" class="wp-block-navigation__responsive-container-open" data-wp-on-async--click="actions.openMenuOnClick" data-wp-on--keydown="actions.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
+<div class="wp-block-group header-nav has-text-color has-link-color wp-elements-77de65c0a803649de646e1dd4caed538 is-content-justification-right is-nowrap is-layout-flex wp-container-core-group-is-layout-17124a9a wp-block-group-is-layout-flex" style="color:#2f67b3"><nav class="is-responsive items-justified-center wp-block-navigation is-horizontal is-content-justification-center is-layout-flex wp-container-core-navigation-is-layout-8a360608 wp-block-navigation-is-layout-flex" aria-label="Navigation" data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Apri menu" class="wp-block-navigation__responsive-container-open" data-wp-on-async--click="actions.openMenuOnClick" data-wp-on--keydown="actions.handleMenuKeydown"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5"></rect><rect x="4" y="15" width="16" height="1.5"></rect></svg></button>
 				<div class="wp-block-navigation__responsive-container" id="modal-1" data-wp-class--has-modal-open="state.isMenuOpen" data-wp-class--is-menu-open="state.isMenuOpen" data-wp-watch="callbacks.initMenu" data-wp-on--keydown="actions.handleMenuKeydown" data-wp-on-async--focusout="actions.handleMenuFocusout" tabindex="-1">
 					<div class="wp-block-navigation__responsive-close" tabindex="-1">
 						<div class="wp-block-navigation__responsive-dialog" data-wp-bind--aria-modal="state.ariaModal" data-wp-bind--aria-label="state.ariaLabel" data-wp-bind--role="state.roleAttribute">
 							<button aria-label="Chiudi menu" class="wp-block-navigation__responsive-container-close" data-wp-on-async--click="actions.closeMenuOnClick"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
 							<div class="wp-block-navigation__responsive-container-content" data-wp-watch="callbacks.focusFirstElement" id="modal-1-content">
-								<ul class="wp-block-navigation__container is-responsive items-justified-center wp-block-navigation"><li data-wp-context="{ &quot;submenuOpenedBy&quot;: { &quot;click&quot;: false, &quot;hover&quot;: false, &quot;focus&quot;: false }, &quot;type&quot;: &quot;submenu&quot;, &quot;modal&quot;: null }" data-wp-interactive="core/navigation" data-wp-on--focusout="actions.handleMenuFocusout" data-wp-on--keydown="actions.handleMenuKeydown" data-wp-on-async--mouseenter="actions.openMenuOnHover" data-wp-on-async--mouseleave="actions.closeMenuOnHover" data-wp-watch="callbacks.initMenu" tabindex="-1" class="wp-block-navigation-item has-child open-on-hover-click wp-block-navigation-submenu current-menu-ancestor"><a class="wp-block-navigation-item__content" href="https://starsforeurope.github.io/wordpress/chi-siamo/"><span class="wp-block-navigation-item__label">Chi siamo</span></a><button data-wp-bind--aria-expanded="state.isMenuOpen" data-wp-on-async--click="actions.toggleMenuOnClick" aria-label="Sottomenu di Chi siamo" class="wp-block-navigation__submenu-icon wp-block-navigation-submenu__toggle"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewbox="0 0 12 12" fill="none" aria-hidden="true" focusable="false"><path d="M1.50002 4L6.00002 8L10.5 4" stroke-width="1.5"></path></svg></button><ul data-wp-on-async--focus="actions.openMenuOnFocus" class="wp-block-navigation__submenu-container wp-block-navigation-submenu"><li class=" wp-block-navigation-item current-menu-item wp-block-navigation-link has-small-font-size"><a class="wp-block-navigation-item__content" href="https://starsforeurope.github.io/wordpress/chi-siamo/statuto/" aria-current="page"><span class="wp-block-navigation-item__label">Il nostro Statuto</span></a></li></ul></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://starsforeurope.github.io/wordpress/unisciti-a-noi/"><span class="wp-block-navigation-item__label">Unisciti a noi</span></a></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://starsforeurope.github.io/wordpress/contatti/"><span class="wp-block-navigation-item__label">Contatti</span></a></li></ul>
+								<ul class="wp-block-navigation__container is-responsive items-justified-center wp-block-navigation"><li data-wp-context="{ &quot;submenuOpenedBy&quot;: { &quot;click&quot;: false, &quot;hover&quot;: false, &quot;focus&quot;: false }, &quot;type&quot;: &quot;submenu&quot;, &quot;modal&quot;: null }" data-wp-interactive="core/navigation" data-wp-on--focusout="actions.handleMenuFocusout" data-wp-on--keydown="actions.handleMenuKeydown" data-wp-on-async--mouseenter="actions.openMenuOnHover" data-wp-on-async--mouseleave="actions.closeMenuOnHover" data-wp-watch="callbacks.initMenu" tabindex="-1" class="wp-block-navigation-item has-child open-on-hover-click wp-block-navigation-submenu"><a class="wp-block-navigation-item__content" href="https://starsforeurope.github.io/wordpress/chi-siamo/"><span class="wp-block-navigation-item__label">Chi siamo</span></a><button data-wp-bind--aria-expanded="state.isMenuOpen" data-wp-on-async--click="actions.toggleMenuOnClick" aria-label="Sottomenu di Chi siamo" class="wp-block-navigation__submenu-icon wp-block-navigation-submenu__toggle"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewbox="0 0 12 12" fill="none" aria-hidden="true" focusable="false"><path d="M1.50002 4L6.00002 8L10.5 4" stroke-width="1.5"></path></svg></button><ul data-wp-on-async--focus="actions.openMenuOnFocus" class="wp-block-navigation__submenu-container wp-block-navigation-submenu"><li class=" wp-block-navigation-item wp-block-navigation-link has-small-font-size"><a class="wp-block-navigation-item__content" href="https://starsforeurope.github.io/wordpress/chi-siamo/statuto/"><span class="wp-block-navigation-item__label">Il nostro Statuto</span></a></li></ul></li><li class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://starsforeurope.github.io/wordpress/unisciti-a-noi/"><span class="wp-block-navigation-item__label">Unisciti a noi</span></a></li><li class=" wp-block-navigation-item current-menu-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="https://starsforeurope.github.io/wordpress/contatti/" aria-current="page"><span class="wp-block-navigation-item__label">Contatti</span></a></li></ul>
 							</div>
 						</div>
 					</div>
@@ -243,7 +283,7 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 
 <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
-<div class="wp-block-group alignwide has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><h2 style="color:#2f67b3; padding-left:28px;margin-left:28px;" class="has-link-color alignwide wp-elements-99708886d8a0f38dc494a0179be09e27 wp-block-post-title has-text-color">Il nostro Statuto</h2></div>
+<div class="wp-block-group alignwide has-global-padding is-layout-constrained wp-block-group-is-layout-constrained"><h2 style="color:#2f67b3; padding-left:28px;margin-left:28px;" class="has-link-color alignwide wp-elements-99708886d8a0f38dc494a0179be09e27 wp-block-post-title has-text-color">Contatti</h2></div>
 </div>
 
 
@@ -252,137 +292,19 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 
 <div style="color:#2f67b3; border-radius:0px;border-style:none;border-width:0px; margin-left:28px;margin-top:15px;margin-bottom:13px;margin-right:38px;" class="entry-content wp-elements-cb48918f23757de67ea51cd3c27e59f7 wp-block-post-content has-text-color has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
-<h3 class="wp-block-heading has-text-color has-link-color wp-elements-0248bf26cd4ce484d7e9e83363bfb8d5" style="color:#2f67b3">Scopi</h3>
+<p>Hai domande, proposte o vuoi collaborare con noi? Siamo felici di ascoltarti!</p>
 
 
 
-<p style="line-height:1.7">L&rsquo;Associazione non ha scopo di lucro e si propone il perseguimento di finalit&agrave; civiche, solidaristiche e di utilit&agrave; sociale.</p>
+<p style="line-height:1.7">📧 <strong>Scrivici</strong>:  <a href="mailto:info@starsforeurope.eu?subject=Richiesta%20informazioni%20Stars%20for%20Europe&amp;body=Ciao%20Stars%20for%20Europe,%0D%0Avorrei%20ricevere%20maggiori%20informazioni%20su...">info@starsforeurope.eu</a></p>
 
 
 
-<p style="line-height:1.7">L&rsquo;Associazione si propone di generare dal basso un movimento sportivo europeo che, attraverso la partecipazione degli atleti e il supporto degli sportivi, spinga le federazioni nazionali e internazionali a integrare ufficialmente il logo UE sulle divise degli atleti europei. Questa strategia punta a creare una visibilit&agrave; spontanea e diretta dell&rsquo;identit&agrave; europea nel mondo dello sport senza necessit&agrave; di approvazioni istituzionali immediate, puntando sull&rsquo;autonomia e il carisma degli atleti.</p>
+<p style="line-height:1.7">📞 <strong>Contatti istituzionali</strong>: +393407220065</p>
 
 
 
-<p>L&rsquo;Associazione persegue esclusivamente finalit&agrave; di promozione dell&rsquo;identit&agrave; europea attraverso lo sport. In particolare, intende:</p>
-
-
-
-<ul style="line-height:1.7" class="wp-block-list">
-<li>promuovere l&rsquo;integrazione della bandiera europea accanto a quelle nazionali nelle competizioni internazionali, incluse le Olimpiadi;</li>
-
-
-
-<li>sensibilizzare atleti, cittadini e istituzioni sui valori di unit&agrave;, diversit&agrave;, collaborazione e solidariet&agrave; europea;</li>
-
-
-
-<li>organizzare eventi, campagne di comunicazione e attivit&agrave; di formazione nel mondo sportivo;</li>
-
-
-
-<li>sostenere giovani atleti europei attraverso programmi educativi e di sviluppo sportivo.<br></li>
-</ul>
-
-
-
-<hr class="wp-block-separator has-alpha-channel-opacity" style="margin-top:30px;margin-bottom:30px">
-
-
-
-<h3 class="wp-block-heading has-text-color has-link-color wp-elements-968283926f4ffd694c0ab38008eeb495" style="color:#2f67b3">Attivit&agrave;</h3>
-
-
-
-<p style="line-height:1.7">L&rsquo;Associazione persegue gli scopi di cui all&rsquo;art. 2 mediante lo svolgimento delle seguenti attivit&agrave; di interesse generale ai sensi dell&rsquo;art 5 del D.lgs 117/2017:</p>
-
-
-
-<ul style="line-height:1.7" class="wp-block-list">
-<li><strong>educazione, istruzione e formazione professionale</strong>: organizzazione e gestione di attivit&agrave; extrascolastiche/scolastiche finalizzate a veicolare la promozione della cultura dei valori europei. L&rsquo;Associazione potr&agrave; inoltre collaborare sostenendo borse di studio, tesi di laurea e stage universitari sui principali temi di interesse europei e sui valori veicolati attraverso lo sport;</li>
-
-
-
-<li><strong>organizzazione e gestione di attivit&agrave; culturali anche editoriali</strong>: festival/rassegne teatrali sui temi anche da svolgere all&rsquo;interno di istituti scolastici o la cui fruizione sar&agrave; aperta gratuitamente alle scuole. L&rsquo;attivit&agrave; intende coinvolgere scuole di ogni ordine e grado nella fruizione e organizzazione congiunta di attivit&agrave; culturali capaci di veicolare i valori europei con particolare attenzione alle iniziative di natura sportiva. L&rsquo;associazione potr&agrave; inoltre organizzare specifiche attivit&agrave; culturali a carattere educativo anche utilizzando strumenti radiofonici, podcast, blog;</li>
-
-
-
-<li><strong>formazione extrascolastica</strong>: l&rsquo;Associazione intende attivare percorsi di contrasto alla povert&agrave; educativa attraverso lo sport quale strumento universale ed inclusivo. L&rsquo;associazione si impegna a realizzare direttamente o a collaborare nell&rsquo;organizzazione di iniziative come piccole olimpiadi sportive tra istituti scolastici al fine di promuovere lo sport come veicolo di inclusione anche per ragazzi con disabilit&agrave;. Tra le attivit&agrave; che l&rsquo;Associazione potr&agrave; realizzare vi sono l&rsquo;organizzazione di centri estivi sportivi inclusivi;</li>
-
-
-
-<li><strong>beneficenza, sostegno a distanza, erogazione di denaro, beni o servizi</strong> a sostegno di persone svantaggiate o di attivit&agrave; di interesse generale;</li>
-
-
-
-<li><strong>promozione della cultura della legalit&agrave;</strong> quale valore civico europeo;</li>
-
-
-
-<li><strong>promozione dei diritti umani</strong>;</li>
-
-
-
-<li><strong>riqualificazione di beni pubblici inutilizzati o confiscati alla criminalit&agrave; organizzata</strong>.</li>
-</ul>
-
-
-
-<p>All&rsquo;interno delle attivit&agrave; previste, l&rsquo;Associazione pone un valore specifico nei seguenti ambiti:</p>
-
-
-
-<ul style="line-height:1.7" class="wp-block-list">
-<li><strong>salvaguardia ambiente</strong>: collaborare con altre organizzazioni per progetti di riduzione degli effetti del cambiamento climatico;</li>
-
-
-
-<li><strong>ricerca scientifica di interesse sociale</strong>: sostenere iniziative che favoriscano l&rsquo;inclusione sportiva di atleti paralimpici e persone con disabilit&agrave;;</li>
-
-
-
-<li><strong>attivit&agrave; turistiche</strong>: promuovere scambi culturali tra giovani europei universitari di paesi differenti, favorendo il riconoscimento reciproco e la conoscenza attraverso lo sport;</li>
-
-
-
-<li><strong>inserimento lavorativo</strong>: promuovere percorsi di inclusione lavorativa, anche a favore di ex atleti.</li>
-</ul>
-
-
-
-<p>A titolo esemplificativo e non esaustivo, l&rsquo;Associazione potr&agrave; inoltre:</p>
-
-
-
-<ul style="line-height:1.7" class="wp-block-list">
-<li>organizzare eventi sportivi, tornei e competizioni che favoriscano la collaborazione tra atleti di diverse nazionalit&agrave; europee;</li>
-
-
-
-<li>promuovere campagne di sensibilizzazione e azioni mediatiche a sostegno dello sport come strumento di unit&agrave; europea;</li>
-
-
-
-<li>creare e distribuire simboli di appartenenza (come il braccialetto Stars for Europe o Sticker), destinando eventuali fondi raccolti a progetti di sostegno sportivo giovanile;</li>
-
-
-
-<li>collaborare con istituzioni nazionali ed europee, federazioni sportive e comitati olimpici;</li>
-
-
-
-<li>partecipare a bandi pubblici e raccogliere fondi tramite donazioni, sponsorizzazioni e crowdfunding;</li>
-
-
-
-<li>svolgere manifestazioni, convegni, dibattiti, seminari e ricerche di ogni tipo per la diffusione dei propri obiettivi.</li>
-</ul>
-
-
-
-<details class="wp-block-details has-text-color has-link-color has-medium-font-size wp-elements-4d72b8cf0631b08a189cea5b68a7c1d6 is-layout-flow wp-block-details-is-layout-flow" style="color:#2f67b3"><summary><strong>Scarica lo Statuto Integrale</strong></summary>
-<div data-wp-interactive="core/file" class="wp-block-file"><object data-wp-bind--hidden="!state.hasPdfPreview" hidden class="wp-block-file__embed" data="https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/Statuto-star-for-europe.pdf" type="application/pdf" style="width:100%;height:600px" aria-label="Incorporamento di Scarica lo Statuto Integrale."></object><a id="wp-block-file--media-d1f37ae3-a84d-4a8f-9609-0f20db341b66" href="https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/Statuto-star-for-europe.pdf">Scarica lo Statuto Integrale</a><a href="https://starsforeurope.github.io/wordpress/wp-content/uploads/2025/09/Statuto-star-for-europe.pdf" class="wp-block-file__button wp-element-button" download aria-describedby="wp-block-file--media-d1f37ae3-a84d-4a8f-9609-0f20db341b66">Download</a></div>
-</details>
+<p style="line-height:1.7">🥇 <strong>Coordinamento</strong>: +393355756973</p>
 
 
 

@@ -110,6 +110,61 @@ h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-b
   }
 }
 
+/* HEADER PAGINE INTERNE */
+.header-interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Logo */
+.header-interno .wp-block-site-logo img {
+  max-height: 120px;
+  height: auto;
+  width: auto;
+}
+
+/* Nav + pulsante */
+.header-interno .header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto; /* spinge a destra */
+}
+
+/* Forza layout pagine interne */
+.header-interno {
+  display: flex !important;
+  justify-content: space-between !important; /* logo a sinistra, nav+pulsante a destra */
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Logo: resta a sinistra */
+.header-interno .header-logo {
+  margin-right: auto !important;
+}
+
+/* Gruppo nav+pulsante: resta a destra */
+.header-interno .header-nav {
+  margin-left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  justify-content: flex-end !important;
+  flex: 0 0 auto !important;
+}
+
+/* Override classi WP che centrano il menu */
+.header-interno nav.wp-block-navigation,
+.header-interno .wp-block-navigation__container {
+  justify-content: flex-end !important;
+}
+
+
 :root :where(.wp-block-button .wp-block-button__link){background-color: #2f67b3;border-radius: 24px;border-top-width: 0px;border-top-style: none;border-right-width: 0px;border-right-style: none;border-bottom-width: 0px;border-bottom-style: none;border-left-width: 0px;border-left-style: none;font-family: var(--wp--preset--font-family--plus-jakarta-sans);font-size: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.051), 0.9rem);font-style: normal;font-weight: 600;letter-spacing: 0.05em;line-height: 3.5;padding-top: 0px;padding-right: 23px;padding-bottom: 0px;padding-left: 23px;text-transform: uppercase;}
 :root :where(.wp-block-navigation){font-family: var(--wp--preset--font-family--plus-jakarta-sans);font-size: var(--wp--preset--font-size--small);}
 :root :where(.wp-block-navigation a:where(:not(.wp-element-button))){text-decoration: none;}
