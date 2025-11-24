@@ -1,1 +1,27 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Qui NON ricostruiamo il sito: usiamo direttamente i file generati da Simply Static in docs/
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages         # branch di destinazione (verrà creato se non esiste)
+          folder: docs             # cartella con il sito statico (quella dove Simply Static esporta)
+          clean: true              # pulisce i vecchi file nella branch di deploy
 
