@@ -66,7 +66,7 @@ Esempio:
 ```bash
 mkdir -p ~/Projects/starsforeurope
 cd ~/Projects/starsforeurope
-git clone git@github.com:starsforeurope/wordpress.git
+git clone https://github.com/starsforeurope/wordpress.git
 cd wordpress
 ```
 
