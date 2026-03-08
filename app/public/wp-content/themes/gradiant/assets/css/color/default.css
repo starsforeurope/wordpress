@@ -1,0 +1,56 @@
+/* Colors */
+:root {
+    --sp-gradient1:linear-gradient(-137deg, var(--sp-primary) 0%, var(--sp-primary2) 100%);
+    --sp-gradient2:linear-gradient(137deg, #11104d 0%, #060534 100%);
+    --sp-green:#ffffff;
+    --sp-white:#ffffff;
+    --sp-primary-light:#fff9f9;
+    --sp-primary:#d81956;
+    --sp-primary2:#f84233;
+    --sp-secondary:#11104d;
+    --sp-secondary2:#060534;
+    --sp-secondary-dark:#252525;
+    --sp-border-dark:#dddddd;
+    --sp-border-light:#e9e9e9;
+    --sp-border-extra-light:#f2f2f2;
+    --sp-scrollbar-thumb:#c2c2c2;
+    --sp-font-sans-serif:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --sp-font-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    --sp-shadow: 2px 5px 20px rgba(0, 0, 0, .2);
+    --sp-radius: 3px;
+    --sp-transition: all .3s cubic-bezier(.645,.045,.355,1);
+}
+
+/* ---//--- */
+
+/* --- Selection Colors --- */
+::-webkit-selection {
+    background-color: var(--sp-primary);
+    color: #ffffff;-webkit-text-fill-color: #ffffff;
+}
+
+::selection {
+    background-color: var(--sp-primary);
+    color: #ffffff;-webkit-text-fill-color: #ffffff;
+}
+
+/* ---//--- */
+
+/* --- Scrollbar Colors --- */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: var(--sp-border-extra-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--sp-scrollbar-thumb);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: var(--sp-border-extra-light);
+}
+
+/* ---//--- */

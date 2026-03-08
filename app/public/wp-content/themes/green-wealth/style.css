@@ -1,0 +1,267 @@
+/*
+Theme Name: Green Wealth
+Template: bizberg
+Text Domain: green-wealth
+Author: Bizberg Themes
+Author URI: https://bizbergthemes.com/
+Theme URI: https://bizbergthemes.com/downloads/green-wealth/
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Description: Green Wealth is a clean, modern, and fully responsive eco-friendly WordPress theme built as a child theme of the popular Bizberg WordPress Theme, designed specifically for nature, environmental organizations, nonprofits, green initiatives, animal welfare groups, and eco-conscious foundations. This versatile free WordPress theme is ideal for websites focused on environmental action, donations, wildlife protection, NGOs, and sustainability projects across regions like Africa and beyond. Green Wealth ensures seamless performance with cross-browser compatibility, translation readiness, and SEO optimization to help your cause gain greater online visibility. Built entirely with Elementor page builder, every section is easily customizable without coding knowledge, allowing you to create a professional and engaging website that truly reflects your mission. Should you encounter any issues, comprehensive documentation and a friendly support team are available to assist you. Whether you run an NGO, nonprofit foundation, or environmental campaign, Green Wealth offers a reliable and user-friendly platform to elevate your online presence and drive meaningful impact.
+Tags: custom-logo,custom-menu,featured-images,threaded-comments,translation-ready,left-sidebar,right-sidebar,grid-layout,theme-options,blog,news,portfolio
+Version: 0.3
+Tested up to: 6.8.1
+Requires PHP: 5.6
+*/
+
+.navbar-default .navbar-nav > li > a {
+    letter-spacing: 0;
+}
+
+.service-one__title a,
+.service-one__read-more {
+    position: relative;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
+    background: linear-gradient(to right, currentcolor 0%, currentcolor 100%) 0px 95%/0px 2px no-repeat;
+    transition: all 500ms ease;
+    padding-bottom: 5px;
+}
+
+.service-one__title a:hover,
+.service-one__read-more:hover {
+    background-size: 100% 2px;
+}
+
+.service-one__single-inner {
+    padding: 50px 50px 50px 50px;
+    border: 2px solid #6ab463;
+    text-align: center;
+    position: relative;
+}
+
+.service-one__single {
+    padding-top: 100px;
+    padding-bottom: 40px;
+}
+
+h3.service-one__title {
+    font-family: 'MontserratRegular';
+    padding-bottom: 10px;
+    padding-top: 30px;
+    line-height: 34px;
+}
+
+.service-one__text {
+    padding-bottom: 10px;
+}
+
+a.service-one__read-more {
+    font-family: 'MontserratRegular';
+    font-size: 15px;
+}
+
+.service-one__single-inner i {
+    background: #6ab43e;
+    padding: 30px;
+    border-radius: 50%;
+    margin-top: -100px;
+    position: absolute;
+    margin-left: -50px;
+}
+
+.service-one__single-inner i:before {
+    font-size: 35px;
+    color: #fff;
+}
+
+.services_title_wrapper,
+.why_choose_us_title_wrapper {
+    text-align: center;
+    padding: 80px 0 0;
+}
+
+.services_title_wrapper h4,
+.why_choose_us_title_wrapper h4 {
+    color: #6ab43e;
+    font-family: 'Lato';
+}
+
+.services_title_wrapper h3,
+.why_choose_us_title_wrapper h3 {
+    font-family: 'MontserratRegular';
+    font-size: 35px;
+    color: #000;
+    padding-top: 10px;
+}
+
+.why_choose_us{
+    background-color: #eff4f2;
+    padding-bottom: 80px;
+}
+
+.why_choose_us_wrapper {
+    display: inline-grid;
+    padding-top: 40px;
+    column-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.why_choose_us_wrapper .item {
+    background: #fff;
+    padding: 30px;
+    row-gap: 10px;
+    display: flex;
+    border: 2px solid #6ab43e;
+        flex-direction: column;
+}
+
+.why_choose_us_wrapper h3 {
+    font-family: 'OpenSansRegular';
+    color: #000;
+}
+
+.why_choose_us_wrapper .item > i {
+    font-size: 45px;
+    color: #6ab43e;
+    padding-bottom: 10px;
+}
+
+.why_choose_us_wrapper p{
+    font-size: 15px;
+}
+
+.why_choose_us_wrapper a.read_more {
+    font-size: 30px;
+    padding-top: 10px;
+}
+
+/** 
+* Givewp CSS
+*/
+
+.single-give_forms .give_forms{
+    padding-top: 0;
+}
+
+.detail-content.single_page.eb_page .give_error, 
+.detail-content.single_page.eb_page .give_success, 
+.detail-content.single_page.eb_page .give_warning {
+    padding: 1em 1.5em 1em 2em;
+}
+
+#give_donation_receipt th {
+    padding: 15px;
+}
+
+#give_donation_receipt td {
+    padding: 12px 20px;
+}
+
+form#give-email-access-form {
+    display: flex;
+    flex-direction: column;
+}
+
+form#give-email-access-form input#give-email {
+    width: 100%;
+}
+
+#home_banner_4 img{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 800px;
+    margin: 0 auto;
+    border-radius: 50%;
+    animation: border-transform 10s linear infinite alternate forwards;
+}
+
+@-webkit-keyframes border-transform {
+    0%, to {
+        border-radius: 63% 37% 54% 46%/55% 48% 52% 45%
+    }
+    14% {
+        border-radius: 40% 60% 54% 46%/49% 60% 40% 51%
+    }
+    28% {
+        border-radius: 54% 46% 38% 62%/49% 70% 30% 51%
+    }
+    42% {
+        border-radius: 61% 39% 55% 45%/61% 38% 62% 39%
+    }
+    56% {
+        border-radius: 61% 39% 67% 33%/70% 50% 50% 30%
+    }
+    70% {
+        border-radius: 50% 50% 34% 66%/56% 68% 32% 44%
+    }
+    84% {
+        border-radius: 46% 54% 50% 50%/35% 61% 39% 65%
+    }
+}
+
+@keyframes border-transform {
+    0%, to {
+        border-radius: 63% 37% 54% 46%/55% 48% 52% 45%}
+    14% {
+        border-radius: 40% 60% 54% 46%/49% 60% 40% 51%}
+    28% {
+        border-radius: 54% 46% 38% 62%/49% 70% 30% 51%}
+    42% {
+        border-radius: 61% 39% 55% 45%/61% 38% 62% 39%}
+    56% {
+        border-radius: 61% 39% 67% 33%/70% 50% 50% 30%}
+    70% {
+        border-radius: 50% 50% 34% 66%/56% 68% 32% 44%}
+    84% {
+        border-radius: 46% 54% 50% 50%/35% 61% 39% 65%}
+}
+
+#tf-partical-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.tf-ball {
+    position: absolute;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -moz-border-radius: 100%;
+    opacity: 0.2;
+}
+
+@media (max-width: 991px){
+
+    .service-one__single {
+        padding-bottom: 0;
+    }
+
+    .why_choose_us_wrapper {
+        row-gap: 20px;
+        column-gap: 20px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 412px){
+
+    .services,.why_choose_us {
+        padding: 20px;
+    }
+
+    .why_choose_us_wrapper {
+        grid-template-columns: 1fr;
+    }
+
+}

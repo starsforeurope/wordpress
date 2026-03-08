@@ -1,0 +1,84 @@
+# Copyright (C) 2025 Themegrove
+# This file is distributed under the GNU General Public License v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Gutentools 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/gutentools\n"
+"POT-Creation-Date: 2025-01-19 08:29:44+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: functions.php:32
+msgid "Gutentools"
+msgstr ""
+
+#: patterns/404.php:14
+msgid "404: Page Not Disco-vered"
+msgstr ""
+
+#: patterns/404.php:18
+msgid "Looks like the dance floor is empty here! This page has done a disappearing act. Head back to the main stage by clicking the navigation links, and let's keep the party going!"
+msgstr ""
+
+#: patterns/404.php:25
+msgid "Go to home page"
+msgstr ""
+
+#: patterns/archive-product.php:55
+msgid "No products were found matching your selection."
+msgstr ""
+
+#: patterns/archive.php:43
+msgid "No posts found"
+msgstr ""
+
+#: patterns/cart.php:18
+msgid "You may be interested in…"
+msgstr ""
+
+#: patterns/cart.php:74
+msgid "Your cart is currently empty!"
+msgstr ""
+
+#: patterns/cart.php:82
+msgid "New in store"
+msgstr ""
+
+#: patterns/sidebar.php:15
+msgid "Latest Posts"
+msgstr ""
+
+#: patterns/sidebar.php:23
+msgid "Categories"
+msgstr ""
+
+#: patterns/sidebar.php:31
+msgid "Tags"
+msgstr ""
+
+#: patterns/single-product.php:57
+msgid "Related Products"
+msgstr ""
+#. Theme Name of the plugin/theme
+msgid "Gutentools"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://themegrove.com/products/gutentools/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Welcome to Gutentools, a refined full-site editing theme designed for businesses, consulting firms, law practices, and educational institutions. Merging contemporary design with versatile functionality, Gutentools empowers you to effortlessly customize every element of your website. It offers seamless integration with WooCommerce for e-commerce, WPML for multilingual capabilities, and Contact Form 7 for efficient communication. Whether you're launching a consultancy, a legal practice, or an educational platform, Gutentools provides the flexibility and professional templates needed to create a compelling online presence—all optimized for SEO to boost your visibility. Demo: https://demos.themegrove.com/gutentools/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Themegrove"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://themegrove.com/"
+msgstr ""
