@@ -3,6 +3,11 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
+status=0
+
+echo "Before deploy: click 'Generate' in Simply Static to refresh docs/."
+read -r -p "Press Enter to continue once static export is done... "
+
 if ! command -v wp >/dev/null 2>&1; then
   echo "Error: wp-cli is not installed or not in PATH."
   echo "Install with: brew install wp-cli"
