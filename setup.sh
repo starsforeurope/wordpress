@@ -101,6 +101,37 @@ if [[ ! -d "$TARGET_REPO/app/public/wp-content" ]]; then
   exit 1
 fi
 
+# Seed uploads from current checkout as a safety fallback.
+SOURCE_UPLOADS=""
+if [[ -d "app/public/wp-content/uploads" ]]; then
+  SOURCE_UPLOADS="$(cd app/public/wp-content/uploads && pwd)"
+fi
+
+TARGET_UPLOADS="$TARGET_REPO/app/public/wp-content/uploads"
+if [[ -n "$SOURCE_UPLOADS" ]]; then
+  SOURCE_UPLOADS_COUNT="$(find "$SOURCE_UPLOADS" -type f | wc -l | tr -d ' ')"
+  if [[ "$SOURCE_UPLOADS_COUNT" -gt 0 ]]; then
+    echo "==> Seeding uploads into $TARGET_REPO from current checkout"
+    mkdir -p "$TARGET_UPLOADS"
+    if command -v rsync >/dev/null 2>&1; then
+      rsync -a "$SOURCE_UPLOADS/" "$TARGET_UPLOADS/"
+    else
+      cp -R "$SOURCE_UPLOADS/." "$TARGET_UPLOADS/"
+    fi
+  fi
+fi
+
+TARGET_UPLOADS_COUNT="0"
+if [[ -d "$TARGET_UPLOADS" ]]; then
+  TARGET_UPLOADS_COUNT="$(find "$TARGET_UPLOADS" -type f | wc -l | tr -d ' ')"
+fi
+
+if [[ "$TARGET_UPLOADS_COUNT" -eq 0 ]]; then
+  echo
+  echo "WARNING: wp-content/uploads is empty in $TARGET_REPO."
+  echo "Site images/media may be missing after setup."
+fi
+
 cp "$TARGET_REPO/app/sql/local.sql" "$TMP_DIR/app/sql/local.sql"
 cp -R "$TARGET_REPO/app/public/wp-content" "$TMP_DIR/app/public/wp-content"
 

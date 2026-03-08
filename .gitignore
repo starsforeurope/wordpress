@@ -33,10 +33,6 @@ app/public/*
 app/public/wp-admin/
 app/public/wp-includes/
 app/public/*.php
-app/public/wp-content/*
-!app/public/wp-content/themes/
-!app/public/wp-content/plugins/
-app/public/wp-content/uploads/
 app/public/wp-config.php
 
 # DB dumps: keep the canonical exported DB in repo

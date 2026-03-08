@@ -1,0 +1,756 @@
+# Translation of Themes - Gradiant in Italian
+# This file is distributed under the same license as the Themes - Gradiant package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-07-30 08:24:12+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: it\n"
+"Project-Id-Version: Themes - Gradiant\n"
+
+#. Description of the theme
+#: style.css
+#, gp-priority: high
+msgid "A powerful next generation theme for upcoming generations and traditional UI that focuses on the color combinations of solid and gradient colors, along with cool animations and attractive features. It's perfect for any type of business. View the demo of Gradiant Pro https://www.nayrathemes.com/demo/pro/?theme=gradiant"
+msgstr "Gradiant è un tema polivalente moderno e flessibile, super veloce e facilmente personalizzabile. Contiene tutto ciò di cui puoi avere bisogno per costruire un sito web incredibile, ed è perfetto per qualsiasi tipo di business! Dai un'occhiata alla demo di Gradiant Pro https://www.nayrathemes.com/demo/pro/?theme=gradiant"
+
+#. Theme Name of the theme
+#: style.css
+#, gp-priority: high
+msgid "Gradiant"
+msgstr "Gradiant"
+
+#: footer.php:88
+msgid "<a href=\"https://www.nayrathemes.com/gradiant-free/\" target=\"_blank\">Gradiant</a>"
+msgstr "<a href=\"https://www.nayrathemes.com/gradiant-free/\" target=\"_blank\">Gradiant</a>"
+
+#: inc/customize/gradiant-premium.php:12 inc/customize/gradiant-premium.php:34
+msgid "Upgrade to Pro"
+msgstr "Passa a Pro"
+
+#: inc/customize/gradiant-premium.php:28
+msgid "View Documentation"
+msgstr "Vedi la documentazione"
+
+#: inc/customize/gradiant-premium.php:30
+msgid "Get Support"
+msgstr "Accedi al supporto"
+
+#: inc/customize/gradiant-premium.php:32
+msgid "Free Vs Pro"
+msgstr "Gratuito Vs Pro"
+
+#: inc/customize/gradiant-premium.php:36
+msgid "Show Some Love"
+msgstr "Mostra il tuo apprezzamento"
+
+#: inc/extras.php:255
+msgid "Theme Screenshot"
+msgstr "Schermata del tema"
+
+#. translators: 1: welcome page link starting html tag, 2: welcome page link
+#. ending html tag.
+#: inc/extras.php:262
+msgid "Welcome! Thank you for choosing %1$s!"
+msgstr "Ti diamo il benvenuto! Grazie per aver scelto %1$s!"
+
+#: inc/extras.php:266
+msgid "Install and activate <strong>Clever Fox</strong> plugin for taking full advantage of all the features this theme has to offer."
+msgstr "Installa e attiva il plugin <strong>Clever Fox</strong> per sfruttare appieno tutte le funzionalità che questo tema può offrire."
+
+#: inc/extras.php:268
+msgid "Get started with Gradiant"
+msgstr "Inizia a usare Gradiant"
+
+#: 404.php:17
+msgid "4"
+msgstr "4"
+
+#: 404.php:18
+msgid "Page Not Found"
+msgstr "La pagina non è stata trovata"
+
+#: 404.php:19
+msgid "Oups! We can’t find the page you’re looking for…"
+msgstr "Oops! La pagina che stai cercando non esiste…"
+
+#: 404.php:22
+msgid "Go To Home"
+msgstr "Vai alla home"
+
+#: comments.php:41 comments.php:62
+msgid "Comment navigation"
+msgstr "Navigazione dei commenti"
+
+#: comments.php:44 comments.php:64
+msgid "Older Comments"
+msgstr "Commenti meno recenti"
+
+#: comments.php:45 comments.php:65
+msgid "Newer Comments"
+msgstr "Commenti più recenti"
+
+#: comments.php:77
+msgid "Comments are closed."
+msgstr "I commenti sono chiusi."
+
+#: footer.php:10
+msgid "footer-effect-active"
+msgstr "footer-effect-active"
+
+#: functions.php:43
+msgid "Primary Menu"
+msgstr "Menu principale"
+
+#: header.php:18
+msgid "Skip to content"
+msgstr "Vai al contenuto"
+
+#: inc/breadcrumb/breadcrumb.php:4 inc/breadcrumb/breadcrumb.php:7
+msgid "1"
+msgstr "1"
+
+#: inc/breadcrumb/breadcrumb.php:6
+msgid "Home"
+msgstr "Homepage"
+
+#: inc/breadcrumb/breadcrumb.php:26
+msgid "Archive by category"
+msgstr "Archivio per categoria"
+
+#: inc/breadcrumb/breadcrumb.php:32
+msgid "Search results for "
+msgstr "Risultati della ricerca "
+
+#: inc/breadcrumb/breadcrumb.php:134
+msgid "Posts tagged "
+msgstr "Articoli taggati"
+
+#: inc/breadcrumb/breadcrumb.php:140
+msgid "Articles posted by "
+msgstr "Articolo pubblicato da"
+
+#: inc/breadcrumb/breadcrumb.php:144
+msgid "Error 404 "
+msgstr "Errore 404"
+
+#: inc/breadcrumb/breadcrumb.php:149
+msgid "Page"
+msgstr "Pagina"
+
+#: inc/class-wp-bootstrap-navwalker.php:366
+msgid "Add a menu"
+msgstr "Aggiungi un menu"
+
+#: inc/customize/customizer_recommended_plugin.php:10
+msgid "Install and activate <strong>Cleverfox</strong> plugin for taking full advantage of all the features this theme has to offer."
+msgstr "Installa e attiva il plugin <strong>Cleverfox</strong> per sfruttare al meglio tutte le caratteristiche che questo tema ha da offrire."
+
+#: inc/customize/customizer_recommended_plugin.php:14
+msgid "Recommended Actions"
+msgstr "Azioni consigliate"
+
+#: inc/customize/customizer_recommended_plugin.php:15
+msgid "Recommended Plugin"
+msgstr "Plugin raccomandato"
+
+#: inc/customize/customizer_recommended_plugin.php:16
+msgid "Install and Activate"
+msgstr "Installa e attiva"
+
+#: inc/customize/customizer_recommended_plugin.php:17
+msgid "Activate"
+msgstr "Attiva"
+
+#: inc/customize/customizer_recommended_plugin.php:18
+msgid "Deactivate"
+msgstr "Disattiva"
+
+#: inc/customize/gradiant-blog.php:9
+msgid "Blog Section"
+msgstr "Sezione Blog"
+
+#: inc/customize/gradiant-blog.php:29
+msgid "Setting"
+msgstr "Impostazione"
+
+#: inc/customize/gradiant-blog.php:49
+msgid "Hide / Show"
+msgstr "Nascondi/Mostra"
+
+#: inc/customize/gradiant-blog.php:68 inc/customize/gradiant-header.php:12
+msgid "Header"
+msgstr "Header"
+
+#: inc/customize/gradiant-blog.php:87
+#: inc/customizer-repeater/class/customizer-repeater-control.php:332
+#: inc/customizer-repeater/class/customizer-repeater-control.php:532
+msgid "Title"
+msgstr "Titolo"
+
+#: inc/customize/gradiant-blog.php:107
+#: inc/customizer-repeater/class/customizer-repeater-control.php:380
+#: inc/customizer-repeater/class/customizer-repeater-control.php:581
+msgid "Description"
+msgstr "Descrizione"
+
+#: inc/customize/gradiant-blog.php:128 inc/customize/gradiant-general.php:156
+msgid "Content"
+msgstr "Contenuto"
+
+#: inc/customize/gradiant-blog.php:147
+msgid "No of Posts Display"
+msgstr "Numero di articoli da visualizzare"
+
+#: inc/customize/gradiant-footer.php:10
+msgid "Footer"
+msgstr "Piè di pagina"
+
+#: inc/customize/gradiant-footer.php:17
+msgid "Below Footer"
+msgstr "Footer inferiore"
+
+#: inc/customize/gradiant-footer.php:36
+msgid "Logo"
+msgstr "Logo"
+
+#: inc/customize/gradiant-footer.php:54
+#: inc/customizer-repeater/class/customizer-repeater-control.php:749
+#: inc/customizer-repeater/class/customizer-repeater-control.php:817
+msgid "Image"
+msgstr "Immagine"
+
+#: inc/customize/gradiant-footer.php:76 inc/customize/gradiant-footer.php:102
+msgid "Social Icons"
+msgstr "Icone social "
+
+#: inc/customize/gradiant-footer.php:125 inc/customize/gradiant-footer.php:145
+msgid "Copyright"
+msgstr "Copyright"
+
+#: inc/customize/gradiant-footer.php:132
+msgid "Copyright &copy; [current_year] [site_title] | Powered by [theme_author]"
+msgstr "Copyright &copy; [current_year] [site_title] | Powered by [theme_author]"
+
+#: inc/customize/gradiant-footer.php:158
+msgid "Footer Widget Area"
+msgstr "Area widget nel piè di pagina"
+
+#: inc/customize/gradiant-footer.php:177 inc/customize/gradiant-footer.php:197
+msgid "Widget Middle Content"
+msgstr "Contenuto centrale del widget"
+
+#: inc/customize/gradiant-footer.php:208
+msgid "Footer Background"
+msgstr "Sfondo del footer"
+
+#: inc/customize/gradiant-footer.php:228
+msgid "Enable Water Effect on Footer?"
+msgstr "Vuoi abilitare l'effetto acqua nel footer?"
+
+#: inc/customize/gradiant-footer.php:245 inc/customize/gradiant-general.php:220
+msgid "Background Image"
+msgstr "Immagine di sfondo"
+
+#: inc/customize/gradiant-footer.php:254
+msgid "Footer Parallax"
+msgstr "Footer del parallax"
+
+#: inc/customize/gradiant-footer.php:275
+msgid "Enable Parallax ?"
+msgstr "Vuoi abilitare il parallax?"
+
+#: inc/customize/gradiant-footer.php:295
+msgid "Margin Bottom"
+msgstr "Margine inferiore"
+
+#: inc/customize/gradiant-general.php:7
+msgid "General"
+msgstr "Generale"
+
+#: inc/customize/gradiant-general.php:17
+msgid "Background Elements"
+msgstr "Elementi dello sfondo"
+
+#: inc/customize/gradiant-general.php:36
+msgid "Hide / Show Background Elements"
+msgstr "Nascondi/mostra gli elementi dello sfondo"
+
+#: inc/customize/gradiant-general.php:47
+msgid "Scroller"
+msgstr "Scroller"
+
+#: inc/customize/gradiant-general.php:66
+msgid "Hide / Show Scroller"
+msgstr "Nascondi/Mostra lo scroller"
+
+#: inc/customize/gradiant-general.php:77
+msgid "Breadcrumb"
+msgstr "Breadcrumb"
+
+#: inc/customize/gradiant-general.php:97
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: inc/customize/gradiant-general.php:116
+msgid "Hide / Show Section"
+msgstr "Nascondi/Mostra la sezione"
+
+#: inc/customize/gradiant-general.php:137
+msgid "Enable Water Effect on Breadcrumb?"
+msgstr "Vuoi abilitare l'effetto acqua nei breadcrumb?"
+
+#: inc/customize/gradiant-general.php:176
+msgid "Min Height"
+msgstr "Altezza minima"
+
+#: inc/customize/gradiant-general.php:202
+msgid "Background"
+msgstr "Sfondo"
+
+#: inc/customize/gradiant-general.php:239
+msgid "Background Attachment"
+msgstr "Fisso o scorrevole"
+
+#: inc/customize/gradiant-general.php:244
+msgid "Inherit"
+msgstr "Eredita"
+
+#: inc/customize/gradiant-general.php:245
+msgid "Scroll"
+msgstr "Scorri"
+
+#: inc/customize/gradiant-general.php:246
+msgid "Fixed"
+msgstr "Fisso"
+
+#: inc/customize/gradiant-general.php:258
+msgid "Container"
+msgstr "Contenitore"
+
+#: inc/customize/gradiant-general.php:278
+msgid "Container Width"
+msgstr "Larghezza del contenitore"
+
+#: inc/customize/gradiant-header.php:23
+msgid "Site Identity"
+msgstr "Denominazione del sito"
+
+#: inc/customize/gradiant-header.php:35
+msgid "Header Navigation"
+msgstr "Navigazione dell'header"
+
+#: inc/customize/gradiant-header.php:54
+msgid "Search"
+msgstr "Cerca"
+
+#: inc/customize/gradiant-header.php:71 inc/customize/gradiant-header.php:109
+#: inc/customize/gradiant-header.php:148 inc/customize/gradiant-header.php:255
+msgid "Hide/Show"
+msgstr "Nascondi/Mostra"
+
+#: inc/customize/gradiant-header.php:91
+msgid "Cart"
+msgstr "Carrello"
+
+#: inc/customize/gradiant-header.php:129
+msgid "Button"
+msgstr "Pulsante"
+
+#: inc/customize/gradiant-header.php:169
+#: inc/customizer-repeater/class/customizer-repeater-control.php:708
+#: inc/customizer-repeater/class/customizer-repeater-control.php:816
+msgid "Icon"
+msgstr "Icona"
+
+#: inc/customize/gradiant-header.php:187
+#: inc/customizer-repeater/class/customizer-repeater-control.php:387
+#: inc/customizer-repeater/class/customizer-repeater-control.php:588
+msgid "Button Label"
+msgstr "Etichetta pulsante"
+
+#: inc/customize/gradiant-header.php:206
+msgid "Button Link"
+msgstr "Link del pulsante"
+
+#: inc/customize/gradiant-header.php:219 inc/customize/gradiant-header.php:238
+msgid "Sticky Header"
+msgstr "Sticky Header"
+
+#: inc/customizer-notify/gradiant-customizer-notify.php:114
+msgid "Activating"
+msgstr "Attivazione in corso"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:40
+msgid "Add new field"
+msgstr "Aggiungi un nuovo campo"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:45
+msgid "Customizer Repeater"
+msgstr "Customizer Repeater"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:340
+#: inc/customizer-repeater/class/customizer-repeater-control.php:540
+msgid "Subtitle"
+msgstr "Sottotitolo"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:348
+#: inc/customizer-repeater/class/customizer-repeater-control.php:549
+msgid "Subtitle 2"
+msgstr "Sottotitolo 2"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:356
+#: inc/customizer-repeater/class/customizer-repeater-control.php:557
+msgid "Subtitle 3"
+msgstr "Sottotitolo 3"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:364
+#: inc/customizer-repeater/class/customizer-repeater-control.php:565
+msgid "Subtitle 4"
+msgstr "Sottotitolo 4"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:372
+#: inc/customizer-repeater/class/customizer-repeater-control.php:573
+msgid "Subtitle 5"
+msgstr "Sottotitolo 5"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:394
+msgid "skills"
+msgstr "competenze"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:402
+#: inc/customizer-repeater/class/customizer-repeater-control.php:602
+msgid "Button Text"
+msgstr "Testo del pulsante"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:413
+#: inc/customizer-repeater/class/customizer-repeater-control.php:612
+#: inc/customizer-repeater/class/customizer-repeater-control.php:840
+#: inc/customizer-repeater/class/customizer-repeater-control.php:862
+msgid "Link"
+msgstr "Link"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:427
+#: inc/customizer-repeater/class/customizer-repeater-control.php:625
+msgid "Video Url"
+msgstr "URL del Video"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:457
+#: inc/customizer-repeater/class/customizer-repeater-control.php:524
+msgid "Color"
+msgstr "Colore"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:467
+#: inc/customizer-repeater/class/customizer-repeater-control.php:640
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:475
+#: inc/customizer-repeater/class/customizer-repeater-control.php:649
+msgid "Designation"
+msgstr "Designazione"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:491
+msgid "Delete %s"
+msgstr "Elimina il tema %s"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:595
+msgid "skill"
+msgstr "competenza"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:660
+msgid "Delete field"
+msgstr "Elimina il campo"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:697
+msgid "Open link in new tab:"
+msgstr "Apri il link in una nuova scheda:"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:713
+msgid "Note: Some icons may not be displayed here. You can see the full list of icons at %1$s."
+msgstr "Nota: alcune icone potrebbero non essere visualizzate qui. Puoi vedere la lista completa delle icone qui %1$s"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:714
+msgid "http://fontawesome.io/icons/"
+msgstr "http://fontawesome.io/icons/"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:752
+#: inc/customizer-repeater/class/customizer-repeater-control.php:781
+msgid "Upload Image"
+msgstr "Carica immagine"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:778
+msgid "Slider Image"
+msgstr "Immagine dello slider"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:790
+msgid "Slide Align"
+msgstr "Allinea la slide"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:794
+msgid "Left"
+msgstr "Sinistra"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:798
+msgid "Right"
+msgstr "Destra"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:802
+msgid "Center"
+msgstr "Centro"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:813
+msgid "Image type"
+msgstr "Tipo di immagine"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:818
+msgid "None"
+msgstr "Nessuno"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:826
+msgid "Social icons"
+msgstr "Icone per i social network"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:843
+#: inc/customizer-repeater/class/customizer-repeater-control.php:873
+msgid "Remove Icon"
+msgstr "Rimuovi l'icona"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:848
+#: inc/customizer-repeater/class/customizer-repeater-control.php:881
+msgid "Add Icon"
+msgstr "Aggiungi un'icona"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:903
+msgid "Service 1"
+msgstr "Servizio 1"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:907
+msgid "Service 2"
+msgstr "Servizio 2"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:911
+msgid "Service 3"
+msgstr "Servizio 3"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:915
+msgid "Service 4"
+msgstr "Servizio 4"
+
+#: inc/customizer-repeater/class/customizer-repeater-control.php:919
+msgid "Service 5"
+msgstr "Servizio 5"
+
+#: inc/extras.php:110
+msgid "Site Search"
+msgstr "Ricerca nel sito"
+
+#: inc/extras.php:111
+msgid "Search for:"
+msgstr "Ricerca:"
+
+#: inc/extras.php:112
+msgid "Type To Search"
+msgstr "Scrivi per iniziare la ricerca"
+
+#: inc/extras.php:147 inc/extras.php:213 woocommerce/cart/mini-cart.php:25
+#: woocommerce/cart/mini-cart.php:139
+msgid "0"
+msgstr "0"
+
+#: inc/sidebar/sidebar.php:18
+msgid "Sidebar Widget Area"
+msgstr "Area del widget della barra laterale"
+
+#: inc/sidebar/sidebar.php:20
+msgid "The Primary Widget Area"
+msgstr "Area principale dei widget"
+
+#: inc/sidebar/sidebar.php:29
+msgid "Footer 1"
+msgstr "Footer 1"
+
+#: inc/sidebar/sidebar.php:31
+msgid "The Footer Widget Area 1"
+msgstr "L'area 1 del widget nel footer"
+
+#: inc/sidebar/sidebar.php:39
+msgid "Footer 2"
+msgstr "Footer 2"
+
+#: inc/sidebar/sidebar.php:41
+msgid "The Footer Widget Area 2"
+msgstr "L'area 2 del widget nel footer"
+
+#: inc/sidebar/sidebar.php:49
+msgid "Footer 3"
+msgstr "Footer 3"
+
+#: inc/sidebar/sidebar.php:51
+msgid "The Footer Widget Area 3"
+msgstr "L'area 3 del widget nel footer"
+
+#: inc/sidebar/sidebar.php:59
+msgid "WooCommerce Widget Area"
+msgstr "Area del widget di WooCommerce"
+
+#: inc/sidebar/sidebar.php:61
+msgid "This Widget area for WooCommerce Widget"
+msgstr "Quest'area widget è riservata ai widget WooCommerce"
+
+#: inc/sidebar/sidebar.php:69
+msgid "Info Widget Area"
+msgstr "Area del widget Info"
+
+#: inc/sidebar/sidebar.php:71
+msgid "This Widget area for Info"
+msgstr "L'area widget per le informazioni"
+
+#: inc/template-tags.php:28
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "Pubblicato il %s"
+
+#: inc/template-tags.php:33
+msgctxt "post author"
+msgid "by %s"
+msgstr "di %s"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:48 inc/template-tags.php:54
+msgid ", "
+msgstr ", "
+
+#: inc/template-tags.php:50
+msgid "Posted in %1$s"
+msgstr "Pubblicato in %1$s"
+
+#. translators: %s: post title
+#: inc/template-tags.php:63
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Lascia un commento<span class=\"screen-reader-text\"> su %s</span>"
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:70
+msgid "Edit %s"
+msgstr "Modifica %s"
+
+#: template-parts/content/content-none.php:14
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Vuoi pubblicare il tuo primo articolo? <a href=\"%1$s\">Inizia da qui</a>."
+
+#: template-parts/content/content-none.php:16
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Non abbiamo trovato corrispondenze con i termini che cercavi. Riprova con altre parole chiave."
+
+#: template-parts/content/content-none.php:18
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Non riusciamo a trovare quello che stai cercando. Prova con una nuova ricerca."
+
+#: template-parts/content/content-page.php:37
+#: template-parts/content/content-search.php:37
+#: template-parts/sections/section-blog.php:65
+msgid "Read More"
+msgstr "Leggi tutto"
+
+#. translators: %s: Name of current post.
+#: template-parts/content/content.php:33
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Continua la lettura di %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: template-parts/content/content.php:38
+msgid "Pages:"
+msgstr "Pagine:"
+
+#: template-parts/sections/section-breadcrumb.php:7
+msgid "breadcrumb-effect-active"
+msgstr "breadcrumb-effect-active"
+
+#: template-parts/sections/section-breadcrumb.php:20
+msgid "Daily Archives: %s"
+msgstr "Archivi del giorno: %s"
+
+#: template-parts/sections/section-breadcrumb.php:24
+msgid "Monthly Archives: %s"
+msgstr "Archivi del mese: %s"
+
+#: template-parts/sections/section-breadcrumb.php:28
+msgid "Yearly Archives: %s"
+msgstr "Archivi annuali: %s"
+
+#: template-parts/sections/section-breadcrumb.php:32
+msgid "Category Archives: %s"
+msgstr "Archivi categoria: %s"
+
+#: template-parts/sections/section-breadcrumb.php:35
+msgid "Tag Archives: %s"
+msgstr "Archivi tag: %s"
+
+#: template-parts/sections/section-breadcrumb.php:38
+msgid "Error 404"
+msgstr "Errore 404"
+
+#: template-parts/sections/section-breadcrumb.php:42
+msgid "Author: %s"
+msgstr "Autore: %s"
+
+#. Template Name of the theme
+msgid "Homepage"
+msgstr "Homepage"
+
+#. Template Name of the theme
+msgid "Fullwidth Page"
+msgstr "Pagina a larghezza piena"
+
+#: woocommerce/cart/mini-cart.php:32 woocommerce/cart/mini-cart.php:146
+msgid "Total:"
+msgstr "Totale:"
+
+#: woocommerce/cart/mini-cart.php:57 woocommerce/cart/mini-cart.php:171
+msgid "Remove this item"
+msgstr "Rimuovi questo articolo"
+
+#: woocommerce/cart/mini-cart.php:98 woocommerce/cart/mini-cart.php:212
+msgid "Checkout"
+msgstr "Procedi con l'ordine"
+
+#: woocommerce/content-product.php:33
+msgid "Sale"
+msgstr "Vendita"
+
+#: woocommerce/content-product.php:52
+msgid "Rated %s out of 5"
+msgstr "Valutato %s su 5"
+
+#: woocommerce/content-product.php:52
+msgid "out of 5"
+msgstr "su 5"
+
+#: inc/template-tags.php:56
+msgid "Tagged %1$s"
+msgstr "Taggato %1$s"
+
+#: woocommerce/cart/mini-cart.php:104 woocommerce/cart/mini-cart.php:218
+msgid "No products in the cart."
+msgstr "Nessun prodotto nel carrello."
+
+#. Theme URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://www.nayrathemes.com/gradiant-free/"
+msgstr "https://www.nayrathemes.com/gradiant-free/"
+
+#. Author of the theme
+#: style.css
+#, gp-priority: low
+msgid "Nayra Themes"
+msgstr "Nayra Themes"
+
+#. Author URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "https://www.nayrathemes.com/"
+msgstr "https://www.nayrathemes.com/"
