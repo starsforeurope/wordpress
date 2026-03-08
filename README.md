@@ -64,7 +64,15 @@ Note:
 ## 4) Pubblicare Le Modifiche
 
 1. Modifica i contenuti in WordPress (Local).
-2. Esegui export con Simply Static per aggiornare `docs/`.
+2. Esegui export con Simply Static.
+	Percorso export locale di Simply Static:
+	`~/Local Sites/starsforeurope/app/public/wp-content/uploads/simply-static/temp-files/simply-static-*/`
+	Copia poi in `docs/` con:
+
+```bash
+rsync -r ~/Local\ Sites/starsforeurope/app/public/wp-content/uploads/simply-static/temp-files/simply-static-*/ ./docs/
+```
+
 3. Fai doppio click su `deploy.command` nella root del repository.
 
 `deploy.command` esegue:
