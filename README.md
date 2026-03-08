@@ -30,6 +30,22 @@ wp --info
 mysqldump --version
 ```
 
+Se `mysqldump --version` non funziona, aggiungi MySQL client al `PATH`.
+
+Apple Silicon:
+
+```bash
+echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Intel Mac:
+
+```bash
+echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 ## 2) Installare Local (Flywheel)
 
 Scarica Local:
@@ -64,15 +80,7 @@ Note:
 ## 4) Pubblicare Le Modifiche
 
 1. Modifica i contenuti in WordPress (Local).
-2. Esegui export con Simply Static.
-	Percorso export locale di Simply Static:
-	`~/Local Sites/starsforeurope/app/public/wp-content/uploads/simply-static/temp-files/simply-static-*/`
-	Copia poi in `docs/` con:
-
-```bash
-rsync -r ~/Local\ Sites/starsforeurope/app/public/wp-content/uploads/simply-static/temp-files/simply-static-*/ ./docs/
-```
-
+2. Esegui export con Simply Static per aggiornare `docs/`.
 3. Fai doppio click su `deploy.command` nella root del repository.
 
 `deploy.command` esegue:
