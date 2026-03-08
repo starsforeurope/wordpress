@@ -22,20 +22,6 @@ Installa gli strumenti necessari:
 brew install git wp-cli mysql-client
 ```
 
-Aggiungi i client MySQL al PATH (Apple Silicon):
-
-```bash
-echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-Se sei su Mac Intel, usa:
-
-```bash
-echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-```
-
 Controllo rapido:
 
 ```bash
@@ -52,16 +38,16 @@ Scarica Local:
 
 Installalo, aprilo almeno una volta e consenti i permessi richiesti da macOS.
 
-## 3) Ripartenza Da Zero (Importare Questo Repo In Local)
+## 3) Configurazione Da Zero In Local
 
-Usa questi passaggi quando configuri una nuova macchina o ricrei il sito in locale.
+Segui questi passaggi su una macchina nuova o quando devi ricreare il sito locale.
 
-1. Clona questo repository sul tuo Mac.
+1. Clona il repository sul Mac.
 2. In Local, crea un nuovo sito chiamato `starsforeurope`.
 3. Ferma il sito in Local.
-4. In Finder, apri la cartella del sito Local:
+4. In Finder, apri la cartella del sito:
 	- `~/Local Sites/starsforeurope/`
-5. Sostituisci la cartella `app/` del sito Local con la cartella `app/` di questo repository.
+5. Sostituisci la cartella `app/` del sito con la cartella `app/` del repository.
 6. Riavvia il sito in Local.
 7. Importa il database dalla root del repo:
 
@@ -69,7 +55,7 @@ Usa questi passaggi quando configuri una nuova macchina o ricrei il sito in loca
 wp --path=app/public db import app/sql/local.sql
 ```
 
-8. Accedi all'admin WordPress da Local e verifica pagine/contenuti.
+8. Accedi all'admin WordPress da Local e verifica pagine e contenuti.
 
 Note:
 - `wp-admin/`, `wp-includes/` e `wp-config.php` non sono tracciati in git.
