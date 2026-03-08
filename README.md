@@ -43,7 +43,7 @@ Lo script:
 3. Clona il repo in `~/wordpress-repo` (se manca)
 4. Crea ZIP importabile con `app/sql/local.sql` + `app/public/wp-content`
 5. Attende conferma dopo import in Local (`starsforeurope`)
-6. Sostituisce `~/Local Sites/starsforeurope/app` con symlink a `~/wordpress-repo/app`
+6. Collega `~/Local Sites/starsforeurope/app/public/wp-content` al repo con un symlink
 
 ## 4) Configurazione Manuale (Fallback)
 

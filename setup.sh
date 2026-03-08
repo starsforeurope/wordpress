@@ -105,14 +105,27 @@ echo "   $IMPORT_ZIP"
 echo "3) Use site name: $TARGET_SITE"
 read -r -p "Press Enter after Local import is finished... "
 
-if [[ ! -d "$LOCAL_SITE_DIR" ]]; then
-  echo "Error: Local site path not found: $LOCAL_SITE_DIR"
+if [[ ! -d "$LOCAL_SITE_DIR/app/public" ]]; then
+  echo "Error: Local site public path not found: $LOCAL_SITE_DIR/app/public"
   exit 1
 fi
 
-echo "==> Replacing Local app with symlink"
-rm -rf "$LOCAL_SITE_DIR/app"
-ln -s "$TARGET_REPO/app" "$LOCAL_SITE_DIR/app"
+echo "==> Linking Local wp-content to repository"
+LOCAL_WP_CONTENT="$LOCAL_SITE_DIR/app/public/wp-content"
+REPO_WP_CONTENT="$TARGET_REPO/app/public/wp-content"
+
+if [[ ! -d "$REPO_WP_CONTENT" ]]; then
+  echo "Error: missing repository wp-content at $REPO_WP_CONTENT"
+  exit 1
+fi
+
+if [[ -L "$LOCAL_WP_CONTENT" ]]; then
+  rm -f "$LOCAL_WP_CONTENT"
+elif [[ -d "$LOCAL_WP_CONTENT" ]]; then
+  mv "$LOCAL_WP_CONTENT" "${LOCAL_WP_CONTENT}.backup.$(date +%Y%m%d%H%M%S)"
+fi
+
+ln -s "$REPO_WP_CONTENT" "$LOCAL_WP_CONTENT"
 
 echo
-echo "Done. Local site is now synced with: $TARGET_REPO/app"
+echo "Done. Local site now uses repo wp-content: $REPO_WP_CONTENT"
