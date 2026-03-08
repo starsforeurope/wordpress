@@ -77,10 +77,11 @@ cd wordpress
 	- `~/Local Sites/starsforeurope/`
 5. Sostituisci la cartella `app/` del sito con la cartella `app/` del repository.
 6. Riavvia il sito in Local.
-7. Importa il database dalla root del repo:
+7. Importa il database da Local, puntando al dump dentro il repository:
 
 ```bash
-wp --path=app/public db import app/sql/local.sql
+cd "~/Local Sites/starsforeurope"
+wp --path=app/public db import "~/Projects/starsforeurope/wordpress/app/sql/local.sql"
 ```
 
 8. Accedi all'admin WordPress da Local e verifica pagine e contenuti.
