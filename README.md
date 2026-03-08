@@ -80,7 +80,7 @@ cd wordpress
 7. Importa il database da Local, puntando al dump dentro il repository:
 
 ```bash
-cd "~/Local Sites/starsforeurope"
+cd ~/Local\ Sites/starsforeurope
 wp --path=app/public db import "~/Projects/starsforeurope/wordpress/app/sql/local.sql"
 ```
 
