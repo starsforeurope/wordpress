@@ -83,6 +83,19 @@ if [[ ! -f "$TARGET_REPO/app/sql/local.sql" ]]; then
   exit 1
 fi
 
+# Guardrail: prevent silent onboarding from a default/empty WordPress dump.
+if grep -q "Hello world!" "$TARGET_REPO/app/sql/local.sql" && grep -q "Sample Page" "$TARGET_REPO/app/sql/local.sql"; then
+  echo
+  echo "WARNING: app/sql/local.sql looks like a default WordPress database dump."
+  echo "It contains sample content (e.g. Hello world / Sample Page)."
+  echo "If you continue, Local will import that default content."
+  read -r -p "Type CONTINUE to proceed anyway: " confirm_default_dump
+  if [[ "$confirm_default_dump" != "CONTINUE" ]]; then
+    echo "Aborted. Export the correct DB first, then run setup again."
+    exit 1
+  fi
+fi
+
 if [[ ! -d "$TARGET_REPO/app/public/wp-content" ]]; then
   echo "Error: missing $TARGET_REPO/app/public/wp-content"
   exit 1

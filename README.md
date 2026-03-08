@@ -45,6 +45,10 @@ Lo script:
 5. Attende conferma dopo import in Local (`starsforeurope`)
 6. Collega `~/Local Sites/starsforeurope/app/public/wp-content` al repo con un symlink
 
+Nota importante:
+- Se `app/sql/local.sql` contiene il dump di default WordPress, vedrai "Hello world" e "Sample Page" anche in locale.
+- `setup.sh` ora mostra un warning esplicito se rileva questo caso.
+
 ## 4) Configurazione Manuale (Fallback)
 
 Segui questi passaggi su una macchina nuova o quando devi ricreare il sito locale.
