@@ -58,6 +58,18 @@ Installalo, aprilo almeno una volta e consenti i permessi richiesti da macOS.
 
 Segui questi passaggi su una macchina nuova o quando devi ricreare il sito locale.
 
+Percorso consigliato per il clone:
+- `~/Projects/starsforeurope/wordpress`
+
+Esempio:
+
+```bash
+mkdir -p ~/Projects/starsforeurope
+cd ~/Projects/starsforeurope
+git clone git@github.com:starsforeurope/wordpress.git
+cd wordpress
+```
+
 1. Clona il repository sul Mac.
 2. In Local, crea un nuovo sito chiamato `starsforeurope`.
 3. Ferma il sito in Local.
