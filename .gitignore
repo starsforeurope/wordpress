@@ -26,4 +26,16 @@ npm-debug.log*
 *.tmp
 *.temp
 *.zip
-*.sql
+
+# Keep only custom WordPress code; ignore core under app/public
+app/public/*
+!app/public/wp-content/
+app/public/wp-content/*
+!app/public/wp-content/themes/
+!app/public/wp-content/plugins/
+app/public/wp-content/uploads/
+app/public/wp-config.php
+
+# DB dumps: keep the canonical exported DB in repo
+app/sql/*.sql
+!app/sql/local.sql

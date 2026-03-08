@@ -1,16 +1,94 @@
-# wordpress
+# Workflow WordPress Stars For Europe
 
-- Open wordpress app with Flywheel's Local
+Questo repository contiene il sorgente WordPress modificabile + l'output statico per GitHub Pages.
 
-- Edit
+Flusso:
+1. Modifica contenuti in Local
+2. Genera file statici con Simply Static (in `docs/`)
+3. Doppio click su `deploy.command` per export DB + commit + push
+4. GitHub Actions pubblica `docs/` su `gh-pages`
 
-- Generate static website with the Simply-static plugin
+## 1) Prerequisiti macOS
 
-- From $HOME, (temp and build files are untracked)
-```shell
-cd Local\ Sites/starsforeurope/
+Installa Homebrew (se manca):
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-- To build, run
-```shell
-source build.sh
+
+Installa gli strumenti necessari:
+
+```bash
+brew install git wp-cli mysql-client
 ```
+
+Aggiungi i client MySQL al PATH (Apple Silicon):
+
+```bash
+echo 'export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Se sei su Mac Intel, usa:
+
+```bash
+echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Controllo rapido:
+
+```bash
+git --version
+wp --info
+mysqldump --version
+```
+
+## 2) Installare Local (Flywheel)
+
+Scarica Local:
+
+- https://localwp.com/releases/
+
+Installalo, aprilo almeno una volta e consenti i permessi richiesti da macOS.
+
+## 3) Ripartenza Da Zero (Importare Questo Repo In Local)
+
+Usa questi passaggi quando configuri una nuova macchina o ricrei il sito in locale.
+
+1. Clona questo repository sul tuo Mac.
+2. In Local, crea un nuovo sito chiamato `starsforeurope`.
+3. Ferma il sito in Local.
+4. In Finder, apri la cartella del sito Local:
+	- `~/Local Sites/starsforeurope/`
+5. Sostituisci la cartella `app/` del sito Local con la cartella `app/` di questo repository.
+6. Riavvia il sito in Local.
+7. Importa il database dalla root del repo:
+
+```bash
+wp --path=app/public db import app/sql/local.sql
+```
+
+8. Accedi all'admin WordPress da Local e verifica pagine/contenuti.
+
+Note:
+- `wp-admin/`, `wp-includes/` e `wp-config.php` non sono tracciati in git.
+- Tieni Local avviato quando modifichi/esporti.
+
+## 4) Pubblicare Le Modifiche
+
+1. Modifica i contenuti in WordPress (Local).
+2. Esegui export con Simply Static per aggiornare `docs/`.
+3. Fai doppio click su `deploy.command` nella root del repository.
+
+`deploy.command` esegue:
+1. `wp db export app/sql/local.sql`
+2. `git add .`
+3. `git commit -m "content: <timestamp>"`
+4. `git push`
+
+## 5) GitHub Actions
+
+File workflow: `.github/workflows/deploy.yml`
+
+Si attiva al push su `main` e pubblica `docs/` su `gh-pages`.
