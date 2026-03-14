@@ -24,8 +24,9 @@ if [[ -n "$LOCAL_MYSQL_SOCKET" && -S "$LOCAL_MYSQL_SOCKET" ]]; then
   export MYSQL_UNIX_PORT="$LOCAL_MYSQL_SOCKET"
 fi
 
-echo "Before deploy: click 'Generate' in Simply Static to refresh docs/."
-read -r -p "Press Enter to continue once static export is done... "
+echo "Before deploy: in Simply Static, click 'Generate' and wait for it to finish."
+echo "(Exports directly to docs/ via the ~/Local Sites/starsforeurope/docs symlink.)"
+read -r -p "Press Enter to continue once export is complete... "
 
 WP_PATH=""
 if [[ -f "$DEFAULT_WP_PATH/wp-load.php" ]]; then
