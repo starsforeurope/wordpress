@@ -35,6 +35,9 @@ app/public/wp-includes/
 app/public/*.php
 app/public/wp-config.php
 
+# Simply Static export artifacts (rsync'd into docs/ at deploy time)
+app/public/wp-content/uploads/simply-static/
+
 # DB dumps: keep the canonical exported DB in repo
 app/sql/*.sql
 !app/sql/local.sql

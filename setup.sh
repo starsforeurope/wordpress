@@ -123,37 +123,5 @@ fi
 
 ln -s "$REPO_WP_CONTENT" "$LOCAL_WP_CONTENT"
 
-echo "==> Linking docs/ to repository"
-LOCAL_DOCS="$LOCAL_SITE_DIR/docs"
-REPO_DOCS="$TARGET_REPO/docs"
-
-mkdir -p "$REPO_DOCS"
-
-if [[ -L "$LOCAL_DOCS" ]]; then
-  rm -f "$LOCAL_DOCS"
-elif [[ -d "$LOCAL_DOCS" ]]; then
-  mv "$LOCAL_DOCS" "${LOCAL_DOCS}.backup.$(date +%Y%m%d%H%M%S)"
-fi
-
-ln -s "$REPO_DOCS" "$LOCAL_DOCS"
-
-echo "==> Configuring Simply Static (delivery=local, dir=$LOCAL_DOCS)"
-LOCAL_MYSQL_SOCKET="$(ls -1t "$HOME/Library/Application Support/Local/run"/*/mysql/mysqld.sock 2>/dev/null | head -n 1 || true)"
-if [[ -n "$LOCAL_MYSQL_SOCKET" && -S "$LOCAL_MYSQL_SOCKET" ]]; then
-  export MYSQL_UNIX_PORT="$LOCAL_MYSQL_SOCKET"
-fi
-export WP_CLI_SILENCE_PHP_WARNINGS=1
-export WP_CLI_PHP_ARGS="-d error_reporting=E_ERROR -d display_errors=0"
-if wp --path="$LOCAL_SITE_DIR/app/public" option patch update simply-static delivery_method local 2>/dev/null \
-&& wp --path="$LOCAL_SITE_DIR/app/public" option patch update simply-static local_dir "$LOCAL_DOCS" 2>/dev/null; then
-  echo "Simply Static configured."
-else
-  echo "Warning: could not configure Simply Static automatically (is the Local site running?)."
-  echo "Set manually in WP admin → Simply Static → Settings:"
-  echo "  Delivery method: Local Directory"
-  echo "  Path: $LOCAL_DOCS"
-fi
-
 echo
 echo "Done. Local site now uses repo wp-content: $REPO_WP_CONTENT"
-echo "      Simply Static exports to:            $LOCAL_DOCS -> $REPO_DOCS"

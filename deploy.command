@@ -25,8 +25,15 @@ if [[ -n "$LOCAL_MYSQL_SOCKET" && -S "$LOCAL_MYSQL_SOCKET" ]]; then
 fi
 
 echo "Before deploy: in Simply Static, click 'Generate' and wait for it to finish."
-echo "(Exports directly to docs/ via the ~/Local Sites/starsforeurope/docs symlink.)"
 read -r -p "Press Enter to continue once export is complete... "
+
+SS_DIR="$(ls -1dt "$LOCAL_WP_PATH/wp-content/uploads/simply-static/temp-files/simply-static-"*/ 2>/dev/null | head -1)"
+if [[ -z "$SS_DIR" ]]; then
+  echo "Error: no Simply Static export found."
+  status=1
+else
+  rsync -a --delete "$SS_DIR" "$REPO_ROOT/docs/"
+fi
 
 WP_PATH=""
 if [[ -f "$DEFAULT_WP_PATH/wp-load.php" ]]; then
