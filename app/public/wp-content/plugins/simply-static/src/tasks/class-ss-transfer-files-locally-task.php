@@ -50,17 +50,32 @@ class Transfer_Files_Locally_Task extends Task {
 		$done = $this->process_pages();
 
 		if ( $done ) {
-
-			$this->transfer_404_page( $this->destination_dir );
-
 			if ( $this->options->get( 'add_feeds' ) ) {
 				$this->transfer_feed_redirect( $this->destination_dir );
 			}
+
+			/**
+			 * Allow handlers to transfer any remaining files before we finish the task.
+			 *
+			 * Fires near the end of Local Directory transfer, after the page manifest and feed redirect
+			 * have been copied, but before the task is marked as finished.
+			 *
+			 * @param string               $destination_dir Absolute path to Local Directory destination.
+			 * @param string               $archive_dir     Absolute path to archive (temp) directory.
+			 * @param Transfer_Files_Locally_Task $task     The current task instance.
+			 */
+			do_action( 'ss_before_finish_transferring_files_locally', $this->destination_dir, $this->archive_dir, $this );
 
 			if ( $this->options->get( 'destination_url_type' ) == 'absolute' ) {
 				$destination_url = trailingslashit( $this->options->get_destination_url() );
 				$message         = __( 'Destination URL:', 'simply-static' ) . ' <a href="' . $destination_url . '" target="_blank">' . $destination_url . '</a>';
 				$this->save_status_message( $message, 'destination_url' );
+			}
+
+			// If this is a 404-only export, ensure the activity/export log reflects a single transferred file.
+			$only_404 = get_option( 'simply-static-404-only' );
+			if ( ! empty( $only_404 ) ) {
+				$this->save_status_message( sprintf( __( 'Transferred %d of %d files', 'simply-static' ), 1, 1 ) );
 			}
 
 			do_action( 'ss_finished_transferring_files_locally', $this->destination_dir );
@@ -181,44 +196,6 @@ class Transfer_Files_Locally_Task extends Task {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Transfer the 404 page if it exists.
-	 *
-	 * @param string $local_dir Path to local dir.
-	 *
-	 * @return void
-	 */
-	public function transfer_404_page( $local_dir ) {
-		$archive_dir = $this->options->get_archive_dir();
-		$file_path   = untrailingslashit( $archive_dir ) . DIRECTORY_SEPARATOR . '404' . DIRECTORY_SEPARATOR . 'index.html';
-
-		Util::debug_log( 'Transferring 404 Page' );
-
-		if ( ! file_exists( $file_path ) ) {
-			Util::debug_log( 'No 404 Page found at ' . $file_path );
-
-			return;
-		}
-
-		$folder_404 = untrailingslashit( $local_dir ) . DIRECTORY_SEPARATOR . '404';
-
-		if ( ! is_dir( $folder_404 ) ) {
-			wp_mkdir_p( $folder_404 );
-		}
-
-		$destination_file = $folder_404 . DIRECTORY_SEPARATOR . 'index.html';
-
-		if ( file_exists( $destination_file ) ) {
-			return;
-		}
-
-		Util::debug_log( 'Destination 404 Page found at ' . $destination_file );
-
-		$copied = copy( $file_path, $destination_file );
-
-		Util::debug_log( 'Copy: ' . $copied ? 'Success' : 'No sucess' );
 	}
 
 	/**

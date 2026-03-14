@@ -152,7 +152,7 @@ class Jetpack_Redux_State_Helper {
 			'getModules'                           => $modules,
 			'rawUrl'                               => ( new Status() )->get_site_suffix(),
 			'adminUrl'                             => esc_url( admin_url() ),
-			'siteTitle'                            => (string) htmlspecialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
+			'siteTitle'                            => htmlspecialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
 			'stats'                                => array(
 				// data is populated asynchronously on page load.
 				'data'  => array(
@@ -186,14 +186,17 @@ class Jetpack_Redux_State_Helper {
 				'showPromotions'             => apply_filters( 'jetpack_show_promotions', true ),
 				'plan'                       => Jetpack_Plan::get(),
 				'showBackups'                => Jetpack::show_backups_ui(),
+				'showScan'                   => Jetpack::show_scan_ui(),
 				'showRecommendations'        => Jetpack_Recommendations::is_enabled(),
 				/** This filter is documented in my-jetpack/src/class-initializer.php */
 				'showMyJetpack'              => My_Jetpack_Initializer::should_initialize(),
 				'isMultisite'                => is_multisite(),
 				'dateFormat'                 => get_option( 'date_format' ),
 				'latestBoostSpeedScores'     => $speed_score_history->latest(),
-				'isSharingBlockAvailable'    => (bool) isset( $block_availability['sharing-buttons'] )
+				'isSharingBlockAvailable'    => isset( $block_availability['sharing-buttons'] )
 					&& $block_availability['sharing-buttons']['available'],
+				'isLikeBlockAvailable'       => isset( $block_availability['like'] )
+					&& $block_availability['like']['available'],
 			),
 			'themeData'                            => array(
 				'name'         => $current_theme->get( 'Name' ),

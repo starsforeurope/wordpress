@@ -16,7 +16,7 @@ use Automattic\Jetpack\Status\Host;
  */
 class External_Connections {
 
-	const PACKAGE_VERSION = '0.1.0';
+	const PACKAGE_VERSION = '0.1.18';
 	const BASE_FILE       = __FILE__;
 
 	/**
@@ -27,10 +27,12 @@ class External_Connections {
 	 * Each service has the following keys:
 	 * - service: The service identifier.
 	 * - title: The title of the service.
+	 * - signup_link: The URL to the service's signup page.
 	 * - description: The description of the service.
 	 * - support_link: An array with the following keys:
 	 *     - jetpack: The URL handler registered in jetpack.com/redirect/.
 	 *     - wpcom: The URL of the support page for the service on WordPress.com.
+	 * - script: An optional script handle to enqueue.
 	 *
 	 * @example
 	 * ```php
@@ -39,6 +41,7 @@ class External_Connections {
 	 *         array(
 	 *             'service'      => 'facebook',
 	 *             'title'        => 'Facebook',
+	 *             'signup_link'  => 'https://facebook.com/signup?ref=jetpack',
 	 *             'description'  => 'Connect your site to your Facebook account',
 	 *             'support_link' => array(
 	 *                 'jetpack' => 'facebook-connection',
@@ -261,12 +264,17 @@ class External_Connections {
 					'isConnected'  => $connection_data['is_connected'],
 					'profileImage' => $connection_data['profile_image'],
 					'supportLink'  => $support_link,
+					'signupLink'   => $service['signup_link'] ?? '',
 				);
+
+				if ( isset( $service['script'] ) ) {
+					Assets::enqueue_script( $service['script'] );
+				}
 			}
 
 			wp_add_inline_script(
 				$asset_name,
-				'const jetpackExternalConnectionsData = ' . wp_json_encode( $script_data ) . ';',
+				'const jetpackExternalConnectionsData = ' . wp_json_encode( $script_data, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP ) . ';',
 				'before'
 			);
 		}
@@ -277,14 +285,16 @@ class External_Connections {
 	 */
 	public static function ajax_delete_connection() {
 		if ( ! isset( $_REQUEST['service'] ) ) {
-			wp_send_json( array( 'deleted' => 'false' ) );
+			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- It takes null, but its phpdoc only says int.
+			wp_send_json( array( 'deleted' => 'false' ), null, JSON_UNESCAPED_SLASHES );
 		}
 
 		$service = sanitize_text_field( wp_unslash( $_REQUEST['service'] ) );
 		check_ajax_referer( 'jetpack_delete_external_connection_' . $service );
 
 		$is_deleted = self::delete_connection( $service );
-		wp_send_json( array( 'deleted' => $is_deleted ) );
+		// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- It takes null, but its phpdoc only says int.
+		wp_send_json( array( 'deleted' => $is_deleted ), null, JSON_UNESCAPED_SLASHES );
 	}
 
 	/**
@@ -292,7 +302,8 @@ class External_Connections {
 	 */
 	public static function ajax_get_connection() {
 		if ( ! isset( $_REQUEST['service'] ) ) {
-			wp_send_json( array( 'isConnected' => 'false' ) );
+			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- It takes null, but its phpdoc only says int.
+			wp_send_json( array( 'isConnected' => 'false' ), null, JSON_UNESCAPED_SLASHES );
 		}
 
 		$service = sanitize_text_field( wp_unslash( $_REQUEST['service'] ) );
@@ -304,7 +315,9 @@ class External_Connections {
 				'accountName'  => $connection_data['account_name'],
 				'isConnected'  => $connection_data['is_connected'],
 				'profileImage' => $connection_data['profile_image'],
-			)
+			),
+			null, // @phan-suppress-current-line PhanTypeMismatchArgumentProbablyReal -- It takes null, but its phpdoc only says int.
+			JSON_UNESCAPED_SLASHES
 		);
 	}
 

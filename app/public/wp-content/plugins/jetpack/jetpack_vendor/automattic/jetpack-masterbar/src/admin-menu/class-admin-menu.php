@@ -7,8 +7,6 @@
 
 namespace Automattic\Jetpack\Masterbar;
 
-use Automattic\Jetpack\Assets;
-
 require_once __DIR__ . '/class-base-admin-menu.php';
 
 /**
@@ -20,19 +18,9 @@ class Admin_Menu extends Base_Admin_Menu {
 	 * Create the desired menu output.
 	 */
 	public function reregister_menu_items() {
-		$this->add_stats_menu();
-		$this->add_upgrades_menu();
-		$this->add_posts_menu();
-		$this->add_media_menu();
-		$this->add_page_menu();
-		$this->add_testimonials_menu();
-		$this->add_portfolio_menu();
-		$this->add_comments_menu();
 		$this->add_appearance_menu();
 		$this->add_plugins_menu();
 		$this->add_users_menu();
-		$this->add_tools_menu();
-		$this->add_options_menu();
 
 		// Remove Links Manager menu since its usage is discouraged. https://github.com/Automattic/wp-calypso/issues/51188.
 		// @see https://core.trac.wordpress.org/ticket/21307#comment:73.
@@ -94,156 +82,6 @@ class Admin_Menu extends Base_Admin_Menu {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Adds My Mailboxes menu.
-	 */
-	public function add_my_mailboxes_menu() {
-		// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- Core should ideally document null for no-callback arg. https://core.trac.wordpress.org/ticket/52539.
-		add_menu_page( __( 'My Mailboxes', 'jetpack-masterbar' ), __( 'My Mailboxes', 'jetpack-masterbar' ), 'manage_options', 'https://wordpress.com/mailboxes/' . $this->domain, null, 'dashicons-email', 4.64424 );
-	}
-
-	/**
-	 * Adds Stats menu.
-	 */
-	public function add_stats_menu() {
-		// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- Core should ideally document null for no-callback arg. https://core.trac.wordpress.org/ticket/52539.
-		add_menu_page( __( 'Stats', 'jetpack-masterbar' ), __( 'Stats', 'jetpack-masterbar' ), 'view_stats', 'https://wordpress.com/stats/day/' . $this->domain, null, 'dashicons-chart-bar', 2.98 );
-	}
-
-	/**
-	 * Adds Upgrades menu.
-	 *
-	 * @param string $plan The current WPCOM plan of the blog.
-	 */
-	public function add_upgrades_menu( $plan = null ) {
-		global $menu;
-
-		$menu_exists = false;
-		foreach ( $menu as $item ) {
-			if ( 'paid-upgrades.php' === $item[2] ) {
-				$menu_exists = true;
-				break;
-			}
-		}
-
-		if ( ! $menu_exists ) {
-			if ( $plan ) {
-				// Add display:none as a default for cases when CSS is not loaded.
-				$site_upgrades = '%1$s<span class="inline-text" style="display:none">%2$s</span>';
-				$site_upgrades = sprintf(
-					$site_upgrades,
-					__( 'Upgrades', 'jetpack-masterbar' ),
-					// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
-					__( $plan, 'jetpack-masterbar' )
-				);
-			} else {
-				$site_upgrades = __( 'Upgrades', 'jetpack-masterbar' );
-			}
-			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- Core should ideally document null for no-callback arg. https://core.trac.wordpress.org/ticket/52539.
-			add_menu_page( __( 'Upgrades', 'jetpack-masterbar' ), $site_upgrades, 'manage_options', 'paid-upgrades.php', null, 'dashicons-cart', 2.99 );
-		}
-		// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- Core should ideally document null for no-callback arg. https://core.trac.wordpress.org/ticket/52539.
-		add_submenu_page( 'paid-upgrades.php', __( 'Plans', 'jetpack-masterbar' ), __( 'Plans', 'jetpack-masterbar' ), 'manage_options', 'https://wordpress.com/plans/' . $this->domain, null, 1 );
-		// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- Core should ideally document null for no-callback arg. https://core.trac.wordpress.org/ticket/52539.
-		add_submenu_page( 'paid-upgrades.php', __( 'Purchases', 'jetpack-masterbar' ), __( 'Purchases', 'jetpack-masterbar' ), 'manage_options', 'https://wordpress.com/purchases/subscriptions/' . $this->domain, null, 2 );
-
-		if ( ! $menu_exists ) {
-			// Remove the submenu auto-created by Core.
-			$this->hide_submenu_page( 'paid-upgrades.php', 'paid-upgrades.php' );
-		}
-	}
-
-	/**
-	 * Adds Posts menu.
-	 */
-	public function add_posts_menu() {
-		$submenus_to_update = array();
-
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'edit.php' ) ) {
-			$submenus_to_update['edit.php']     = 'https://wordpress.com/posts/' . $this->domain;
-			$submenus_to_update['post-new.php'] = 'https://wordpress.com/post/' . $this->domain;
-			$this->update_submenus( 'edit.php', $submenus_to_update );
-		}
-
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'edit-tags.php?taxonomy=category' ) ) {
-			$this->update_submenus( 'edit.php', array( 'edit-tags.php?taxonomy=category' => 'https://wordpress.com/settings/taxonomies/category/' . $this->domain ) );
-		}
-
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'edit-tags.php?taxonomy=post_tag' ) ) {
-			$this->update_submenus( 'edit.php', array( 'edit-tags.php?taxonomy=post_tag' => 'https://wordpress.com/settings/taxonomies/post_tag/' . $this->domain ) );
-		}
-	}
-
-	/**
-	 * Adds Media menu.
-	 */
-	public function add_media_menu() {
-		if ( self::CLASSIC_VIEW === $this->get_preferred_view( 'upload.php' ) ) {
-			return;
-		}
-
-		$this->hide_submenu_page( 'upload.php', 'media-new.php' );
-
-		$this->update_menu( 'upload.php', 'https://wordpress.com/media/' . $this->domain );
-	}
-
-	/**
-	 * Adds Page menu.
-	 */
-	public function add_page_menu() {
-		if ( self::CLASSIC_VIEW === $this->get_preferred_view( 'edit.php?post_type=page' ) ) {
-			return;
-		}
-
-		$submenus_to_update = array(
-			'edit.php?post_type=page'     => 'https://wordpress.com/pages/' . $this->domain,
-			'post-new.php?post_type=page' => 'https://wordpress.com/page/' . $this->domain,
-		);
-		$this->update_submenus( 'edit.php?post_type=page', $submenus_to_update );
-	}
-
-	/**
-	 * Adds Testimonials menu.
-	 */
-	public function add_testimonials_menu() {
-		$this->add_custom_post_type_menu( 'jetpack-testimonial' );
-	}
-
-	/**
-	 * Adds Portfolio menu.
-	 */
-	public function add_portfolio_menu() {
-		$this->add_custom_post_type_menu( 'jetpack-portfolio' );
-	}
-
-	/**
-	 * Adds a custom post type menu.
-	 *
-	 * @param string $post_type Custom post type.
-	 */
-	public function add_custom_post_type_menu( $post_type ) {
-		if ( self::CLASSIC_VIEW === $this->get_preferred_view( 'edit.php?post_type=' . $post_type ) ) {
-			return;
-		}
-
-		$submenus_to_update = array(
-			'edit.php?post_type=' . $post_type     => 'https://wordpress.com/types/' . $post_type . '/' . $this->domain,
-			'post-new.php?post_type=' . $post_type => 'https://wordpress.com/edit/' . $post_type . '/' . $this->domain,
-		);
-		$this->update_submenus( 'edit.php?post_type=' . $post_type, $submenus_to_update );
-	}
-
-	/**
-	 * Adds Comments menu.
-	 */
-	public function add_comments_menu() {
-		if ( self::CLASSIC_VIEW === $this->get_preferred_view( 'edit-comments.php' ) ) {
-			return;
-		}
-
-		$this->update_menu( 'edit-comments.php', 'https://wordpress.com/comments/all/' . $this->domain );
 	}
 
 	/**
@@ -319,72 +157,25 @@ class Admin_Menu extends Base_Admin_Menu {
 	}
 
 	/**
-	 * Adds Tools menu.
+	 * Renders the upsell nudge directly in the admin menu.
+	 *
+	 * This renders server-side via the `adminmenu` hook to avoid the layout
+	 * shift caused by the previous AJAX-based approach.
 	 */
-	public function add_tools_menu() {
-		$submenus_to_update = array();
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'import.php' ) ) {
-			$submenus_to_update['import.php'] = 'https://wordpress.com/import/' . $this->domain;
-		}
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'export.php' ) ) {
-			$submenus_to_update['export.php'] = 'https://wordpress.com/export/' . $this->domain;
-		}
-		$this->update_submenus( 'tools.php', $submenus_to_update );
-
-		$this->hide_submenu_page( 'tools.php', 'delete-blog' );
-	}
-
-	/**
-	 * Adds Settings menu.
-	 */
-	public function add_options_menu() {
-		$submenus_to_update = array();
-
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'options-general.php' ) ) {
-			$this->hide_submenu_page( 'options-general.php', 'sharing' );
+	public function render_upsell_nudge() {
+		// Skip if jetpack-mu-wpcom is already rendering the upsell banner.
+		if ( has_action( 'adminmenu', 'wpcom_add_sidebar_notice_menu_page' ) ) {
+			return;
 		}
 
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'options-general.php' ) ) {
-			$submenus_to_update['options-general.php'] = 'https://wordpress.com/settings/general/' . $this->domain;
-		}
-
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'options-writing.php' ) ) {
-			$submenus_to_update['options-writing.php'] = 'https://wordpress.com/settings/writing/' . $this->domain;
-		}
-
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'options-reading.php' )
-		) {
-			$submenus_to_update['options-reading.php'] = 'https://wordpress.com/settings/reading/' . $this->domain;
-		}
-
-		if ( self::DEFAULT_VIEW === $this->get_preferred_view( 'options-discussion.php' ) ) {
-			$submenus_to_update['options-discussion.php'] = 'https://wordpress.com/settings/discussion/' . $this->domain;
-		}
-
-		$this->update_submenus( 'options-general.php', $submenus_to_update );
-
-		// Temporary "Settings > Newsletter" menu for existing users that shows a callout informing that the screen has moved to "Jetpack (> Settings) > Newsletter".
-		if ( get_current_user_id() < 269750000 ) {
-			// @phan-suppress-next-line PhanTypeMismatchArgumentProbablyReal -- Core should ideally document null for no-callback arg. https://core.trac.wordpress.org/ticket/52539.
-			add_submenu_page( 'options-general.php', esc_attr__( 'Newsletter', 'jetpack-masterbar' ), __( 'Newsletter', 'jetpack-masterbar' ), 'manage_options', 'https://wordpress.com/settings/jetpack-newsletter/' . $this->domain, null, 7 );
-		}
-	}
-
-	/**
-	 * AJAX handler for retrieving the upsell nudge.
-	 */
-	public function wp_ajax_upsell_nudge_jitm() {
-		check_ajax_referer( 'upsell_nudge_jitm' );
-
-		// Filter to turn off all just in time messages
 		/** This action is already documented in \Automattic\Jetpack\JITMS\JITM */
 		if ( ! apply_filters( 'jetpack_just_in_time_msgs', true ) ) {
-			wp_die();
+			return;
 		}
 
 		$nudge = $this->get_upsell_nudge();
 		if ( ! $nudge ) {
-			wp_die();
+			return;
 		}
 
 		$link = $nudge['link'];
@@ -417,24 +208,14 @@ class Admin_Menu extends Base_Admin_Menu {
 				</div>
 			</a>
 		</li>
+		<script>
+		( function ( el ) {
+			if ( el && el.parentNode ) {
+				el.parentNode.prepend( el );
+			}
+		} )( document.getElementById( 'toplevel_page_site-notices' ) );
+		</script>
 		<?php
-		wp_die();
-	}
-
-	/**
-	 * Fixes scrollbar issue if upsell nudge is loaded.
-	 * https://github.com/Automattic/dotcom-forge/issues/7936
-	 */
-	public function wpcom_upsell_nudge_jitm_fix() {
-		$assets_base_path = '../../dist/admin-menu/';
-		Assets::register_script(
-			'wpcom-upsell-nudge-jitm-fix',
-			$assets_base_path . 'wpcom-upsell-nudge-jitm-fix.js',
-			__FILE__,
-			array(
-				'enqueue' => true,
-			)
-		);
 	}
 
 	/**

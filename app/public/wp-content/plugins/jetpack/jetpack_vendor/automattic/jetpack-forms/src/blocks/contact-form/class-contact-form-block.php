@@ -12,7 +12,8 @@ use Automattic\Jetpack\Blocks;
 use Automattic\Jetpack\Current_Plan;
 use Automattic\Jetpack\Forms\ContactForm\Contact_Form;
 use Automattic\Jetpack\Forms\ContactForm\Contact_Form_Plugin;
-use Automattic\Jetpack\Forms\Dashboard\Dashboard_View_Switch;
+use Automattic\Jetpack\Forms\ContactForm\Form_Preview;
+use Automattic\Jetpack\Forms\Dashboard\Dashboard as Forms_Dashboard;
 use Automattic\Jetpack\Forms\Jetpack_Forms;
 use Automattic\Jetpack\Modules;
 use Automattic\Jetpack\Status\Request;
@@ -41,7 +42,38 @@ class Contact_Form_Block {
 		Blocks::jetpack_register_block(
 			'jetpack/contact-form',
 			array(
-				'render_callback' => array( __CLASS__, 'gutenblock_render_form' ),
+				'render_email_callback' => array( __CLASS__, 'render_email' ),
+				'render_callback'       => array( __CLASS__, 'gutenblock_render_form' ),
+				'supports'              => array(
+					'layout'               => array(
+						'default'                => array(
+							'type'              => 'flex',
+							'flexWrap'          => 'wrap',
+							'orientation'       => 'horizontal',
+							'justifyContent'    => 'left',
+							'verticalAlignment' => 'top',
+						),
+						'allowSwitching'         => false,
+						'allowEditing'           => true,
+						'allowOrientation'       => true,
+						'allowVerticalAlignment' => true,
+						'allowJustification'     => true,
+						'allowWrap'              => false,
+					),
+					'__experimentalBorder' => array(
+						'color'                         => true,
+						'radius'                        => true,
+						'style'                         => true,
+						'width'                         => true,
+						'__experimentalDefaultControls' => array(
+							'color'  => true,
+							'radius' => true,
+							'style'  => true,
+							'width'  => true,
+						),
+					),
+				),
+				'style_handles'         => array( 'jetpack-forms-layout' ),
 			)
 		);
 
@@ -49,6 +81,14 @@ class Contact_Form_Block {
 		add_filter( 'render_block_core/html', array( __CLASS__, 'render_wrapped_html_block' ), 10, 2 );
 		add_filter( 'jetpack_block_editor_feature_flags', array( __CLASS__, 'register_feature' ) );
 		add_filter( 'pre_render_block', array( __CLASS__, 'pre_render_contact_form' ), 10, 3 );
+
+		add_filter( 'block_editor_rest_api_preload_paths', array( __CLASS__, 'preload_endpoints' ) );
+
+		// Load scripts for the editing interface
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_editor_scripts' ), 9 );
+
+		// Load AI integration after Jetpack_Gutenberg registers extensions (priority 10)
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'maybe_load_ai_integration' ), 11 );
 	}
 	/**
 	 * Register the contact form block feature flag.
@@ -58,11 +98,9 @@ class Contact_Form_Block {
 	 * @return array
 	 */
 	public static function register_feature( $features ) {
-		// Features under development.
-		$features['image-select-field'] = apply_filters( 'forms_alpha', false );
-
 		// Features that are only available to users with a paid plan.
 		$features['multistep-form'] = Current_Plan::supports( 'multistep-form' );
+		$features['form-webhooks']  = Current_Plan::supports( 'form-webhooks' );
 
 		return $features;
 	}
@@ -150,12 +188,12 @@ class Contact_Form_Block {
 			'jetpack/label',
 			array(
 				'supports'     => array(
-					'color'      => array(
+					'color'           => array(
 						'text'       => true,
 						'background' => false,
 						'gradients'  => false,
 					),
-					'typography' => array(
+					'typography'      => array(
 						'fontSize'                     => true,
 						'lineHeight'                   => true,
 						'__experimentalFontFamily'     => true,
@@ -165,6 +203,7 @@ class Contact_Form_Block {
 						'__experimentalTextDecoration' => true,
 						'__experimentalLetterSpacing'  => true,
 					),
+					'blockVisibility' => true,
 				),
 				'uses_context' => array(
 					'jetpack/field-required',
@@ -263,43 +302,41 @@ class Contact_Form_Block {
 			)
 		);
 
-		if ( Blocks::get_variation() === 'experimental' ) {
-			Blocks::jetpack_register_block(
-				'jetpack/input-rating',
-				array(
-					'supports' => array(
-						'color'      => array(
-							'text'       => true,
-							'background' => false,
-						),
-						'typography' => array(
-							'fontSize' => true,
-						),
+		Blocks::jetpack_register_block(
+			'jetpack/input-rating',
+			array(
+				'supports' => array(
+					'color'      => array(
+						'text'       => true,
+						'background' => false,
 					),
-				)
-			);
+					'typography' => array(
+						'fontSize' => true,
+					),
+				),
+			)
+		);
 
-			Blocks::jetpack_register_block(
-				'jetpack/input-range',
-				array(
-					'supports' => array(
-						'color'      => array(
-							'text'       => true,
-							'background' => false,
-						),
-						'typography' => array(
-							'fontSize'                     => true,
-							'__experimentalFontFamily'     => true,
-							'__experimentalFontWeight'     => true,
-							'__experimentalFontStyle'      => true,
-							'__experimentalTextTransform'  => true,
-							'__experimentalTextDecoration' => true,
-							'__experimentalLetterSpacing'  => true,
-						),
+		Blocks::jetpack_register_block(
+			'jetpack/input-range',
+			array(
+				'supports' => array(
+					'color'      => array(
+						'text'       => true,
+						'background' => false,
 					),
-				)
-			);
-		}
+					'typography' => array(
+						'fontSize'                     => true,
+						'__experimentalFontFamily'     => true,
+						'__experimentalFontWeight'     => true,
+						'__experimentalFontStyle'      => true,
+						'__experimentalTextTransform'  => true,
+						'__experimentalTextDecoration' => true,
+						'__experimentalLetterSpacing'  => true,
+					),
+				),
+			)
+		);
 
 		// Field render methods.
 		Blocks::jetpack_register_block(
@@ -352,6 +389,10 @@ class Contact_Form_Block {
 						'type' => 'string',
 						'role' => 'content',
 					),
+					'searchPlaceholder'   => array(
+						'type' => 'string',
+						'role' => 'content',
+					),
 				),
 				'supports'         => array(
 					'interactivity' => true,
@@ -361,6 +402,7 @@ class Contact_Form_Block {
 					'jetpack/field-required'             => 'required',
 					'jetpack/field-prefix-default'       => 'default',
 					'jetpack/field-phone-country-toggle' => 'showCountrySelector',
+					'jetpack/field-phone-search-placeholder' => 'searchPlaceholder',
 				),
 			)
 		);
@@ -446,35 +488,38 @@ class Contact_Form_Block {
 			)
 		);
 
-		if ( Blocks::get_variation() === 'experimental' ) {
-			Blocks::jetpack_register_block(
-				'jetpack/field-rating',
-				array(
-					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_rating' ),
-					'provides_context' => array(
-						'jetpack/field-required' => 'required',
-					),
-				)
-			);
+		Blocks::jetpack_register_block(
+			'jetpack/field-hidden',
+			array(
+				'render_callback' => array( Contact_Form_Plugin::class, 'gutenblock_render_field_hidden' ),
+			)
+		);
 
-			Blocks::jetpack_register_block(
-				'jetpack/field-slider',
-				array(
-					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_slider' ),
-					'provides_context' => array( 'jetpack/field-required' => 'required' ),
-				)
-			);
-		}
+		Blocks::jetpack_register_block(
+			'jetpack/field-rating',
+			array(
+				'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_rating' ),
+				'provides_context' => array(
+					'jetpack/field-required' => 'required',
+				),
+			)
+		);
 
-		if ( Blocks::get_variation() === 'beta' ) {
-			Blocks::jetpack_register_block(
-				'jetpack/field-time',
-				array(
-					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_time' ),
-					'provides_context' => array( 'jetpack/field-required' => 'required' ),
-				)
-			);
-		}
+		Blocks::jetpack_register_block(
+			'jetpack/field-slider',
+			array(
+				'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_slider' ),
+				'provides_context' => array( 'jetpack/field-required' => 'required' ),
+			)
+		);
+
+		Blocks::jetpack_register_block(
+			'jetpack/field-time',
+			array(
+				'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_time' ),
+				'provides_context' => array( 'jetpack/field-required' => 'required' ),
+			)
+		);
 
 		// Paid file field block
 		add_action(
@@ -531,98 +576,95 @@ class Contact_Form_Block {
 			'jetpack/form-step-container'
 		);
 
-		// Block under development.
-		if ( apply_filters( 'forms_alpha', false ) ) {
-			Blocks::jetpack_register_block(
-				'jetpack/field-image-select',
-				array(
-					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_image_select' ),
-					'provides_context' => array(
-						'jetpack/field-required' => 'required',
-						'jetpack/field-image-select-show-labels' => 'showLabels',
-						'jetpack/field-image-select-is-supersized' => 'isSupersized',
-						'jetpack/field-image-select-is-multiple' => 'isMultiple',
-						'jetpack/field-image-select-randomize-options' => 'randomizeOptions',
-						'jetpack/field-image-select-show-other-option' => 'showOtherOption',
-					),
-				)
-			);
+		Blocks::jetpack_register_block(
+			'jetpack/field-image-select',
+			array(
+				'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_image_select' ),
+				'provides_context' => array(
+					'jetpack/field-required' => 'required',
+					'jetpack/field-image-select-show-labels' => 'showLabels',
+					'jetpack/field-image-select-is-supersized' => 'isSupersized',
+					'jetpack/field-image-select-is-multiple' => 'isMultiple',
+					'jetpack/field-image-select-randomize-options' => 'randomizeOptions',
+					'jetpack/field-image-select-show-other-option' => 'showOtherOption',
+				),
+			)
+		);
 
-			Blocks::jetpack_register_block(
-				'jetpack/fieldset-image-options',
-				array(
-					'uses_context'     => array(
-						'jetpack/field-image-select-is-supersized',
-						'jetpack/field-image-select-is-multiple',
-						'jetpack/field-share-attributes',
-					),
-					'provides_context' => array(
-						'jetpack/field-image-options-type' => 'type',
-					),
-				)
-			);
+		Blocks::jetpack_register_block(
+			'jetpack/fieldset-image-options',
+			array(
+				'uses_context'     => array(
+					'jetpack/field-image-select-is-supersized',
+					'jetpack/field-image-select-is-multiple',
+					'jetpack/field-share-attributes',
+				),
+				'provides_context' => array(
+					'jetpack/field-image-options-type' => 'type',
+				),
+			)
+		);
 
-			Blocks::jetpack_register_block(
-				'jetpack/input-image-option',
-				array(
-					'supports'         => array(
-						'color'                => array(
+		Blocks::jetpack_register_block(
+			'jetpack/input-image-option',
+			array(
+				'supports'         => array(
+					'color'                => array(
+						'background'                    => true,
+						'text'                          => true,
+						'gradients'                     => false,
+						'__experimentalDefaultControls' => array(
 							'background' => true,
 							'text'       => true,
-							'gradients'  => false,
-							'__experimentalDefaultControls' => array(
-								'background' => true,
-								'text'       => true,
-							),
 						),
-						'typography'           => array(
-							'fontSize'                     => true,
-							'lineHeight'                   => true,
-							'__experimentalFontFamily'     => true,
-							'__experimentalFontWeight'     => true,
-							'__experimentalFontStyle'      => true,
-							'__experimentalTextTransform'  => true,
-							'__experimentalTextDecoration' => true,
-							'__experimentalLetterSpacing'  => true,
-							'__experimentalDefaultControls' => array(
-								'fontSize' => true,
-							),
+					),
+					'typography'           => array(
+						'fontSize'                      => true,
+						'lineHeight'                    => true,
+						'__experimentalFontFamily'      => true,
+						'__experimentalFontWeight'      => true,
+						'__experimentalFontStyle'       => true,
+						'__experimentalTextTransform'   => true,
+						'__experimentalTextDecoration'  => true,
+						'__experimentalLetterSpacing'   => true,
+						'__experimentalDefaultControls' => array(
+							'fontSize' => true,
 						),
-						'__experimentalBorder' => array(
+					),
+					'__experimentalBorder' => array(
+						'color'                         => true,
+						'radius'                        => true,
+						'style'                         => true,
+						'width'                         => true,
+						'__experimentalDefaultControls' => array(
 							'color'  => true,
 							'radius' => true,
 							'style'  => true,
 							'width'  => true,
-							'__experimentalDefaultControls' => array(
-								'color'  => true,
-								'radius' => true,
-								'style'  => true,
-								'width'  => true,
-							),
 						),
-						'spacing'              => array(
+					),
+					'spacing'              => array(
+						'margin'                        => true,
+						'padding'                       => true,
+						'__experimentalDefaultControls' => array(
 							'margin'  => true,
 							'padding' => true,
-							'__experimentalDefaultControls' => array(
-								'margin'  => true,
-								'padding' => true,
-							),
 						),
 					),
-					'uses_context'     => array(
-						'jetpack/field-image-select-is-supersized',
-						'jetpack/field-image-select-show-labels',
-						'jetpack/field-image-options-type',
-						'jetpack/field-share-attributes',
-					),
-					'provides_context' => array(
-						'allowResize' => 'allowResize',
-						'imageCrop'   => 'imageCrop',
-						'fixedHeight' => 'fixedHeight',
-					),
-				)
-			);
-		}
+				),
+				'uses_context'     => array(
+					'jetpack/field-image-select-is-supersized',
+					'jetpack/field-image-select-show-labels',
+					'jetpack/field-image-options-type',
+					'jetpack/field-share-attributes',
+				),
+				'provides_context' => array(
+					'allowResize' => 'allowResize',
+					'imageCrop'   => 'imageCrop',
+					'fixedHeight' => 'fixedHeight',
+				),
+			)
+		);
 	}
 
 	/**
@@ -665,6 +707,15 @@ class Contact_Form_Block {
 		// Count and store form steps
 		self::$form_step_count = self::count_form_steps_in_block( $parsed_block );
 
+		// For ref (synced) forms, render here via pre_render_block to short-circuit
+		// render_block(). This prevents wp_render_layout_support_flag from adding
+		// layout classes to the outer ref block's container div. The synced form's
+		// inner jetpack/contact-form block renders through the normal pipeline and
+		// gets layout classes on the correct element (wp-block-jetpack-contact-form).
+		if ( isset( $parsed_block['attrs']['ref'] ) ) {
+			return self::gutenblock_render_form( $parsed_block['attrs'], '' );
+		}
+
 		return $pre_render; // Don't actually pre-render, let normal rendering continue
 	}
 
@@ -700,6 +751,47 @@ class Contact_Form_Block {
 	}
 
 	/**
+	 * Render fallback for non-interactive contexts (email, feed, API, etc.).
+	 *
+	 * @param array $atts - the block attributes.
+	 *
+	 * @return string
+	 */
+	private static function render_fallback( $atts ) {
+		return sprintf(
+			'<div class="%1$s"><a href="%2$s" target="_blank" rel="noopener noreferrer">%3$s</a></div>',
+			esc_attr( Blocks::classes( 'contact-form', $atts ) ),
+			esc_url( get_the_permalink() ),
+			esc_html__( 'Submit a form.', 'jetpack-forms' )
+		);
+	}
+
+	/**
+	 * Render the contact form block for email contexts.
+	 *
+	 * This method is called by WordPress/WooCommerce email rendering system when a form block
+	 * appears in email content. Forms are not interactive in email contexts, so we always return
+	 * a fallback link that directs recipients to the form on the website.
+	 *
+	 * Note: The $block_content and $rendering_context parameters are required by the
+	 * render_email_callback signature but are intentionally unused here. We only need the
+	 * block attributes from $parsed_block to generate the fallback HTML, and we don't need
+	 * to process the block content or use email-specific rendering context since we're
+	 * always returning a simple fallback.
+	 *
+	 * @param string $block_content     The original block HTML content. Unused - we always return a fallback.
+	 * @param array  $parsed_block      The parsed block data including attributes.
+	 * @param object $rendering_context Email rendering context. Unused - not needed for fallback rendering.
+	 *
+	 * @return string HTML fallback with link to submit the form on the website.
+	 */
+	public static function render_email( $block_content, array $parsed_block, $rendering_context ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+		$atts = $parsed_block['attrs'] ?? array();
+
+		return self::render_fallback( $atts );
+	}
+
+	/**
 	 * Render the gutenblock form.
 	 *
 	 * @param array  $atts - the block attributes.
@@ -709,42 +801,38 @@ class Contact_Form_Block {
 	 */
 	public static function gutenblock_render_form( $atts, $content ) {
 		// We should not render block if the module is disabled on a site using the Jetpack plugin.
-		if ( class_exists( 'Jetpack' ) && ! ( new Modules() )->is_active( 'contact-form' ) ) {
+		// Exception: allow rendering in preview mode so form previews work.
+		if ( class_exists( 'Jetpack' ) && ! ( new Modules() )->is_active( 'contact-form' ) && ! Form_Preview::is_preview_mode() ) {
 			return '';
 		}
 		// Render fallback in other contexts than frontend (i.e. feed, emails, API, etc.), unless the form is being submitted.
-		if ( ! Request::is_frontend() && ! isset( $_POST['contact-form-id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			return sprintf(
-				'<div class="%1$s"><a href="%2$s" target="_blank" rel="noopener noreferrer">%3$s</a></div>',
-				esc_attr( Blocks::classes( 'contact-form', $atts ) ),
-				esc_url( get_the_permalink() ),
-				esc_html__( 'Submit a form.', 'jetpack-forms' )
-			);
+		// Exception: allow rendering in preview mode.
+		if ( ! Request::is_frontend() && ! isset( $_POST['contact-form-id'] ) && ! Form_Preview::is_preview_mode() ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			return self::render_fallback( $atts );
 		}
 
 		self::load_view_scripts();
+
+		// Handle ref attribute - load form from jetpack_form post
+		if ( isset( $atts['ref'] ) ) {
+			$ref_id = absint( $atts['ref'] );
+			if ( $ref_id > 0 ) {
+				return Contact_Form::render_synced_form( $ref_id );
+			} else {
+				return ''; // Invalid ref ID.
+			}
+		}
 
 		return Contact_Form::parse( $atts, do_blocks( $content ) );
 	}
 
 	/**
 	 * Load editor styles for the block.
-	 * These are loaded via enqueue_block_assets to ensure proper loading in the editor iframe context.
+	 *
+	 * @deprecated 7.5.0 This function is deprecated and will be removed in a future version.
 	 */
 	public static function load_editor_styles() {
-
-		$handle = 'jp-forms-blocks';
-
-		Assets::register_script(
-			$handle,
-			'../../../dist/blocks/editor.js',
-			__FILE__,
-			array(
-				'css_path'   => '../../../dist/blocks/editor.css',
-				'textdomain' => 'jetpack-forms',
-			)
-		);
-		wp_enqueue_style( 'jp-forms-blocks' );
+		_deprecated_function( __FUNCTION__, 'jetpack-7.5.0' );
 	}
 
 	/**
@@ -764,35 +852,93 @@ class Contact_Form_Block {
 			'../../../dist/blocks/editor.js',
 			__FILE__,
 			array(
-				'in_footer'  => true,
-				'textdomain' => 'jetpack-forms',
-				'enqueue'    => true,
-				// Editor styles are loaded separately, see load_editor_styles().
-				'css_path'   => null,
+				'dependencies' => array( 'jetpack-blocks-editor' ),
+				'in_footer'    => true,
+				'textdomain'   => 'jetpack-forms',
+				'enqueue'      => true,
+				'css_path'     => '../../../dist/blocks/editor.css',
 			)
 		);
 
 		// Create a Contact_Form instance to get the default values
-		$dashboard_view_switch   = new Dashboard_View_Switch();
-		$form_responses_url      = $dashboard_view_switch->get_forms_admin_url();
+		$form_responses_url      = Forms_Dashboard::get_forms_admin_url();
 		$akismet_active_with_key = Jetpack::is_akismet_active();
 		$akismet_key_url         = admin_url( 'admin.php?page=akismet-key-config' );
-		$preferred_view          = $dashboard_view_switch->get_preferred_view();
 
 		$data = array(
 			'defaults' => array(
-				'to'                   => Contact_Form::get_default_to( $post ? Contact_Form::get_post_property( $post, 'post_author' ) : null ),
+				'to'                   => Contact_Form::get_default_to_for_editor( $post ),
 				'subject'              => Contact_Form::get_default_subject( array() ),
 				'formsResponsesUrl'    => $form_responses_url,
 				'akismetActiveWithKey' => $akismet_active_with_key,
 				'akismetUrl'           => $akismet_key_url,
 				'assetsUrl'            => Jetpack_Forms::assets_url(),
-				'preferredView'        => $preferred_view,
 				'isMailPoetEnabled'    => Jetpack_Forms::is_mailpoet_enabled(),
 			),
 		);
 
-		wp_add_inline_script( $handle, 'window.jpFormsBlocks = ' . wp_json_encode( $data ) . ';', 'before' );
+		wp_add_inline_script( $handle, 'window.jpFormsBlocks = ' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP ) . ';', 'before' );
+	}
+
+	/**
+	 * Conditionally loads the AI form generation integration script.
+	 *
+	 * This script is only loaded when:
+	 * 1. The AI Assistant extension is available (ai-assistant-form-support)
+	 * 2. The central-form-management feature flag is enabled
+	 *
+	 * By checking these conditions in PHP, we ensure no JavaScript is loaded
+	 * when either the AI extension is disabled or central form management is off.
+	 *
+	 * This is hooked at priority 11 on enqueue_block_editor_assets to ensure
+	 * it runs after Jetpack_Gutenberg registers extensions at priority 10.
+	 */
+	public static function maybe_load_ai_integration() {
+		// Bail if the user cannot manage the block — jp-forms-blocks won't be registered.
+		if ( ! self::can_manage_block() ) {
+			return;
+		}
+
+		// Check if central form management is enabled.
+		if ( ! Contact_Form_Plugin::has_editor_feature_flag( 'central-form-management' ) ) {
+			return;
+		}
+
+		// Check if AI Assistant form support is available.
+		// This extension is set as available when the AI Assistant block is registered.
+		if ( ! class_exists( 'Jetpack_Gutenberg' ) ) {
+			return;
+		}
+
+		// Ensure extensions are registered by calling get_cached_availability().
+		\Jetpack_Gutenberg::get_cached_availability();
+		if ( ! \Jetpack_Gutenberg::is_available( 'ai-assistant-form-support' ) ) {
+			return;
+		}
+
+		Assets::register_script(
+			'jp-forms-ai-plugin',
+			'../../../dist/blocks/ai-form-plugin.js',
+			__FILE__,
+			array(
+				'dependencies' => array( 'jp-forms-blocks' ),
+				'in_footer'    => true,
+				'textdomain'   => 'jetpack-forms',
+				'enqueue'      => true,
+			)
+		);
+	}
+
+	/**
+	 * Add REST API endpoints to the block editor preload list.
+	 *
+	 * @param array $paths Existing paths to preload.
+	 * @return array Updated paths to preload.
+	 */
+	public static function preload_endpoints( $paths ) {
+		$paths[] = array( '/wp/v2/feedback/config', 'GET' );
+		$paths[] = array( '/wp/v2/feedback/config?_locale=user', 'GET' );
+		return $paths;
 	}
 
 	/**

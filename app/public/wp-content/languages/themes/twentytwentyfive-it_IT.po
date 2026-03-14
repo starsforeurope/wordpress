@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Twenty Twenty-Five package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-12-12 18:31:31+0000\n"
+"PO-Revision-Date: 2025-12-02 11:02:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.1\n"
+"X-Generator: GlotPress/4.0.3\n"
 "Language: it\n"
 "Project-Id-Version: Themes - Twenty Twenty-Five\n"
 
@@ -993,6 +993,10 @@ msgctxt "Pattern title"
 msgid "News blog query loop"
 msgstr "Query loop di blog di notizie"
 
+#: patterns/template-home-with-sidebar-news-blog.php:42
+msgid "The Latest"
+msgstr "Il più recente"
+
 #: patterns/template-home-with-sidebar-news-blog.php
 msgctxt "Pattern title"
 msgid "News blog with sidebar"
@@ -1750,11 +1754,6 @@ msgstr "A partire da %s/mese"
 msgid "I’m Asahachi Kōno, a Japanese photographer, a member of Los Angeles’s Japanese Camera Pictorialists of California. Before returning to Japan, I worked as a photo retoucher."
 msgstr "Io sono Asahachi Kōno, fotografo giapponese e membro della «Los Angeles’s Japanese Camera Pictorialists of California». Prima di tornare in Giappone, ho lavorato come fotoritoccatore."
 
-#: patterns/page-link-in-bio-wide-margins.php:38
-msgctxt "Pattern placeholder text."
-msgid "I’m Nora, a dedicated public interest attorney based in Denver. I’m a graduate of Stanford University."
-msgstr "Sono Nora, procuratore impegnata nell'interesse pubblico a Denver. Sono laureata alla Stanford University."
-
 #: patterns/page-link-in-bio-heading-paragraph-links-image.php:30
 msgid "Lewis W. Hine studied sociology before moving to New York in 1901 to work at the Ethical Culture School, where he took up photography to enhance his teaching practices"
 msgstr "Lewis W. Hine studiò sociologia prima di trasferirsi a New York nel 1901 per lavorare alla «Ethical Culture School», dove si dedicò alla fotografia per migliorare le sue tecniche di insegnamento"
@@ -2061,6 +2060,11 @@ msgctxt "Pattern description"
 msgid "A full-width cover section with a large background image and an oversized heading."
 msgstr "Una sezione copertina a larghezza piena con una grande immagine di sfondo e un titolo di grandi dimensioni."
 
+#: patterns/hero-full-width-image.php
+msgctxt "Pattern description"
+msgid "A hero with a full width image, heading, short paragraph and button."
+msgstr "Hero con immagine a larghezza piena, titolo, un piccolo paragrafo e un pulsante."
+
 #: patterns/cta-grid-products-link.php
 msgctxt "Pattern title"
 msgid "Call to action with grid layout with products and link"
@@ -2071,6 +2075,20 @@ msgctxt "Pattern description"
 msgid "A call to action section with links to get the book in different websites."
 msgstr "Una sezione di invito all'azione con link per ottenere il libro in diversi siti web."
 
+#: patterns/contact-location-and-link.php:22
+msgid "Visit us at 123 Example St. Manhattan, NY 10300, United States"
+msgstr "Visitaci al 123 di Example St. Manhattan, NY 10300, Stati Uniti"
+
+#: patterns/logos.php
+msgctxt "Pattern description"
+msgid "Showcasing the podcast's clients with a heading and a series of client logos."
+msgstr "Mostra i clienti del podcast con un titolo e una serie di loghi dei clienti."
+
+#: patterns/hidden-blog-heading.php
+msgctxt "Pattern description"
+msgid "Hidden heading for the home page and index template."
+msgstr "Titolo nascosto per la homepage e il template dell'indice."
+
 #: patterns/hidden-blog-heading.php
 msgctxt "Pattern title"
 msgid "Hidden blog heading"
@@ -2080,6 +2098,11 @@ msgstr "Titolo del blog nascosto"
 msgctxt "image description"
 msgid "Small totara tree on ridge above Long Point"
 msgstr "Piccolo albero di totara sul crinale sopra Long Point"
+
+#: patterns/page-cv-bio.php:31
+msgctxt "Pattern placeholder text."
+msgid "My name is Nora Winslow Keene, and I’m a committed public interest attorney. Living in Denver, Colorado, I’ve spent years championing the rights of underrepresented workers. A graduate of Stanford University, I played a key role in securing critical protections for agricultural laborers, ensuring better wages and access to healthcare. My work has focused on advocating for environmental justice and improving the quality of life for rural communities. Every case I take on is driven by the belief that everyone deserves dignity and fair treatment in the workplace."
+msgstr "Mi chiamo Nora Winslow Keene e sono un'avvocata impegnata nel settore del pubblico interesse. Vivendo a Denver, Colorado, ho passato anni a difendere i diritti dei lavoratori sottorappresentati. Laureata alla Stanford University, ho svolto un ruolo chiave nell'assicurare protezioni fondamentali per i lavoratori agricoli, garantendo salari migliori e accesso all'assistenza sanitaria. Il mio lavoro si è concentrato nel sostenere la giustizia ambientale e migliorare la qualità della vita per le comunità rurali. Ogni caso di cui mi occupo è guidato dalla convinzione che tutti meritano dignità e un trattamento equo sul posto di lavoro."
 
 #: patterns/hero-podcast.php:43
 msgid "Subscribe on your favorite platform"
@@ -2102,6 +2125,13 @@ msgstr "Annulla in qualsiasi momento"
 msgctxt "Pattern description"
 msgid "A call to action featuring product images."
 msgstr "Invito all'azione con immagini del prodotto."
+
+#: patterns/contact-info-locations.php:54
+#: patterns/contact-info-locations.php:66
+#: patterns/contact-info-locations.php:78
+#: patterns/contact-info-locations.php:90
+msgid "123 Example St. Manhattan, NY 10300 United States"
+msgstr "123 Example St. Manhattan, NY 10300 Stati Uniti"
 
 #: patterns/banner-intro-image.php
 msgctxt "Pattern description"
@@ -2145,6 +2175,16 @@ msgctxt "Pattern description"
 msgid "Large heading with a search form for quick navigation."
 msgstr "Titolo grande con modulo di ricerca per una navigazione veloce."
 
+#: patterns/format-link.php
+msgctxt "Pattern description"
+msgid "A link post format with a description and an emphasized link for key content."
+msgstr "Un articolo in formato link con descrizione e un link enfatizzato per contenuti chiave."
+
+#: patterns/format-audio.php
+msgctxt "Pattern description"
+msgid "An audio post format with an image, title, audio player, and description."
+msgstr "Un articolo in formato audio con una immagine, titolo, audio player e descrizione."
+
 #: patterns/cta-book-links.php:57
 #: patterns/hero-overlapped-book-cover-with-links.php:100
 msgctxt "Pattern placeholder text with link."
@@ -2169,6 +2209,11 @@ msgstr "Sezione contatti con link ai social media e molteplici dettagli sulla se
 msgctxt "Pattern description"
 msgid "Centered contact section with a prominent message and social media links."
 msgstr "Sezione contatti centrata con slogan molto in evidenza e link ai social media."
+
+#: patterns/binding-format.php
+msgctxt "Pattern title"
+msgid "Post format name"
+msgstr "Nome del formato dell'articolo"
 
 #: functions.php:113
 msgid "Post formats"
@@ -2223,6 +2268,45 @@ msgstr "Ottieni l'accesso ad una raccolta curata di momenti nel tempo con fotogr
 #: patterns/overlapped-images.php:47
 msgid "%s is a flower delivery and subscription business. Based in the EU, our mission is not only to deliver stunning flower arrangements across but also foster knowledge and enthusiasm on the beautiful gift of nature: flowers."
 msgstr "%s è un'attività di consegna e abbonamento di fiori. Con sede nell'UE, la nostra missione non è solo la fornitura di splendide composizioni floreali, ma anche la promozione della conoscenza e dell'entusiasmo per il meraviglioso dono della natura: i fiori."
+
+#: patterns/banner-poster.php
+msgctxt "Pattern title"
+msgid "Poster-like section"
+msgstr "Sezione simile ad un poster"
+
+#: patterns/banner-about-book.php:26
+msgctxt "Pattern placeholder text."
+msgid "This exquisite compilation showcases a diverse array of photographs that capture the essence of different eras and cultures, reflecting the unique styles and perspectives of each artist. Fleckenstein’s evocative imagery, Strand’s groundbreaking modernist approach, and Kōno’s meticulous documentation of Japanese life come together in a harmonious blend that celebrates the art of photography. Each image in “The Stories Book” is accompanied by insightful commentary, providing historical context and revealing the stories behind the photographs. This collection is not only a visual feast but also a tribute to the power of photography to preserve and narrate the multifaceted experiences of humanity."
+msgstr "Questa deliziosa raccolta mostra una vasta gamma di fotografie che catturano l'essenza di epoche e culture diverse, riflettendo gli stili e le prospettive uniche di ogni artista. Le immagini evocative di Fleckenstein, l'innovativo approccio modernista di Strand e la meticolosa documentazione di Kōno della vita giapponese si uniscono in una miscela armoniosa che celebra l'arte della fotografia. Ogni immagine in “The Stories Book” è accompagnata da commenti approfonditi, che forniscono un contesto storico e rivelano le storie dietro alle fotografie. Questa collezione non è solo una festa visiva, ma anche un tributo al potere della fotografia di preservare e raccontare le esperienze poliedriche dell'umanità."
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Vertical site header"
+msgstr "Header verticale del sito"
+
+#: patterns/vertical-header.php
+msgctxt "Pattern title"
+msgid "Vertical site header"
+msgstr "Header verticale del sito"
+
+#: patterns/vertical-header.php
+msgctxt "Pattern description"
+msgid "Vertical site header with site title and navigation."
+msgstr "Header verticale con titolo del sito e navigazione."
+
+#: patterns/page-link-in-bio-wide-margins.php:38
+msgctxt "Pattern placeholder text."
+msgid "I’m Nora, a dedicated public interest attorney based in Denver. I’m a graduate of Stanford University."
+msgstr "Sono Nora, avvocata specializzata in cause di interesse pubblico a Denver. Mi sono laureata alla Stanford University."
+
+#: patterns/banner-poster.php:51
+msgid "Let’s hear them."
+msgstr "Ascoltiamole."
+
+#: patterns/header-centered.php
+msgctxt "Pattern title"
+msgid "Centered site header"
+msgstr "Header del sito centrato"
 
 #. Author URI of the theme
 #: style.css patterns/footer-centered.php:34 patterns/footer-columns.php:74

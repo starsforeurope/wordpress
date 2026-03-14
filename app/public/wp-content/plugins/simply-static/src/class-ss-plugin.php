@@ -74,6 +74,11 @@ class Plugin {
 			self::$instance = new self();
 			self::$instance->includes();
 
+
+   add_action( 'activated_plugin', array( '\\Simply_Static\\Util', 'maybe_auto_include_activated_plugin' ), 10, 2 );
+   add_action( 'deactivated_plugin', array( '\\Simply_Static\\Util', 'maybe_auto_remove_deactivated_plugin' ), 10, 2 );
+   add_action( 'after_switch_theme', array( '\\Simply_Static\\Util', 'maybe_auto_include_active_theme' ) );
+
 			// Apply hooks after init to avoid loading issues.
 			add_action( 'init', function () {
 				// Run export via WP-Cron.
@@ -124,6 +129,8 @@ class Plugin {
 
 				// Boot up admin.
 				Admin_Settings::get_instance();
+				// Register admin REST routes in a dedicated controller.
+				Admin_Rest::get_instance();
 			} );
 		}
 
@@ -155,15 +162,16 @@ class Plugin {
 		require_once $path . 'src/class-ss-phpuri.php';
 		require_once $path . 'src/class-ss-options.php';
 		require_once $path . 'src/class-ss-view.php';
+		require_once $path . 'src/class-ss-html-encoding-helper.php';
 		require_once $path . 'src/class-ss-url-extractor.php';
 		require_once $path . 'src/class-ss-url-fetcher.php';
 		require_once $path . 'src/background/class-ss-async-request.php';
 		require_once $path . 'src/background/class-ss-background-process.php';
 		require_once $path . 'src/tasks/exceptions/class-ss-pause-exception.php';
 		require_once $path . 'src/class-ss-archive-creation-job.php';
-		require_once $path . 'src/tasks/traits/class-skip-further-processing-exception.php';
-		require_once $path . 'src/tasks/traits/trait-can-process-pages.php';
-		require_once $path . 'src/tasks/traits/trait-can-transfer.php';
+		require_once $path . 'src/tasks/traits/class-ss-skip-further-processing-exception.php';
+		require_once $path . 'src/tasks/traits/trait-ss-can-process-pages.php';
+		require_once $path . 'src/tasks/traits/trait-ss-can-transfer.php';
 		require_once $path . 'src/tasks/class-ss-task.php';
 		require_once $path . 'src/tasks/class-ss-setup-task.php';
 		require_once $path . 'src/tasks/class-ss-discover-urls-task.php';
@@ -184,6 +192,7 @@ class Plugin {
 		require_once $path . 'src/class-ss-page-handlers.php';
 		require_once $path . 'src/class-ss-integrations.php';
 		require_once $path . 'src/admin/inc/class-ss-admin-settings.php';
+		require_once $path . 'src/admin/inc/class-ss-admin-rest.php';
 		require_once $path . 'src/admin/inc/class-ss-admin-meta.php';
 		require_once $path . 'src/admin/inc/class-ss-migrate-settings.php';
 		require_once $path . 'src/class-ss-multisite.php';
@@ -198,6 +207,26 @@ class Plugin {
 	 */
 	public function add_plugin_admin_menu() {
 		// Deprecated, only for upgrade support.
+	}
+
+	/**
+	 * Get Options instance.
+	 *
+	 * @return Options|null
+	 */
+	public function get_options() {
+		return $this->options;
+	}
+
+	/**
+	 * Set Options instance.
+	 *
+	 * @param Options $options Options instance.
+	 *
+	 * @return void
+	 */
+	public function set_options( Options $options ) {
+		$this->options = $options;
 	}
 
 	/**
@@ -336,7 +365,7 @@ class Plugin {
 
 		$log = $this->options->get( 'archive_status_messages' );
 
-		do_action( 'ss_after_render_activity_log', $blog_id );
+		do_action( 'ss_after_render_activity_log', $blog_id, $this->get_archive_creation_job() );
 
 		return $log;
 	}
@@ -344,35 +373,62 @@ class Plugin {
 	/**
 	 * Get export log data.
 	 *
-	 * @param int $per_page given per page.
-	 * @param int $current_page given current page.
-	 * @param int $blog_id given blog id.
+	 * @param int    $per_page given per page.
+	 * @param int    $current_page given current page.
+	 * @param int    $blog_id given blog id.
+	 * @param string $search optional search term to filter by URL, status code, or notes.
 	 *
 	 * @return array
 	 */
-	public function get_export_log( $per_page, $current_page = 1, $blog_id = 0 ) {
+	public function get_export_log( $per_page, $current_page = 1, $blog_id = 0, $search = '' ) {
+		global $wpdb;
 
 		$blog_id = $blog_id ?: get_current_blog_id();
 
-		do_action( 'ss_before_render_export_log', $blog_id );
+		do_action( 'ss_before_render_export_log', $blog_id, $this->get_archive_creation_job() );
 
 		$per_page = $per_page ?: 25;
 		$offset   = ( intval( $current_page ) - 1 ) * intval( $per_page );
 
-		$static_pages = apply_filters(
-			'ss_total_pages_log',
-			Page::query()
-			    ->limit( $per_page )
-			    ->offset( $offset )
-			    ->order( 'http_status_code DESC' )
-			    ->find()
-		);
+		$query = Page::query()
+		    ->limit( $per_page )
+		    ->offset( $offset )
+		    ->order( 'http_status_code DESC' );
 
-		$http_status_codes  = Page::get_http_status_codes_summary();
-		$total_static_pages = apply_filters( 'ss_total_pages', array_sum( array_values( $http_status_codes ) ) );
-		$total_pages        = ceil( $total_static_pages / $per_page );
+		if ( ! empty( $search ) ) {
+			$like = '%' . $wpdb->esc_like( $search ) . '%';
+			$query->where(
+				$wpdb->prepare(
+					'(url LIKE %s OR http_status_code LIKE %s OR status_message LIKE %s)',
+					$like,
+					$like,
+					$like
+				)
+			);
+		}
 
-		do_action( 'ss_after_render_export_log', $blog_id );
+		$static_pages = apply_filters( 'ss_total_pages_log', $query->find() );
+
+		if ( ! empty( $search ) ) {
+			$like               = '%' . $wpdb->esc_like( $search ) . '%';
+			$count_query        = Page::query();
+			$count_query->where(
+				$wpdb->prepare(
+					'(url LIKE %s OR http_status_code LIKE %s OR status_message LIKE %s)',
+					$like,
+					$like,
+					$like
+				)
+			);
+			$total_static_pages = apply_filters( 'ss_total_pages', (int) $count_query->count() );
+		} else {
+			$http_status_codes  = Page::get_http_status_codes_summary();
+			$total_static_pages = apply_filters( 'ss_total_pages', array_sum( array_values( $http_status_codes ) ) );
+		}
+
+		$total_pages = ceil( $total_static_pages / $per_page );
+
+		do_action( 'ss_after_render_export_log', $blog_id, $this->get_archive_creation_job() );
 
 		$static_pages_formatted = [];
 
@@ -439,6 +495,22 @@ class Plugin {
 	 * @return array The list of tasks to process.
 	 */
 	public function filter_task_list( $task_list, $delivery_method ): array {
+		// 404-only export short-circuit
+		$only_404 = get_option( 'simply-static-404-only' );
+		if ( ! empty( $only_404 ) ) {
+			$task_list = [ 'setup' ];
+			// Always include the 404 generator for this mode.
+			$task_list[] = 'generate_404';
+			if ( 'zip' === $delivery_method ) {
+				$task_list[] = 'create_zip_archive';
+			} elseif ( 'local' === $delivery_method ) {
+				$task_list[] = 'transfer_files_locally';
+			} else {
+				// For other delivery methods in Pro, keep placeholder; Free doesn't handle them.
+			}
+			$task_list[] = 'wrapup';
+			return $task_list;
+		}
 		$generate_404 = $this->options->get( 'generate_404' );
 
 		$task_list[] = 'setup';
@@ -481,7 +553,16 @@ class Plugin {
 		// Check the export type.
 		$use_single            = get_option( 'simply-static-use-single' );
 		$use_build             = get_option( 'simply-static-use-build' );
-		$clear_local_directory = apply_filters( 'ss_clear_local_directory', empty( $use_build ) && empty( $use_single ) && $this->options->get( 'clear_directory_before_export' ) && 'local' === $this->options->get( 'delivery_method' ) );
+		$only_404              = get_option( 'simply-static-404-only' );
+		$clear_local_directory = apply_filters(
+			'ss_clear_local_directory',
+			// Only clear on full local exports (not build, not single, not update, not 404-only)
+			empty( $use_build )
+			&& empty( $use_single )
+			&& empty( $only_404 )
+			&& $this->options->get( 'clear_directory_before_export' )
+			&& 'local' === $this->options->get( 'delivery_method' )
+		);
 
 		// Clear out the local directory before copying files.
 		if ( $clear_local_directory ) {
@@ -492,6 +573,11 @@ class Plugin {
 
 			if ( is_dir( $local_dir ) && $iterator->valid() ) {
 				Transfer_Files_Locally_Task::delete_local_directory_static_files( $local_dir, $this->options );
+			}
+		} else {
+			// Provide a small hint in debug log when skipping clearing due to special export modes
+			if ( ! empty( $only_404 ) ) {
+				Util::debug_log( 'Skipping clearing local directory: 404-only export.' );
 			}
 		}
 	}

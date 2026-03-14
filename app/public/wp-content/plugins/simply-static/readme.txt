@@ -1,263 +1,473 @@
 === Simply Static - The Static Site Generator ===
 Contributors: patrickposner
-Tags: static site generator, performance, security, jamstack
+Tags: jamstack, performance, security, static site generator
 Requires at least: 6.2
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag:  3.4.5.1
+Stable tag:  3.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create a static website directly from your WordPress website with Simply Static.
+Convert WordPress to static HTML. Boost performance 3-5x. Eliminate security vulnerabilities. Deploy anywhere.
 
 == Description ==
+Simply Static turns your WordPress site into secure, lightning-fast static HTML files.
 
-Simply Static is a static site generator that converts your existing WordPress website to a static website that you can host on your server, a static hosting provider, or a CDN.
+Stop worrying about WordPress security patches, performance plugins, and expensive hosting.
 
-It drastically improves the performance of your website and minimizes security risks as it removes the connection between your traditional server and your static website.
+Simply Static converts your entire WordPress site into static HTML, CSS, and JavaScript files that load instantly and can't be hacked.
 
-Simply Static can also be used by local development tools like LocalWP or Lando to develop your website offline and push the static site online.
+Perfect for blogs, marketing sites, documentation, portfolios, and any content-driven WordPress site.
 
-This reduces your hosting costs to zero (depending on your requirements and the used service/provider).
+= Why Go Static? =
+⚡ Blazing Fast Performance
+Static sites load 3-5x faster than traditional WordPress. No database queries. No server-side processing. Just instant page loads from a global CDN.
 
-= Performance =
+🔒 Unhackable Security
+No database. No login page. No PHP vulnerabilities. Static HTML can't be hacked the way traditional WordPress can.
 
-Converting your website to a static website can drastically improve your performance. Simply Static eliminates all requests to your database and by that reducing the first time to byte.
+💰 Dramatically Lower Hosting Costs
+Host your static site for free on platforms like Cloudflare Pages, Netlify, or GitHub Pages. Or deploy to any server for pennies per month.
 
-This is especially impactful for websites that use long pages with a lot of animations, graphs, and other load-heavy tools like sliders.
+🎯 Zero Maintenance
+No more WordPress updates. No plugin conflicts. No security patches. Focus on content, not server management.
+= How Simply Static Works =
 
-= Security =
+* Generate: Click one button to convert your entire WordPress site to static HTML
+* Export: Download as ZIP or deploy to a local directory
+* Deploy: Upload to any hosting provider, CDN, or static hosting platform
 
-Removing the connection to your database and traditional server reduces the risk of getting hacked. 
+Your WordPress site stays private and secure. Your static site is what visitors see.
 
-This reduces the stress to keep your WordPress website up to date and keeps your data secure (locally or in a protected environment).
+= What You Can Do with the Free Version =
+* One-click static site generation
+* Export as ZIP file
+* Deploy to local directory
+* Replace URLs (absolute, relative, or offline use)
+* Works with any WordPress theme
+* Compatible with popular page builders (Elementor, Bricks, Gutenberg)
+* SEO plugin support (Yoast, Rank Math, AIOSEO)
 
-= Reduce hosting costs =
+= Ready for More? =
+The free version is perfect for simple static exports, but if you need advanced deployment, automation, and powerful features, check out our premium solutions.
 
-Using Simply Static to deploy your website to one of the static hosting providers, a CDN or an S3 bucket reduces the amount of money required for reliable web hosting.
+= Simply Static Pro - For Developers & Agencies =
+$99/year per site | $299/year unlimited sites
+Deploy to any platform. Automate everything. Keep 100% of your profit margins.
 
-With the right setup, you can even host your website completely for free (Cloudflare Pages and GitHub Pages for example).
+* Deploy to GitHub, Netlify, Cloudflare Pages, AWS S3, BunnyCDN, SFTP
+* Incremental exports (update only changed pages)
+* Single-page exports (instant publishing)
+* WP-CLI support for complete automation
+* Forms integration (Contact Form 7, Gravity Forms, WPForms, Fluent Forms)
+* Static-friendly search (Fuse.js or Algolia)
+* Multilingual support (WPML, Polylang, TranslatePress)
+* Performance optimization (minification, image optimization)
+* Comments integration
+* Email support
 
-= Local development =
+Perfect for developers self-hosting client sites, agencies managing infrastructure, and technical users who want complete control.
 
-Develop your site locally and only push the static exported website on a server. To ensure everything works as expected I created a list of development tools that are completely supported:
+[Get Simply Static Pro](https://simplystatic.com/simply-static-pro/)
 
-* [LocalWP](https://localwp.com/)
-* [lando](https://docs.lando.dev/)
+= Simply Static Studio - For Businesses & Content Creators =
+From $11/month
+All-in-one managed WordPress hosting. Zero maintenance. Maximum security.
 
-I highly recommend not to use another tool for local development if you are not a programmer as in most cases manual package installation is required.
+* Fully managed WordPress hosting
+* Static site hosting on global CDN (120+ locations)
+* Automated backups & SSL certificates
+* One-click WordPress login
+* Free white-glove migration
+* Team management & access control
+* Everything from Pro, pre-configured
+* Priority support
 
-= Static Studio =
+Perfect for businesses running 1-5 websites, content creators who want simplicity, and anyone who values convenience over control.
 
-Static Studio is our all-in-one Static WordPress cloud hosting solution - here is why you want it:
+[Try Studio Free for 7 Days](https://simplystatic.com/simply-static-studio/)
 
-* Secure WordPress hosting protected from public access (Firewall, Basic Auth, and WebAssembly)
-* High-performance static site hosting powered by BunnyCDN Enterprise
-* Ultra-fast exports because of our optimized server stack (NGINX, auto-scalable workers)
-* Backups, SSL, unlimited file storage, and bandwidth included
-* Devs: WP-CLI, SSH, SFT,P and hands-on code support
+= Trusted by 40,000+ Users Worldwide =
+* 1,400,000+ plugin downloads
+* 4.5/5 star rating
+* Active development & support
+* Used by Microsoft, HP, Postman, UNICEF
 
-[Start your 7-day free trial](https://simplystatic.com/simply-static-studio/)
+= Learning Resources =
 
-== Simply Static Pro ==
+[Documentation](https://docs.simplystatic.com)
+Comprehensive guides covering every aspect of Simply Static.
 
-The pro version of Simply Static enhances the plugin with various features.
+[Video Course](https://simplystatic.com/videos/)
+Watch our free YouTube course covering static WordPress from basics to advanced.
 
-[youtube https://youtu.be/Vml537IIwVc]
+[Weekly Tutorials](https://simplystatic.com/tutorials/)
+New tutorials published every other week on our blog.
 
-= GitHub Integration =
+Community Support
+Get help from the community in the WordPress.org forums.
 
-With the GitHub integration, you can completely automate your entire development process.
+= Use Cases =
+**Perfect For:**
 
-The only thing you need is a GitHub account, no knowledge of Git or GitHub itself is required, as Simply Static Pro handles the entire process for you and keeps your repository up to date.
+* Blogs & content sites
+* Marketing websites & landing pages
+* Documentation sites
+* Portfolio sites
+* Company websites
+* Product launch pages
+* Event sites
 
-This allows deploying your static website to:
+**Not Suitable For:**
 
-* GitHub Pages
-* Cloudflare Pages
-* Netlify
-* Vercel
+* E-commerce sites
+* Membership sites
+* Sites requiring user logins
+* Real-time data updates
+* Heavy AJAX functionality
 
-= AWS S3 Integration =
+Note: Forms, search, and comments ARE possible with Simply Static Pro or Studio.
 
-Export directly to Amazon AWS S3 from Simply Static Pro. Connect your bucket and run your export.
+= Plugins & Features That Don't Work with Static Sites =
+Static sites are perfect for public content, but some WordPress plugins require server-side processing and won't work on static sites:
 
-= SFTP =
+**E-commerce:**
 
-Export directly to a remote SFTP server. Connect your server and run your export.
+* WooCommerce
+* Easy Digital Downloads
+* Other shopping cart plugins
 
-= BunnyCDN Integration =
+Static sites can't process payments or manage user accounts. Consider headless WordPress solutions for e-commerce.
 
-Export directly to BunnyCDN and get all the benefits of their CDN - including caching, file optimization and DNS management.
+**Membership & Authentication:**
 
+* MemberPress
+* Restrict Content Pro
+* User registration plugins
+* Login-required content
 
-= Incremental-, Builds and Single Exports =
+Static sites don't support user authentication or member-only areas.
 
-Use Incremental Exports to update only changes to your static website. No configuration needed, just choose Update and run the export.
+**Real-Time Dynamic Content:**
 
-Use Build Exports to quickly roll out global changes to your static website. Want to update your style.css file? Or a new plugin? Use a build export.
+* Forum plugins (bbPress, BuddyPress)
+* Live chat widgets (unless using external services)
+* Real-time data feeds
+* Heavy AJAX functionality
 
-Use Single Exports to quickly publish new pages and posts to your static site. This also supports scheduled posts.
+**What DOES Work (with Pro/Studio):**
 
-= Forms =
+* Forms (Contact Form 7, Gravity Forms, WPForms, Fluent Forms)
+* Search functionality (Fuse.js or Algolia)
+* Comments (special integration)
+* Newsletter signups (via external services)
 
-Create and use forms created with your favorite form plugin on your static website with Simply Static Pro. Supported plugins are:
-
-* Contact Form 7
-* Gravity Forms
-* WP Forms
-* FluentForms
-* WS Forms
-
-You can decide if you want to use an external service like Zapier and IFTTT to offload the submission (webhook) or embed the form from your WordPress website via iFrame.
-
-
-= Search =
-
-Use a fully static search solution that does not rely on any Third-Party-Providers. It uses Fuse.js and creates an index of your whole website as a JSON file.
-
-The search supports autosuggestion and fuzzy logic and is by default way more convenient than your default WordPress search.
-
-
-= Comments =
-
-Enable comments on your static website without the requirement of Third-Party-Providers. Use your original WordPress website to process the comment.
-
-After a comment was submitted, Simply Static automatically exports a new static version of the post. You don't have to do anything.
-
-
-= Multilingual =
-
-Use WPML, Polylang or TranslatePress and run static exports per language or all at once.
-
-Simply Static Pro also supports configuring settings per language, using the available language switchers and more to export a your multilingual website as easy as possible.
-
-
-= WP-CLI =
-
-Simply Static Pro has a detailed and comprehensive integration with WP-CLI.
-
-Control every option, run different kinds of exports and more with the WP-CLI integration.
-
-= Minification =
-
-Automatically minfiy HTML, CSS and JavaScript files on your static site.
-
-We can even minify inline CSS & JavaScript.
-
-= Image Optimization =
-
-Automatically optimize images on your static website with our ShortPixel API integration.
-
-= Optimization =
-
-Replace default WordPress paths and completely hide that you are using WordPress behind the scenes.
-
-Replace:
-
-* wp-content
-* wp-includes
-* wp-content/plugins/
-* wp-content/themes/
-* wp-content/uploads/
-
-
-Hide & Disable:
-
-Disabled unwanted features in WordPress before running an static export like:
-
-* XML-RPC
-* REST API URLs
-* Emoji support
-* Shortlink support
-* WordPress version in HTML
-
-and much more.
-
-= Get the Pro version =
-
-You can get the pro version [here](https://simplystatic.com/pricing/).
-
-= Simply Static Course =
-
-We created an entire video course about Static WordPress with Simply Static - check out the first video:
-
-[youtube https://youtu.be/Ei_w-Jcq4uQ]
-
-You can watch the entire course entirely for free on YouTube here: [Simply Static Course](https://www.youtube.com/playlist?list=PLcpe8_rNg8U5g1gCOa0Ge6T17f50nSvmg)
-
-= Tutorials =
-
-We also publish new tutorials on our blog every other week on how to work with Simply Static and other static site tools.
-
-You can check the latest tutorials [here](https://simplystatic.com/tutorials/)
-
-= Documentation =
-
-We have a super extensive documentation that covers every aspect of Simply Static and Simply Static Pro.
-
-You can check the documentation [here](https://docs.simplystatic.com)
-
+If your site relies heavily on the plugins listed above, Simply Static may not be the right solution. For questions about specific plugin compatibility, check our compatibility database or ask in our support forum.
 
 == Installation ==
+= Automatic Installation (Recommended) =
 
-1. Log into your WordPress website.
-2. On the left menu, hover over Plugins and then click on Add New.
-3. In the Search Plugins box, type in "Simply Static" and press the Enter key.
-4. You will see a list of search results that should include the Simply Static plugin. Click on the Install Now button to install the plugin.
-5. After installing the plugin you will be prompted to activate it. Click on the Activate Plugin link.
-6. The Simply Static plugin is now installed and can be found on the left menu.
+* Log into your WordPress admin panel
+* Navigate to Plugins → Add New
+* Search for "Simply Static"
+* Click "Install Now" on the Simply Static plugin
+* Click "Activate" after installation completes
+* Access Simply Static from the left admin menu
 
-or
+= Manual Installation =
+* Download the plugin ZIP file
+* Log into your WordPress admin panel
+* Navigate to Plugins → Add New → Upload Plugin
+* Choose the downloaded ZIP file and click "Install Now"
+* Click "Activate Plugin" after installation
+* Access Simply Static from the left admin menu
 
-1. Upload the entire `simply-static` folder to the `/wp-content/plugins/` directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
+= Getting Started =
+After activation:
+
+* Go to Simply Static → Settings
+* Review and configure your export settings (defaults work for most sites)
+* Go to Simply Static → Generate
+* Click "Generate Static Files"
+* Download your ZIP or access files in your local directory
+
+Watch our quick start tutorial
+
+Need help? Check our comprehensive documentation or support forums.
 
 == Frequently Asked Questions ==
+= Is Simply Static really free? =
+Yes! The core plugin is 100% free and open source. It provides everything you need for basic static site generation and ZIP export.
+Simply Static Pro and Studio are optional premium products for advanced features like automated deployment, forms, search, and managed hosting.
+= What's the difference between the free plugin, Pro, and Studio? =
+Free: Generate static sites, export as ZIP or to local directory. Perfect for testing and simple exports.
+Pro ($99-299/year): Advanced deployment, automation, forms, search, WP-CLI. For developers and agencies self-hosting.
+Studio (from $11/month): All-in-one managed hosting. We handle WordPress, static hosting, backups, SSL, everything. For businesses who want zero maintenance.
+See detailed comparison
+= Can I use the free version for production sites? =
+Yes, but you'll need to manually upload the ZIP file to your hosting provider each time you update your site.
+For production sites with frequent updates, we recommend Pro (automated deployments) or Studio (fully managed).
+= Will my site look different after going static? =
+No. Simply Static creates an exact copy of your WordPress site. Same HTML, same CSS, same JavaScript. The only difference is it loads faster and is more secure.
+= Do I need to know how to code? =
+No. Simply Static works through a simple WordPress admin interface. Click a button, get your static site.
+Developers can extend Simply Static with 100+ hooks and filters, but coding knowledge is not required for basic use.
+= Can I still use WordPress after generating a static site? =
+Yes! Your WordPress site remains fully functional. You use WordPress to manage content, then generate a new static version when you're ready to publish updates.
+= What happens to forms, search, and comments on my static site? =
+With the free version, these features won't work on your static site (they require server-side processing).
+Simply Static Pro and Studio add working forms, search, and comments to your static site using smart integrations.
+= Can I host my static site for free? =
+Yes! Deploy your static site to:
 
-= What does Simply Static do? =
+Cloudflare Pages (free)
+GitHub Pages (free)
+Netlify (free tier)
+Vercel (free tier)
 
-Simply Static generates static (HTML) copies of your WordPress pages. It works a bit like a web crawler, starting at the main page of your website and looking for links to other pages to create static copies of. It also includes any images, CSS & JS files, and any other files that it can find a link to.
+Or host on any traditional web host or CDN for very low cost.
+= Does Simply Static work with my theme/plugins? =
+Simply Static works with virtually all WordPress themes and most plugins.
+Confirmed compatible themes: Virtually all (including block themes)
+Page builders: Elementor, Bricks, Gutenberg, Beaver Builder, Divi
+SEO plugins: Yoast SEO, Rank Math, AIOSEO, SEOPress
+Form plugins: Contact Form 7, Gravity Forms, WPForms (forms work with Pro/Studio)
+See full compatibility list
+= How is this different from caching plugins? =
+Caching plugins make your WordPress site faster, but your WordPress installation remains accessible and vulnerable.
+Simply Static creates a completely separate static copy that serves no PHP, has no database, and can't be hacked. Your WordPress installation stays private and secure.
+= Can I use Simply Static with Elementor/Gutenberg/other builders? =
+Yes! Simply Static works with all major page builders including Elementor, Elementor Pro, Bricks, Gutenberg, Beaver Builder, Divi, and more.
+= What about SEO? =
+Static sites are excellent for SEO. Faster load times = better rankings.
+Simply Static maintains all your SEO metadata, sitemaps, and schema markup. It works seamlessly with Yoast SEO, Rank Math, AIOSEO, and SEOPress.
+= Can I run a multilingual site? =
+Yes, with Simply Static Pro or Studio. Full support for WPML, Polylang, and TranslatePress.
+The free version can generate static sites in multiple languages, but managing separate exports per language is easier with Pro.
+= Will this work on WordPress.com? =
+Simply Static requires the ability to install plugins. It works on:
 
-As Simply Static is creating the static pages, it will automatically replace the URLs for the WordPress installation with either (a) absolute URLs, at a domain of your choice or (b) relative URLs, so you can host the static files on any domain or (c) URLs constructed for offline use, so you can browse the site locally on your computer.
+Self-hosted WordPress (wordpress.org)
+WordPress.com Business plan or higher
+Most shared hosting providers
+VPS and dedicated servers
 
-= Who should use Simply Static? =
+= How big of a site can Simply Static handle? =
+Simply Static has successfully generated static sites with 100,000+ pages. Site size is generally limited by your server's resources (memory, execution time).
+= Where can I get help? =
+Free Version:
 
-Pretty much everyone, besides e-commerce or membership sites. They require a serious amount of interaction and user accounts, which are not available on a static website.
+WordPress.org support forums
+Documentation
+Video course
 
-= Are there any limitations? =
+Pro & Studio:
 
-You can not use plugins that require a login as there is no account system on a static website. This applies to e-commerce (like WooCommerce) or membership sites.
-
-Also, a website that relies heavily on ajax to update content in real-time is not the best project for Simply Static as a serious amount of custom development would be required.
-
-= How do I set up Simply Static? =
-
-Let's assume you presently have WordPress hosting a site at www.example.com, and that's where you'd like to have your static site instead. Your first task is going to be to move your WordPress installation to a subdomain, such as wordpress.example.com. Once that is complete, you'll set up www.example.com to receive your static files.
-
-If www.example.com is on the same server as your WordPress installation, you can have Simply Static copy the static files to the directory that www.example.com is serving files from. If www.example.com is on a different server, you can download a zip of your static files and then upload them to www.example.com.
-
-= Will this plugin interfere with other plugins? =
-
-No, Simply Static will not interfere with other plugins. Simply Static works well alongside other plugins, such as plugins to improve your site's SEO.
-
-Simply Static creates a static copy of your website, which is just a collection of files: HTML, CSS, JS, images, etc. Any functionality that requires PHP code will not work with that static copy. That includes, but is not limited to: blog post comments, contact forms, forums, membership areas, and eCommerce.
-
-Note that you can achieve much of this functionality by using plugins that interact with third-party services or Simply Static Pro.
-
-= How is Simply Static different from cache plugins? =
-
-Cache plugins -- such as W3 Total Cache or WP Super Cache -- make your existing WordPress site faster by caching pages as they're visited. This makes your site much faster but still leaves your WordPress installation accessible to the outside world. Unless you keep on top of updates, your WordPress installation can become vulnerable to hackers due to security vulnerabilities that are found over time.
-
-Simply Static creates a static copy of your WordPress site that is intended to be used completely separately from your WordPress installation. Your WordPress installation lives on one server and your static site is served on a different server. Or, they're both on the same server, but your WordPress installation is restricted to only allow access from certain IP addresses or with an additional username/password requirement. Your static site is just a collection of static files with no server-side code or database -- nothing for hackers to hack -- while your WordPress installation remains safe and secure.
+Priority email support
+Direct access to development team
+Faster response times
 
 == Screenshots ==
 
-1. Generate
-2. Settings
-3. Diagnostics
+Generate - Simple interface to create your static site with one click
+Settings - Configure your static site export options
+Diagnostics - Check your WordPress environment for compatibility
 
 == Changelog ==
+
+= 3.6.3 =
+
+* improved exclusion logging
+* improved srcset handler (CDN + background image extraction)
+
+= 3.6.2 =
+
+* admin UI tweak (ACL toggle)
+* reset site lock (MU setups)
+* improved memory efficiency for Elementor Crawler
+* readme changes
+
+= 3.6.1 =
+
+* small admin UX fixes
+* server-side implementation for pagination-based search in export log
+* DIVI integration: replace base64 encoded navigation URLs
+* handle @font-face URLs if skipped by DomDocument (regex)
+
+= 3.6.0 =
+
+* check for HTML files in config dir
+* multiple selector notice for Fuse
+* fix: Double dropdown indicator on Export Log "Rows per page"
+* remove dns-preconnect on relative path/offline URL
+* improved DIVI related logging
+
+= 3.5.9 =
+
+* fix: check for NULL instances on files
+* fix: avoid replacing filenames that contain the domainname
+* improved network-related status updates and OPCache responses
+* added ss_preserve_original_filenames filter (true/false)
+
+= 3.5.8 =
+
+* added max fetch attempts for problematic URLs
+* robust file hashing using try-catch blocks
+* centralized filename and path sanitization
+* improved handling of Unicode characters in filenames
+* improved asset discovery and handling
+* fixed fallback path for local asset fetching
+* robust file saving with rename success check and fallback
+* improved Page_Handler to skip unnecessary parameters for assets
+* improved path-agnostic URL handling for local assets
+* improved WP Includes crawler to support interactivity API and new emoji scripts
+
+= 3.5.7 =
+
+* replace URLs in data URI's
+* Fetch URLs task using canProcessPages trait
+* improved path construction for offline/relative paths
+* introduced ss_uploads_additional_directories filter
+* ensure body class preservation
+* strip UTF-8 BOM
+* add and transfer _redirects and _headers files
+* improved Elementor thumbnail handling
+
+= 3.5.6 =
+
+* preserve <xmp> tags (Elementor)
+* cleanup admin UI
+* repaced admin UI components for WP 7.0 preparation
+
+= 3.5.5 =
+
+* path normalization unified across integrations
+* fixed checkup for multilingual integration
+* added support for WP_Query page template pagination
+* url-encoded post_name handling
+* (maybe) add slash on initial call (offline path)
+
+= 3.5.4 =
+
+* updated translation files
+* markup update for Elementor search widget
+* accessibility fix: aria labels for generate buttons
+* improved URL replacements on redirects
+* fix: Call the correct 404 export method export_404
+
+= 3.5.3 =
+
+* auto add plugin + theme on change in Enhanced Crawl
+* updated compatibility DB
+* streamlined settings (+ removed deprecated ones)
+* improved error handling for ZIP task
+* added dedicated class for admin Rest API endpoints
+* Improved import/export UI and behaviour (on MU sites)
+* auto-exclude admin-only plugins (+filter) for enhanced crawl
+* fixed settings UI spacing for WP 6.9 support
+* improved DIVI theme detection
+
+
+= 3.5.2.2 =
+
+* added ss_mime_type_map filter to extend/override manual MIME type map fallback + failsafe handling
+* added filter to exclude robots.txt and llms.txt from export
+
+= 3.5.2.1 =
+
+* fail-safe upgrade mechanism (alongside pro)
+
+= 3.5.2 =
+
+* UI/UX improvements (search/workflow/general)
+* refactored transfer files locally task (+ added filter to make it extendable)
+* improved pagination crawler (smarter author pagination)
+* introduced ss_before_finish_transferring_files_locally filter
+* improved integration copy
+* enforced naming convention across crawler and integration directory (class file naming)
+* updated translation file (including german translation)
+* improved integrations UX by adding a new requires_reload mechanism
+* fixed SEOPress XSL file naming
+* fixed JSON handler for Elementor (animations/menu rendering)
+
+= 3.5.1.2 =
+
+* abstracted encoding into new helper class
+* fixed UTF-8 encoding for emojis
+* fixed check-can-run endpoint (GET not POST)
+* added MU-related notice (for auto-fixer in pro)
+* added ss_multisite_get_sites_args to filter subsite selection
+* fixed exception (PHP 8.3+) for MU class
+
+= 3.5.1.1 =
+
+* clear temp files + log + DB table on plugin deactivation
+* avoid decoding inline-JSON (Elementor)
+* ss_user_capability for admin bar integration
+* MU: decode special chars before dropdown output
+* Removed HTML5 auto-fixer (should be a filter)
+
+= 3.5.1 =
+
+* better HTML 5 markup support for non-closing tags (like <source>)
+* added ZIPArchive support for larger ZIP exports (>4GB)
+* MU: sort subsites ASC + added site ID
+* added Clear Temporary Files button + auto-clear on uninstall + ss_clear_temp_dir_on_wrapup filter
+* mb_encode_numericentity + mb_convert_encoding for better UTF-8 conversion support
+* added ss_zip_filename filter to rename ZIP file
+* added ss_crawlable_plugins and ss_crawlable_themes filter
+
+= 3.5.0 =
+
+* better UTF-8 and entity handling (content + URLs)
+* added network-activated plugins to crawler support
+* added ability to exclude specific plugins + themes in Enhanced Crawl (pro-only)
+* added support for .avif, .tiff and .heic image files
+* regex support for Include/Exclude settings
+* URL-based export cancellation via cancel-export=true parameter
+* llms.txt support for AIO SEO and Yoast SEO integration
+* fixed logging loop for Elementor integration
+
+= 3.4.8 =
+
+* new text handler for replacing URLs in txt files
+* RankMath: auto replace and copy llms.txt and robots.txt to your static site
+* Utilities: new reset background queue feature
+* improved admin bar integration with deeplinks and better performance
+* Quick link to view your static site from the dashboard
+* fallback strategy to pick up and export 0 byte files
+* Admin UI improvements (fixing Chrome notices)
+
+= 3.4.7.2 =
+
+* reverted avoid error on invalid file path
+
+= 3.4.7.1 =
+
+* reverted fetch progress count improvements
+
+= 3.4.7 =
+
+* improved XML sitemap URL replacements
+* improved invalid file path handling
+* added dedicated Beaver Builder crawler
+* improved fetch progress count (runtime)
+* UI-changes related to multisite environments
+* blocking accidental overwriting exports on MU sites
+
+= 3.4.6.1 =
+
+* Fixed DomXPath conversion for strings (RankMath and Yoast SEO)
+* Added SEO Generator integration placeholder (pro-only integration)
+* batch processing for Additional URLs and Files (improved memory usage)
+
+= 3.4.6 =
+
+* DIVI integration + custom crawler
+* Improved Elementor integration
+* Custom 404 page selection (instead of theme default)
+* auto-include llms.txt on crawl
+* improved third-party-crawler loading
 
 = 3.4.5.1 =
 

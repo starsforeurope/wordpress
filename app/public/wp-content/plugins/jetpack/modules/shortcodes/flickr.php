@@ -42,7 +42,7 @@ function flickr_embed_to_shortcode( $content ) {
 
 /**
  * Transforms embed to shortcode on save when the photo param is used.
- * If embed content can not be transformed to a valid shortcode,
+ * If embed content cannot be transformed to a valid shortcode,
  * the embed content itself is returned.
  *
  * @param string $content Embed output.
@@ -68,7 +68,7 @@ function jetpack_flickr_photo_to_shortcode( $content ) {
 
 /**
  * Transforms embed to shortcode on save when the video param is used.
- * If embed content can not be transformed to a valid shortcode,
+ * If embed content cannot be transformed to a valid shortcode,
  * the embed content itself is returned.
  *
  * @param string $content Embed output.
@@ -310,7 +310,7 @@ function jetpack_flickr_oembed_handler( $matches, $attr, $url ) {
 	 */
 	if ( '/show/' !== substr( $url, -strlen( '/show/' ) ) ) {
 		// These lookups need cached, as they don't use WP_Embed (which caches).
-		$cache_key   = md5( $url . wp_json_encode( $attr ) );
+		$cache_key   = md5( $url . wp_json_encode( $attr, JSON_UNESCAPED_SLASHES ) );
 		$cache_group = 'oembed_flickr';
 
 		$html = wp_cache_get( $cache_key, $cache_group );

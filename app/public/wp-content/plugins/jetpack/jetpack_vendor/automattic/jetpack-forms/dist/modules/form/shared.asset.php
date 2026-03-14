@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('@wordpress/interactivity'), 'version' => '57933d7b4ea467efaf78', 'type' => 'module');
+<?php return array('dependencies' => array('@wordpress/interactivity'), 'version' => '523390a9c02ebfed9b26', 'type' => 'module');

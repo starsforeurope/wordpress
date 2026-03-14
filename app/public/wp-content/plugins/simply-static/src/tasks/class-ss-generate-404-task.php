@@ -45,14 +45,47 @@ class Generate_404_Task extends Task {
 	 */
 	public function perform() {
 
+		$message = __( 'Generating 404 Page.', 'simply-static' );
+		$this->save_status_message( $message );
+
+		// If a custom 404 page is selected, use its content instead of the theme default
+		$custom_404_id = intval( $this->options->get( 'custom_404_page' ) );
+		if ( ! empty( $custom_404_id ) ) {
+			$permalink = get_permalink( $custom_404_id );
+			if ( $permalink ) {
+				$static_page                      = new Page();
+				$static_page->post_id             = $custom_404_id;
+				$static_page->id                  = 0;
+				$static_page->build_id            = 0;
+				$static_page->url                 = $permalink;
+				$static_page->handler             = Handler_404::class; // Save under 404/
+				$static_page->error_message       = '';
+				$static_page->found_on_id         = 0;
+				$static_page->redirect_url        = '';
+				$static_page->status_message      = '';
+				$static_page->content_type        = 'text/html';
+				$static_page->content_hash        = '';
+				$static_page->last_checked_at     = current_time( 'mysql' );
+				$static_page->last_transferred_at = current_time( 'mysql' );
+				$static_page->last_modified_at    = current_time( 'mysql' );
+				$static_page->updated_at          = current_time( 'mysql' );
+				$static_page->created_at          = current_time( 'mysql' );
+				$static_page->site_id             = 0;
+				$static_page->file_path           = 'index.html';
+
+				$success = Url_Fetcher::instance()->fetch( $static_page );
+				if ( $success ) {
+					$this->handle_response( $static_page );
+					$this->save_status_message( __( '404 Page generated', 'simply-static' ) );
+					return true;
+				}
+			}
+		}
+
 		$found_404   = false;
 		$static_page = null;
 		$slug        = time();
 		$count       = 1;
-
-		$message = __( 'Generating 404 Page.', 'simply-static' );
-		$this->save_status_message( $message );
-
 
 		do {
 			$page_slug                        = $slug + $count;
@@ -88,7 +121,6 @@ class Generate_404_Task extends Task {
 				continue;
 			}
 
-
 			$this->handle_response( $static_page );
 
 			$found_404 = true;
@@ -97,9 +129,7 @@ class Generate_404_Task extends Task {
 
 			$this->save_status_message( $message );
 
-
 		} while ( ! $found_404 );
-
 
 		return true;
 	}
@@ -123,7 +153,15 @@ class Generate_404_Task extends Task {
 		$file = $this->archive_dir . $static_page->file_path;
 
 		Util::debug_log( "We're saving this URL; keeping the static file" );
-		$sha1 = sha1_file( $file );
+
+		try {
+			$sha1 = sha1_file( $file );
+			if ( false === $sha1 ) {
+				$sha1 = '';
+			}
+		} catch ( \Exception $e ) {
+			$sha1 = '';
+		}
 
 		// if the content is identical, move on to the next file
 		if ( $static_page->is_content_identical( $sha1 ) ) {

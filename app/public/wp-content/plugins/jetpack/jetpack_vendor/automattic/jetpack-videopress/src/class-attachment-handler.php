@@ -118,7 +118,8 @@ class Attachment_Handler {
 		$wpcom_response = Client::wpcom_json_api_request_as_blog(
 			sprintf( '/videos/%s/delete', $guid ),
 			'1.1',
-			array( 'method' => 'POST' )
+			array( 'method' => 'POST' ),
+			array( 'user_id' => get_current_user_id() )
 		);
 
 		if ( is_wp_error( $wpcom_response ) ) {
@@ -194,7 +195,7 @@ class Attachment_Handler {
 	 */
 	public static function prepare_attachment_for_js( $post ) {
 		if ( 'video' === $post['type'] ) {
-			$guid = get_post_meta( $post['id'], 'videopress_guid' );
+			$guid = get_post_meta( $post['id'], 'videopress_guid', true );
 			if ( $guid ) {
 				$post['videopress_guid'] = $guid;
 			}

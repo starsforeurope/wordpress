@@ -12,6 +12,7 @@
 
 // phpcs:disable Universal.Files.SeparateFunctionsFromOO.Mixed -- TODO: Move classes to appropriately-named class files.
 
+use Automattic\Jetpack\Post_Media\Images;
 use Automattic\Jetpack\Redirect;
 use Automattic\Jetpack\Stats\WPCOM_Stats;
 use Automattic\Jetpack\Status;
@@ -151,7 +152,7 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php esc_html_e( 'Maximum number of posts to show (no more than 10):', 'jetpack' ); ?></label>
-			<input id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" type="number" value="<?php echo (int) $count; ?>" min="1" max="10" />
+			<input id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" type="number" value="<?php echo esc_attr( (string) $count ); ?>" min="1" max="10" />
 		</p>
 
 		<?php if ( defined( 'IS_WPCOM' ) && IS_WPCOM ) : ?>
@@ -434,7 +435,7 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 				}
 
 				foreach ( $posts as &$post ) {
-					$image = Jetpack_PostImages::get_image(
+					$image = Images::get_image(
 						$post['post_id'],
 						array(
 							'fallback_to_avatars' => (bool) $get_image_options['fallback_to_avatars'],
@@ -445,13 +446,13 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 					);
 
 					if ( $image ) {
-						$post['image'] = Jetpack_PostImages::fit_image_url(
+						$post['image'] = Images::fit_image_url(
 							$image['src'],
 							$width,
 							$height
 						);
 
-						$post['image_srcset'] = Jetpack_PostImages::generate_cropped_srcset(
+						$post['image_srcset'] = Images::generate_cropped_srcset(
 							$image,
 							$width,
 							$height
@@ -715,7 +716,7 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 		$query_args      = array(
 			'max'       => 11,
 			'summarize' => 1,
-			'num'       => (int) $days,
+			'num'       => $days,
 		);
 		$wpcom_stats     = new WPCOM_Stats();
 		$post_view_posts = $wpcom_stats->convert_stats_array_to_object(

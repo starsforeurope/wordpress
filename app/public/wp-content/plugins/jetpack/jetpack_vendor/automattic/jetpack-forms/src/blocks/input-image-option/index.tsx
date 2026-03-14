@@ -5,9 +5,9 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import edit from './edit';
-import icon from './icon';
-import save from './save';
+import edit from './edit.tsx';
+import icon from './icon.tsx';
+import save from './save.tsx';
 
 const name = 'input-image-option';
 
@@ -20,7 +20,7 @@ const settings = {
 	usesContext: [
 		'jetpack/field-image-select-is-supersized',
 		'jetpack/field-image-select-show-labels',
-		'jetpack/field-image-options-type',
+		'jetpack/field-image-select-is-multiple',
 		'jetpack/field-share-attributes',
 	],
 	providesContext: {
@@ -89,6 +89,23 @@ const settings = {
 		label: {
 			type: 'string',
 			default: '',
+		},
+		style: {
+			type: 'object',
+			default: {
+				border: {
+					radius: '4px',
+					width: '1px',
+				},
+				spacing: {
+					padding: {
+						top: '8px',
+						right: '8px',
+						bottom: '8px',
+						left: '8px',
+					},
+				},
+			},
 		},
 	},
 	save,
