@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TARGET_REPO="$HOME/wordpress-repo"
+TARGET_REPO="$(cd "$(dirname "$0")" && pwd)"
 TARGET_SITE="starsforeurope"
 LOCAL_SITE_DIR="$HOME/Local Sites/$TARGET_SITE"
 IMPORT_ZIP="$TARGET_REPO/starsforeurope.zip"
@@ -49,27 +49,6 @@ fi
 if [[ ! -d "/Applications/Local.app" ]] && ! command -v local >/dev/null 2>&1; then
   echo "Error: Local is not installed. Install from https://localwp.com/releases/"
   exit 1
-fi
-
-if [[ ! -d "$TARGET_REPO/.git" ]]; then
-  echo "==> Cloning repository into $TARGET_REPO"
-  mkdir -p "$(dirname "$TARGET_REPO")"
-
-  # Reuse current origin when this script runs from a git checkout.
-  CURRENT_ORIGIN=""
-  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    CURRENT_ORIGIN="$(git remote get-url origin 2>/dev/null || true)"
-  fi
-
-  if [[ -z "$CURRENT_ORIGIN" ]]; then
-    echo "Error: could not infer git remote URL for cloning."
-    echo "Run this from a checked-out repo or clone manually into $TARGET_REPO."
-    exit 1
-  fi
-
-  git clone "$CURRENT_ORIGIN" "$TARGET_REPO"
-else
-  echo "==> Repo already present at $TARGET_REPO"
 fi
 
 echo "==> Building import ZIP at $IMPORT_ZIP"

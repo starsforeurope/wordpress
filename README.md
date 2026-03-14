@@ -40,10 +40,9 @@ Esegui:
 Lo script:
 1. Verifica prerequisiti (`git`, Homebrew e Local)
 2. Installa automaticamente i tool mancanti (`wp-cli`, `mysql-client`)
-3. Clona il repo in `~/wordpress-repo` (se manca)
-4. Crea ZIP importabile con `app/sql/local.sql` + `app/public/wp-content`
-5. Attende conferma dopo import in Local (`starsforeurope`)
-6. Collega `~/Local Sites/starsforeurope/app/public/wp-content` al repo con un symlink
+3. Crea ZIP importabile con `app/sql/local.sql` + `app/public/wp-content`
+4. Attende conferma dopo import in Local (`starsforeurope`)
+5. Collega `~/Local Sites/starsforeurope/app/public/wp-content` al repo con un symlink
 
 Nota importante:
 - Se `app/sql/local.sql` contiene il dump di default WordPress, vedrai "Hello world" e "Sample Page" anche in locale.
