@@ -51,7 +51,7 @@ Nota importante:
 ## 4) Pubblicare le Modifiche
 
 1. Modifica i contenuti in WordPress (Local).
-2. Esegui export con Simply Static per aggiornare `docs/`.
+2. Esegui export con Simply Static per aggiornare `app/`.
 3. Fai doppio click su `deploy.command` nella root del repository.
 
 `deploy.command` esegue:
