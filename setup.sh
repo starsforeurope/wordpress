@@ -4,7 +4,7 @@ set -euo pipefail
 TARGET_REPO="$HOME/wordpress-repo"
 TARGET_SITE="starsforeurope"
 LOCAL_SITE_DIR="$HOME/Local Sites/$TARGET_SITE"
-IMPORT_ZIP="$HOME/${TARGET_SITE}-import.zip"
+IMPORT_ZIP="$TARGET_REPO/starsforeurope.zip"
 
 check_cmd() {
   local cmd="$1"
