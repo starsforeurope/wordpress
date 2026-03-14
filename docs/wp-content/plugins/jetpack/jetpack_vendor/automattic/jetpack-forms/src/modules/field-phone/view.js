@@ -4,10 +4,11 @@ import {
 	getConfig,
 	getElement,
 	withSyncEvent as originalWithSyncEvent,
+	withScope,
 } from '@wordpress/interactivity';
 import parsePhoneNumber, { AsYouType } from 'libphonenumber-js';
-import { countries } from '../../blocks/field-telephone/country-list';
-import { isEmptyValue } from '../../contact-form/js/validate-helper';
+import { countries } from '../../blocks/field-telephone/country-list.js';
+import { isEmptyValue } from '../../contact-form/js/validate-helper.js';
 const NAMESPACE = 'jetpack/form';
 
 const withSyncEvent =
@@ -20,6 +21,23 @@ const asYouTypes = {};
 const phoneInputRefs = {};
 const searchInputRefs = {};
 const optionsListRefs = {};
+
+/**
+ * Sets flag text on an element by modifying existing text node data instead of
+ * replacing textContent. This avoids triggering wp-emoji's MutationObserver
+ * (which only watches childList, not characterData) that converts emoji to SVG.
+ *
+ * @param {HTMLElement} element - The element to set flag text on.
+ * @param {string}      flag    - The flag emoji to display.
+ */
+const setFlagText = ( element, flag ) => {
+	const text = flag || '';
+	if ( element.firstChild?.nodeType === 3 ) {
+		element.firstChild.data = text;
+	} else {
+		element.textContent = text;
+	}
+};
 const updateSelection = selectedCountry => {
 	const context = getContext();
 	context.phoneCountryCode = selectedCountry.code;
@@ -36,7 +54,7 @@ const updateSelection = selectedCountry => {
 	} ) );
 };
 
-const { actions } = store( NAMESPACE, {
+const { actions, callbacks } = store( NAMESPACE, {
 	state: {
 		validators: {
 			phone: ( value, isRequired ) => {
@@ -215,21 +233,63 @@ const { actions } = store( NAMESPACE, {
 		},
 	},
 	callbacks: {
-		initializePhoneField() {
+		/**
+		 * Sets flag text by modifying existing text node data (nodeType 3 = TEXT_NODE)
+		 * instead of replacing textContent, to avoid triggering wp-emoji's MutationObserver
+		 * which only watches childList (not characterData) and converts emoji to SVG images.
+		 */
+		updateSelectedFlag() {
+			const { ref } = getElement();
+			const context = getContext();
+			setFlagText( ref, context.selectedCountry?.flag );
+		},
+		updateOptionFlag() {
+			const { ref } = getElement();
+			const context = getContext();
+			setFlagText( ref, context.filtered?.flag );
+		},
+		registerPhoneInput() {
 			const element = getElement().ref;
 			const context = getContext();
-			// store refs for quick access later and less intensive dom scouting
-			phoneInputRefs[ context.fieldId ] = element.querySelector( 'input[type="tel"]' );
-			searchInputRefs[ context.fieldId ] = element.parentElement.querySelector(
-				'.jetpack-combobox-search'
-			);
-			optionsListRefs[ context.fieldId ] = element.parentElement.querySelector(
-				'.jetpack-combobox-options'
-			);
+			phoneInputRefs[ context.fieldId ] = element;
+		},
+		registerPhoneComboboxSearchInput() {
+			const element = getElement().ref;
+			const context = getContext();
+			searchInputRefs[ context.fieldId ] = element;
+		},
+		registerPhoneComboboxOptionsList() {
+			const element = getElement().ref;
+			const context = getContext();
+			optionsListRefs[ context.fieldId ] = element;
 		},
 		initializePhoneFieldCustomComboBox() {
 			const context = getContext();
 			if ( ! context.showCountrySelector ) {
+				return;
+			}
+
+			if (
+				! phoneInputRefs[ context.fieldId ] ||
+				! searchInputRefs[ context.fieldId ] ||
+				! optionsListRefs[ context.fieldId ]
+			) {
+				const { ref } = getElement();
+				// delay execution with a timeout and scoping withScope and return.
+				setTimeout(
+					withScope( function () {
+						const context2 = getContext();
+						phoneInputRefs[ context2.fieldId ] = ref;
+						searchInputRefs[ context2.fieldId ] = ref.parentElement.querySelector(
+							'.jetpack-combobox-search'
+						);
+						optionsListRefs[ context2.fieldId ] = ref.parentElement.querySelector(
+							'.jetpack-combobox-options'
+						);
+						callbacks.initializePhoneFieldCustomComboBox();
+					} ),
+					100
+				);
 				return;
 			}
 			const config = getConfig( 'jetpack/field-phone' );
