@@ -49,42 +49,7 @@ Nota importante:
 - Se `app/sql/local.sql` contiene il dump di default WordPress, vedrai "Hello world" e "Sample Page" anche in locale.
 - `setup.sh` ora mostra un warning esplicito se rileva questo caso.
 
-## 4) Configurazione Manuale (Fallback)
-
-Segui questi passaggi su una macchina nuova o quando devi ricreare il sito locale.
-
-Percorso consigliato per il clone:
-- `~/wordpress-repo`
-
-Esempio:
-
-```bash
-cd ~
-git clone https://github.com/starsforeurope/wordpress.git wordpress-repo
-cd wordpress-repo
-```
-
-1. Clona il repository sul Mac.
-2. In Local, crea un nuovo sito chiamato `starsforeurope`.
-3. Ferma il sito in Local.
-4. In Finder, apri la cartella del sito:
-	- `~/Local Sites/starsforeurope/`
-5. Sostituisci la cartella `app/` del sito con la cartella `app/` del repository.
-6. Riavvia il sito in Local.
-7. Importa il database da Local, puntando al dump dentro il repository:
-
-```bash
-cd ~/Local\ Sites/starsforeurope
-wp --path=app/public db import "~/wordpress-repo/app/sql/local.sql"
-```
-
-8. Accedi all'admin WordPress da Local e verifica pagine e contenuti.
-
-Note:
-- `wp-admin/`, `wp-includes/` e `wp-config.php` non sono tracciati in git.
-- Tieni Local avviato quando modifichi/esporti.
-
-## 5) Pubblicare Le Modifiche
+## 4) Pubblicare le Modifiche
 
 1. Modifica i contenuti in WordPress (Local).
 2. Esegui export con Simply Static per aggiornare `docs/`.
@@ -93,11 +58,11 @@ Note:
 `deploy.command` esegue:
 1. Richiede conferma dopo Generate in Simply Static
 2. `wp db export app/sql/local.sql`
-3. `git add .`
+3. `git add app/ docs/`
 4. `git commit -m "content: <timestamp>"`
 5. `git push`
 
-## 6) GitHub Actions
+## 5) GitHub Actions
 
 File workflow: `.github/workflows/deploy.yml`
 

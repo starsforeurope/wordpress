@@ -64,7 +64,7 @@ if [[ "$status" -eq 0 ]]; then
   fi
 
   if [ "$status" -eq 0 ]; then
-    git add .
+    git add app/ docs/
     if git diff --cached --quiet; then
       echo "No changes to commit."
     else
